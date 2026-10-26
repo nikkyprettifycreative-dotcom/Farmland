@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Farmland - Projects</title>
+        
+        <link rel="icon" type="image/png" href="assets/images/favicon.png?v=3">
+    
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+        
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                extend: {
+                    fontFamily: {
+                    sans: ['Lato', 'sans-serif'],
+                    },
+                    colors: {
+                    'main-green': 'var(--main-green)',
+                    'main-yellow': 'var(--main-yellow)',
+                    'secondary': 'var(--secondary)',
+                    'black': 'var(--black)',
+                    'white': 'var(--white)'
+                    }
+                }
+                }
+            }
+        </script>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+        <link rel="stylesheet" href="assets/css/animate.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+        
+        <style>
+            input[type=range] {
+                -webkit-appearance: none;
+                width: 100%;
+                background: transparent;
+            }
+            input[type=range]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                background: var(--main-green);
+                cursor: pointer;
+                margin-top: -8px;
+                box-shadow: 0 0 2px rgba(0,0,0,0.2);
+            }
+            input[type=range]::-webkit-slider-runnable-track {
+                width: 100%;
+                height: 4px;
+                cursor: pointer;
+                background: #e5e7eb;
+                border-radius: 2px;
+            }
+            input[type=range]:focus {
+                outline: none;
+            }
+            input[type=range]::-moz-range-thumb {
+                height: 20px;
+                width: 20px;
+                border: none;
+                border-radius: 50%;
+                background: var(--main-green);
+                cursor: pointer;
+            }
+            input[type=range]::-moz-range-track {
+                width: 100%;
+                height: 4px;
+                cursor: pointer;
+                background: #e5e7eb;
+                border-radius: 2px;
+            }
+        </style>
+    </head>
+<body class="listing-page font-sans antialiased bg-[#f8fafc] overflow-x-clip">
+
+    <div id="header-placeholder"></div>
+
+    <main class="listing-main pt-6 pb-16">
+        <div class="listing-wrap max-w-[1400px] mx-auto px-4 md:px-8">
+            <div class="listing-grid flex flex-col lg:flex-row gap-8 items-start">
+                
+                <!-- LEFT SIDEBAR (STICKY, FULL VIEWPORT HEIGHT, INTERNAL SCROLL) -->
+                <aside class="listing-filters-aside w-full lg:w-[320px] flex-shrink-0">
+                    <div class="bg-white rounded-xl border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] overflow-hidden lg:h-full lg:flex lg:flex-col">
+                        
+                        <div class="bg-main-green px-5 py-4 flex items-center justify-between flex-shrink-0">
+                            <div class="flex items-center gap-2 text-white font-bold">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                                <span>Filters</span>
+                            </div>
+                            <button id="clearFilters" class="text-white text-sm font-semibold hover:underline">Clear all</button>
+                        </div>
+
+                        <div class="listing-scroll p-5 space-y-6 lg:flex-1 lg:overflow-y-auto lg:min-h-0">
+                            
+                            <div class="relative">
+                                <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                <input type="text" id="searchInput" placeholder="Search title, keywords..." class="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-main-green focus:ring-1 focus:ring-main-green text-gray-700 transition-colors">
+                            </div>
+
+                            <div class="border-t border-gray-100 pt-4">
+                                <div class="flex items-center justify-between cursor-pointer mb-3">
+                                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                        City
+                                    </div>
+                                </div>
+                                <div class="relative">
+                                    <select id="citySelect" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-main-green focus:ring-1 focus:ring-main-green text-gray-700 appearance-none cursor-pointer transition-colors">
+                                        <option value="">All Cities</option>
+                                        <option value="Bengaluru">Bengaluru</option>
+                                        <option value="Pune">Pune</option>
+                                        <option value="Hyderabad">Hyderabad</option>
+                                        <option value="Bengaluru Rural">Bengaluru Rural</option>
+                                        <option value="Krishnagiri">Krishnagiri</option>
+                                        <option value="Chikkaballapur">Chikkaballapur</option>
+                                        <option value="Jaipur">Jaipur</option>
+                                        <option value="Noida">Noida</option>
+                                        <option value="Rangareddi">Rangareddi</option>
+                                        <option value="Sangareddi">Sangareddi</option>
+                                        <option value="Hindupur">Hindupur</option>
+                                        <option value="Chikmagalur">Chikmagalur</option>
+                                        <option value="Kodaikanal">Kodaikanal</option>
+                                        <option value="Coorg">Coorg</option>
+                                        <option value="Goa">Goa</option>
+                                    </select>
+                                    <svg class="w-4 h-4 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-gray-100 pt-4">
+                                <div class="flex items-center justify-between cursor-pointer mb-3">
+                                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                                        Property Type
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-2" id="propertyTypeFilters">
+                                    <label class="flex items-center gap-2 bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                                        <input class="w-4 h-4 text-main-green bg-white border-gray-300 rounded focus:ring-main-green focus:ring-2 filter-checkbox cursor-pointer" type="checkbox" value="Farmland">
+                                        <span class="text-sm text-gray-700">Farmland</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                                        <input class="w-4 h-4 text-main-green bg-white border-gray-300 rounded focus:ring-main-green focus:ring-2 filter-checkbox cursor-pointer" type="checkbox" value="Farmhouse">
+                                        <span class="text-sm text-gray-700">Farmhouse</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                                        <input class="w-4 h-4 text-main-green bg-white border-gray-300 rounded focus:ring-main-green focus:ring-2 filter-checkbox cursor-pointer" type="checkbox" value="Agricultural Land">
+                                        <span class="text-sm text-gray-700">Agri Land</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                                        <input class="w-4 h-4 text-main-green bg-white border-gray-300 rounded focus:ring-main-green focus:ring-2 filter-checkbox cursor-pointer" type="checkbox" value="Estates">
+                                        <span class="text-sm text-gray-700">Estates</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-gray-100 pt-4">
+                                <div class="flex items-center justify-between cursor-pointer mb-4">
+                                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                        Price Range
+                                    </div>
+                                </div>
+                                <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
+                                    <span>₹0</span>
+                                    <span id="priceMaxLabel" class="text-main-green">₹10 Cr</span>
+                                </div>
+                                <input type="range" id="priceRange" class="w-full" min="0" max="1000" value="1000">
+                            </div>
+
+                            <div class="border-t border-gray-100 pt-4">
+                                <div class="flex items-center justify-between cursor-pointer mb-4">
+                                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Area (Acres)
+                                    </div>
+                                </div>
+                                <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
+                                    <span>0 ac</span>
+                                    <span id="areaMaxLabel" class="text-main-green">500 ac</span>
+                                </div>
+                                <input type="range" id="areaRange" class="w-full" min="0" max="500" value="500">
+                            </div>
+
+                            <div class="border-t border-gray-100 pt-4">
+                                <div class="flex items-center justify-between cursor-pointer mb-3">
+                                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                                        Amenities
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-y-3 gap-x-2" id="amenitiesFilters">
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input class="w-4 h-4 text-main-green bg-gray-50 border-gray-300 rounded focus:ring-main-green focus:ring-2 filter-amenity cursor-pointer" type="checkbox" value="Swimming Pool">
+                                        <span class="text-sm text-gray-600">Swimming Pool</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input class="w-4 h-4 text-main-green bg-gray-50 border-gray-300 rounded focus:ring-main-green focus:ring-2 filter-amenity cursor-pointer" type="checkbox" value="Security">
+                                        <span class="text-sm text-gray-600">Security</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input class="w-4 h-4 text-main-green bg-gray-50 border-gray-300 rounded focus:ring-main-green focus:ring-2 filter-amenity cursor-pointer" type="checkbox" value="Solar Power">
+                                        <span class="text-sm text-gray-600">Solar Power</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input class="w-4 h-4 text-main-green bg-gray-50 border-gray-300 rounded focus:ring-main-green focus:ring-2 filter-amenity cursor-pointer" type="checkbox" value="Borewell">
+                                        <span class="text-sm text-gray-600">Borewell</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- RIGHT SIDE CONTENT -->
+                <div class="listing-results flex-grow min-w-0">
+                    
+                    <!-- Advertisement Banner -->
+                    <a href="#" class="block w-full mb-6 rounded-2xl overflow-hidden">
+                        <img
+                            src="https://farmlandbazaar.com/assets/images/advertisement_banner.png"
+                            alt="Advertisement"
+                            class="w-full h-auto block"
+                        />
+                    </a>
+
+                    <!-- Browse by Category Section -->
+                    <div class="bg-white rounded-2xl border border-gray-100 p-6 mb-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-sm font-black text-gray-900 uppercase tracking-widest flex items-center gap-2">
+                                <svg class="w-4 h-4 text-main-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                                Browse by Category
+                            </h3>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <button id="btn-all-props" class="group relative bg-main-green text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-[0_4px_15px_rgba(13,160,106,0.3)] hover:shadow-[0_6px_20px_rgba(13,160,106,0.4)] hover:-translate-y-0.5 flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                                All Properties
+                            </button>
+                            <button id="btn-recommended" class="group bg-white border-2 border-gray-100 text-gray-600 hover:border-main-green hover:text-main-green hover:bg-[#f2fcf5] px-6 py-2.5 rounded-full text-sm font-bold transition-all flex items-center gap-2">
+                                <svg class="w-4 h-4 text-[#f6a81c] group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                Recommended
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Toolbar Section -->
+                    <div class="bg-white rounded-2xl border border-gray-100 p-4 mb-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
+                        <div class="flex items-center gap-3">
+                            <span id="propertyCount" class="bg-[#eaf6f0] text-main-green font-black text-lg px-4 py-1.5 rounded-xl border border-main-green/20 shadow-inner">8</span>
+                            <div class="flex flex-col">
+                                <span class="text-sm text-gray-900 font-bold leading-tight">Properties Found</span>
+                                <span class="text-xs text-gray-500">Based on your filters</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 bg-gray-50 border border-gray-100 rounded-xl px-4 py-2">
+                            <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"/></svg>
+                            <span class="text-sm text-gray-500 font-medium whitespace-nowrap">Sort by:</span>
+                            <select id="sortSelect" class="bg-transparent border-none text-gray-900 text-sm font-bold focus:ring-0 cursor-pointer outline-none p-0 pr-6">
+                                <option value="recent">Most Recent</option>
+                                <option value="low-high">Price: Low to High</option>
+                                <option value="high-low">Price: High to Low</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Cards Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="propertiesGrid">
+
+                        <!-- Card 1 -->
+                        <a href="project-detail.html"
+                            class="property-card bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col h-full border border-[#e67e22] cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
+                            data-title="Golden Grove by Aranyakaa Farms" data-city="Bengaluru" data-type="Farmland" data-price="6262000" data-area="55" data-amenities="Security,Borewell" data-recommended="false">
+                            <div class="relative h-[240px] overflow-hidden group cursor-pointer">
+                                <div class="absolute top-4 left-4 bg-[#e67e22] text-white text-[11px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 z-20 shadow-sm uppercase tracking-wide">
+                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
+                                    HOT DEAL
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1000&auto=format&fit=crop" alt="Golden Grove" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="bg-[#3e1f0a] text-center py-2 relative z-10">
+                                <span class="text-[11px] font-bold text-[#f6a81c] tracking-widest uppercase">Farmland</span>
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col">
+                                <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">Golden Grove by Aranyakaa Farms</h3>
+                                <p class="text-sm text-gray-500 mb-4">Mandya, Karnataka</p>
+                                <div class="flex items-center gap-2 mb-4 text-sm text-gray-600">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span class="truncate">Aranyakaa Farms</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex items-end justify-between mb-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-2xl font-black text-gray-900">₹62.62 Lakhs</span>
+                                            <span class="text-[11px] text-gray-500 font-bold uppercase">Onwards</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-xs text-[#0da06a] font-semibold">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Project Area - 55 acre
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Card 2 -->
+                        <a href="project-detail.html"
+                            class="property-card bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col h-full border border-[#0da06a] cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
+                            data-title="Goa To Little Acres" data-city="Goa" data-type="Farmland" data-price="6500000" data-area="204" data-amenities="Swimming Pool,Security,Solar Power" data-recommended="true">
+                            <div class="relative h-[240px] overflow-hidden group cursor-pointer">
+                                <div class="absolute top-4 left-4 bg-[#0da06a] text-white text-[11px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 z-20 shadow-sm uppercase tracking-wide">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    FEATURED
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop" alt="Goa To Little Acres" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="bg-[#0b4e34] text-center py-2 relative z-10">
+                                <span class="text-[11px] font-bold text-[#4ade80] tracking-widest uppercase">Farmland</span>
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col">
+                                <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">Goa To Little Acres</h3>
+                                <p class="text-sm text-gray-500 mb-4">Goa Velha, Goa</p>
+                                <div class="flex items-center gap-2 mb-4 text-sm text-gray-600">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span class="truncate">Shondik Living</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex items-end justify-between mb-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-2xl font-black text-gray-900">₹65.00 Lakhs</span>
+                                            <span class="text-[11px] text-gray-500 font-bold uppercase">Onwards</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-xs text-[#0da06a] font-semibold">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Project Area - 204 acre
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Card 3 -->
+                        <a href="project-detail.html"
+                            class="property-card bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col h-full border border-[#f6a81c] cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
+                            data-title="Country Homes Harohalli" data-city="Bengaluru" data-type="Farmhouse" data-price="7200000" data-area="65" data-amenities="Clubhouse,Garden / Lawn" data-recommended="false">
+                            <div class="relative h-[240px] overflow-hidden group cursor-pointer">
+                                <div class="absolute top-4 left-4 bg-[#f6a81c] text-black text-[11px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 z-20 shadow-sm uppercase tracking-wide">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    SPONSORED
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1000&auto=format&fit=crop" alt="Country Homes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="bg-[#0f172a] text-center py-2 relative z-10">
+                                <span class="text-[11px] font-bold text-[#f6a81c] tracking-widest uppercase">Farmhouse</span>
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col">
+                                <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">Country Homes Harohalli</h3>
+                                <p class="text-sm text-gray-500 mb-4">Bengaluru, Karnataka</p>
+                                <div class="flex items-center gap-2 mb-4 text-sm text-gray-600">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span class="truncate">Triguna Projects</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex items-end justify-between mb-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-2xl font-black text-gray-900">₹72.00 Lakhs</span>
+                                            <span class="text-[11px] text-gray-500 font-bold uppercase">Onwards</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-xs text-[#0da06a] font-semibold">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Project Area - 65 acre
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Card 4 -->
+                        <a href="project-detail.html"
+                            class="property-card bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col h-full border border-[#e67e22] cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
+                            data-title="Green Valley Estates" data-city="Chikmagalur" data-type="Estates" data-price="4550000" data-area="25" data-amenities="Borewell,Solar Power" data-recommended="true">
+                            <div class="relative h-[240px] overflow-hidden group cursor-pointer">
+                                <div class="absolute top-4 left-4 bg-[#e67e22] text-white text-[11px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 z-20 shadow-sm uppercase tracking-wide">
+                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
+                                    HOT DEAL
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000&auto=format&fit=crop" alt="Green Valley Estates" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="bg-[#3e1f0a] text-center py-2 relative z-10">
+                                <span class="text-[11px] font-bold text-[#f6a81c] tracking-widest uppercase">Estates</span>
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col">
+                                <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">Green Valley Estates</h3>
+                                <p class="text-sm text-gray-500 mb-4">Chikmagalur, Karnataka</p>
+                                <div class="flex items-center gap-2 mb-4 text-sm text-gray-600">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span class="truncate">Green Valley</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex items-end justify-between mb-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-2xl font-black text-gray-900">₹45.50 Lakhs</span>
+                                            <span class="text-[11px] text-gray-500 font-bold uppercase">Onwards</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-xs text-[#0da06a] font-semibold">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Project Area - 25 acre
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Card 5 -->
+                        <a href="project-detail.html"
+                            class="property-card bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col h-full border border-[#0da06a] cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
+                            data-title="Sunrise Organics" data-city="Kodaikanal" data-type="Farmland" data-price="3500000" data-area="40" data-amenities="Organic Farm,Road Access" data-recommended="true">
+                            <div class="relative h-[240px] overflow-hidden group cursor-pointer">
+                                <div class="absolute top-4 left-4 bg-[#0da06a] text-white text-[11px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 z-20 shadow-sm uppercase tracking-wide">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    FEATURED
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1000&auto=format&fit=crop" alt="Sunrise Organics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="bg-[#0b4e34] text-center py-2 relative z-10">
+                                <span class="text-[11px] font-bold text-[#4ade80] tracking-widest uppercase">Farmland</span>
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col">
+                                <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">Sunrise Organics</h3>
+                                <p class="text-sm text-gray-500 mb-4">Kodaikanal, Tamil Nadu</p>
+                                <div class="flex items-center gap-2 mb-4 text-sm text-gray-600">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span class="truncate">Sunrise Farms</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex items-end justify-between mb-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-2xl font-black text-gray-900">₹35.00 Lakhs</span>
+                                            <span class="text-[11px] text-gray-500 font-bold uppercase">Onwards</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-xs text-[#0da06a] font-semibold">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Project Area - 40 acre
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Card 6 -->
+                        <a href="project-detail.html"
+                            class="property-card bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col h-full border border-[#f6a81c] cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
+                            data-title="Riverside Retreat" data-city="Coorg" data-type="Farmhouse" data-price="8800000" data-area="80" data-amenities="Swimming Pool,Clubhouse,Security" data-recommended="true">
+                            <div class="relative h-[240px] overflow-hidden group cursor-pointer">
+                                <div class="absolute top-4 left-4 bg-[#f6a81c] text-black text-[11px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 z-20 shadow-sm uppercase tracking-wide">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    SPONSORED
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop" alt="Riverside Retreat" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="bg-[#0f172a] text-center py-2 relative z-10">
+                                <span class="text-[11px] font-bold text-[#f6a81c] tracking-widest uppercase">Farmhouse</span>
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col">
+                                <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">Riverside Retreat</h3>
+                                <p class="text-sm text-gray-500 mb-4">Coorg, Karnataka</p>
+                                <div class="flex items-center gap-2 mb-4 text-sm text-gray-600">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span class="truncate">Riverside Co.</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex items-end justify-between mb-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-2xl font-black text-gray-900">₹88.00 Lakhs</span>
+                                            <span class="text-[11px] text-gray-500 font-bold uppercase">Onwards</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-xs text-[#0da06a] font-semibold">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Project Area - 80 acre
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Card 7 -->
+                        <a href="project-detail.html"
+                            class="property-card bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col h-full border border-[#0da06a] cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
+                            data-title="Neralu Brahmasamudram" data-city="Hindupur" data-type="Farmland" data-price="1800000" data-area="100" data-amenities="Borewell" data-recommended="false">
+                            <div class="relative h-[240px] overflow-hidden group cursor-pointer">
+                                <div class="absolute top-4 left-4 bg-[#0da06a] text-white text-[11px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 z-20 shadow-sm uppercase tracking-wide">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    FEATURED
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1000&auto=format&fit=crop" alt="Neralu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="bg-[#0b4e34] text-center py-2 relative z-10">
+                                <span class="text-[11px] font-bold text-[#4ade80] tracking-widest uppercase">Farmland</span>
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col">
+                                <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">Neralu Brahmasamudram</h3>
+                                <p class="text-sm text-gray-500 mb-4">Hindupur, Andhra Pradesh</p>
+                                <div class="flex items-center gap-2 mb-4 text-sm text-gray-600">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span class="truncate">Neralu Farms</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex items-end justify-between mb-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-2xl font-black text-gray-900">₹18.00 Lakhs</span>
+                                            <span class="text-[11px] text-gray-500 font-bold uppercase">Onwards</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-xs text-[#0da06a] font-semibold">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Project Area - 100 acre
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Card 8 -->
+                        <a href="project-detail.html"
+                            class="property-card bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col h-full border border-[#f6a81c] cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
+                            data-title="Acarus Nature Touch" data-city="Bengaluru" data-type="Agricultural Land" data-price="3900000" data-area="9.5" data-amenities="Road Access" data-recommended="true">
+                            <div class="relative h-[240px] overflow-hidden group cursor-pointer">
+                                <div class="absolute top-4 left-4 bg-[#f6a81c] text-black text-[11px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 z-20 shadow-sm uppercase tracking-wide">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    SPONSORED
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000&auto=format&fit=crop" alt="Acarus Nature Touch" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="bg-[#0f172a] text-center py-2 relative z-10">
+                                <span class="text-[11px] font-bold text-[#f6a81c] tracking-widest uppercase">Agricultural Land</span>
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col">
+                                <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">Acarus Nature Touch</h3>
+                                <p class="text-sm text-gray-500 mb-4">Bengaluru, Karnataka</p>
+                                <div class="flex items-center gap-2 mb-4 text-sm text-gray-600">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span class="truncate">Acarus Farms</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex items-end justify-between mb-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-2xl font-black text-gray-900">₹39.00 Lakhs</span>
+                                            <span class="text-[11px] text-gray-500 font-bold uppercase">Onwards</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-xs text-[#0da06a] font-semibold">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Project Area - 9.5 acre
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <div id="noResults" class="hidden w-full py-12 text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2 font-sans">No properties found</h3>
+                        <p class="text-gray-500">Try adjusting your filters or search keywords.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Global Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const propertiesGrid = document.getElementById('propertiesGrid');
+            const propertyCards = Array.from(document.querySelectorAll('.property-card'));
+            const propertyCount = document.getElementById('propertyCount');
+            const noResults = document.getElementById('noResults');
+    
+            const searchInput = document.getElementById('searchInput');
+            const citySelect = document.getElementById('citySelect');
+            const propertyTypeCheckboxes = document.querySelectorAll('.filter-checkbox');
+            const amenityCheckboxes = document.querySelectorAll('.filter-amenity');
+            const priceRange = document.getElementById('priceRange');
+            const areaRange = document.getElementById('areaRange');
+            const priceMaxLabel = document.getElementById('priceMaxLabel');
+            const areaMaxLabel = document.getElementById('areaMaxLabel');
+            const clearFiltersBtn = document.getElementById('clearFilters');
+            const sortSelect = document.getElementById('sortSelect');
+    
+            const btnAllProps = document.getElementById('btn-all-props');
+            const btnRecommended = document.getElementById('btn-recommended');
+    
+            let currentCategory = 'all';
+            let minArea = 0;
+            let maxAreaOverride = 500;
+    
+            function applyFilters() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const selectedCity = citySelect.value;
+                const selectedTypes = Array.from(propertyTypeCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+                const selectedAmenities = Array.from(amenityCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+    
+                const maxPrice = parseInt(priceRange.value) * 100000;
+    
+                let maxArea = parseInt(areaRange.value);
+                if (maxAreaOverride !== 500) {
+                    maxArea = maxAreaOverride;
+                }
+    
+                priceMaxLabel.innerText = maxPrice === 100000000 ? '₹10 Cr' : `₹${(maxPrice / 100000).toFixed(0)} Lakhs`;
+    
+                if (maxAreaOverride !== 500) {
+                    areaMaxLabel.innerText = `${maxArea} ac`;
+                } else {
+                    areaMaxLabel.innerText = `${maxArea} ac`;
+                }
+    
+                let visibleCount = 0;
+    
+                propertyCards.forEach(card => {
+                    const title = card.getAttribute('data-title').toLowerCase();
+                    const city = card.getAttribute('data-city');
+                    const type = card.getAttribute('data-type');
+                    const price = parseInt(card.getAttribute('data-price'));
+                    const area = parseFloat(card.getAttribute('data-area'));
+                    const amenities = card.getAttribute('data-amenities').split(',');
+                    const isRecommended = card.getAttribute('data-recommended') === 'true';
+    
+                    let isVisible = true;
+    
+                    if (currentCategory === 'recommended' && !isRecommended) isVisible = false;
+                    if (searchTerm && !title.includes(searchTerm)) isVisible = false;
+                    if (selectedCity && city !== selectedCity) isVisible = false;
+                    if (selectedTypes.length > 0 && !selectedTypes.includes(type)) isVisible = false;
+                    if (maxPrice < 100000000 && price > maxPrice) isVisible = false;
+                    if (area > maxArea || area < minArea) isVisible = false;
+    
+                    if (selectedAmenities.length > 0) {
+                        const hasAllAmenities = selectedAmenities.every(am => amenities.includes(am));
+                        if (!hasAllAmenities) isVisible = false;
+                    }
+    
+                    if (isVisible) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+    
+                const sortValue = sortSelect.value;
+                if (sortValue === 'low-high') {
+                    propertyCards.sort((a, b) => parseInt(a.dataset.price) - parseInt(b.dataset.price));
+                } else if (sortValue === 'high-low') {
+                    propertyCards.sort((a, b) => parseInt(b.dataset.price) - parseInt(a.dataset.price));
+                }
+    
+                propertyCards.forEach(card => propertiesGrid.appendChild(card));
+    
+                propertyCount.innerText = visibleCount;
+    
+                if (visibleCount === 0) {
+                    noResults.classList.remove('hidden');
+                } else {
+                    noResults.classList.add('hidden');
+                }
+            }
+    
+            searchInput.addEventListener('input', applyFilters);
+            citySelect.addEventListener('change', applyFilters);
+            propertyTypeCheckboxes.forEach(cb => cb.addEventListener('change', applyFilters));
+            amenityCheckboxes.forEach(cb => cb.addEventListener('change', applyFilters));
+            priceRange.addEventListener('input', () => {
+                maxAreaOverride = 500;
+                applyFilters();
+            });
+            areaRange.addEventListener('input', () => {
+                minArea = 0;
+                maxAreaOverride = 500;
+                applyFilters();
+            });
+            sortSelect.addEventListener('change', applyFilters);
+    
+            btnAllProps.addEventListener('click', () => {
+                currentCategory = 'all';
+                btnAllProps.className = "group relative bg-main-green text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-[0_4px_15px_rgba(13,160,106,0.3)] hover:shadow-[0_6px_20px_rgba(13,160,106,0.4)] hover:-translate-y-0.5 flex items-center gap-2";
+                btnRecommended.className = "group bg-white border-2 border-gray-100 text-gray-600 hover:border-main-green hover:text-main-green hover:bg-[#f2fcf5] px-6 py-2.5 rounded-full text-sm font-bold transition-all flex items-center gap-2";
+                applyFilters();
+            });
+    
+            btnRecommended.addEventListener('click', () => {
+                currentCategory = 'recommended';
+                btnRecommended.className = "group relative bg-main-green text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-[0_4px_15px_rgba(13,160,106,0.3)] hover:shadow-[0_6px_20px_rgba(13,160,106,0.4)] hover:-translate-y-0.5 flex items-center gap-2";
+                btnAllProps.className = "group bg-white border-2 border-gray-100 text-gray-600 hover:border-main-green hover:text-main-green hover:bg-[#f2fcf5] px-6 py-2.5 rounded-full text-sm font-bold transition-all flex items-center gap-2";
+                applyFilters();
+            });
+    
+            clearFiltersBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                citySelect.value = '';
+                propertyTypeCheckboxes.forEach(cb => cb.checked = false);
+                amenityCheckboxes.forEach(cb => cb.checked = false);
+                priceRange.value = 1000;
+                areaRange.value = 500;
+                sortSelect.value = 'recent';
+                currentCategory = 'all';
+                minArea = 0;
+                maxAreaOverride = 500;
+                btnAllProps.className = "group relative bg-main-green text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-[0_4px_15px_rgba(13,160,106,0.3)] hover:shadow-[0_6px_20px_rgba(13,160,106,0.4)] hover:-translate-y-0.5 flex items-center gap-2";
+                btnRecommended.className = "group bg-white border-2 border-gray-100 text-gray-600 hover:border-main-green hover:text-main-green hover:bg-[#f2fcf5] px-6 py-2.5 rounded-full text-sm font-bold transition-all flex items-center gap-2";
+                applyFilters();
+            });
+    
+            const urlParams = new URLSearchParams(window.location.search);
+    
+            // ---- NEW: keyword search from home page (?q=...) ----
+            const queryParam = urlParams.get('q');
+            if (queryParam) {
+                searchInput.value = queryParam;
+            }
+    
+            const cityParam = urlParams.get('city');
+            if (cityParam) {
+                const optionExists = Array.from(citySelect.options).some(option => option.value === cityParam);
+                if (optionExists) {
+                    citySelect.value = cityParam;
+                }
+            }
+    
+            const typeParam = urlParams.get('type');
+            if (typeParam) {
+                propertyTypeCheckboxes.forEach(cb => {
+                    if (cb.value.toLowerCase() === typeParam.toLowerCase()) {
+                        cb.checked = true;
+                    }
+                });
+            }
+    
+            const sizeParam = urlParams.get('size');
+            if (sizeParam) {
+                if (sizeParam === 'under-30') {
+                    areaRange.value = 30;
+                    maxAreaOverride = 30;
+                    minArea = 0;
+                }
+                else if (sizeParam === '30-60') {
+                    areaRange.value = 60;
+                    maxAreaOverride = 60;
+                    minArea = 30;
+                }
+                else if (sizeParam === '60-90') {
+                    areaRange.value = 90;
+                    maxAreaOverride = 90;
+                    minArea = 60;
+                }
+                else if (sizeParam === 'above-90') {
+                    areaRange.value = 500;
+                    maxAreaOverride = 500;
+                    minArea = 90;
+                }
+            }
+    
+            const amenityParam = urlParams.get('amenity');
+            if (amenityParam) {
+                amenityCheckboxes.forEach(cb => {
+                    if (cb.value.toLowerCase() === amenityParam.toLowerCase()) {
+                        cb.checked = true;
+                    }
+                });
+            }
+    
+            const budgetParam = urlParams.get('budget');
+            if (budgetParam) {
+                if (budgetParam === 'under-50') priceRange.value = 500;
+                else if (budgetParam === '50-70') priceRange.value = 700;
+                else if (budgetParam === '70-90') priceRange.value = 900;
+                else if (budgetParam === '1-2-cr') priceRange.value = 1000;
+            }
+    
+            applyFilters();
+        });
+    </script>
+</body>
+</html>

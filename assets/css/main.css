@@ -1,0 +1,131 @@
+:root {
+  --main-green: #0da06a;
+  --main-yellow: #f6a81c;
+  --black: #000000;
+  --white: #ffffff;
+  --secondary: #fffbeb;
+  --header-height: 72px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+body {
+  overflow-x: clip;
+}
+
+html,
+body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--main-green) #eaf6f0;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: #eaf6f0;
+  border-radius: 0;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: var(--main-green);
+  border-radius: 0;
+  border: none;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: #0b8a5a;
+}
+
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner {
+  background: #eaf6f0;
+}
+
+#header-placeholder {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  background: var(--main-green);
+  width: 100%;
+}
+
+#header-placeholder > * {
+  width: 100%;
+}
+
+body:not(.home-page) {
+  padding-top: 72px;
+}
+
+.bannerSwiper .swiper-pagination-bullet {
+  background: var(--white);
+  opacity: 0.5;
+}
+
+.bannerSwiper .swiper-pagination-bullet-active {
+  background: var(--main-green);
+  opacity: 1;
+}
+
+.listing-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--main-green) #eaf6f0;
+}
+
+.listing-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.listing-scroll::-webkit-scrollbar-track {
+  background: #eaf6f0;
+  border-radius: 0;
+}
+
+.listing-scroll::-webkit-scrollbar-thumb {
+  background: var(--main-green);
+  border-radius: 0;
+  border: none;
+}
+
+.listing-scroll::-webkit-scrollbar-thumb:hover {
+  background: #0b8a5a;
+}
+
+@media (min-width: 1024px) {
+  .listing-page .listing-filters-aside {
+    position: sticky;
+    top: calc(var(--header-height) + 1.5rem);
+    align-self: start;
+    height: calc(100vh - var(--header-height) - 1.5rem);
+  }
+}
+
+#header-placeholder,
+#header-placeholder > header,
+#header-placeholder > header > div {
+  overflow: visible !important;
+}
+
+body:not(.home-page) #homeSearchWrap {
+  display: none !important;
+}

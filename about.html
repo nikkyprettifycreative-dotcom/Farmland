@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Farmland Bazaar</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+            extend: {
+                fontFamily: { 
+                    sans: ['Lato', 'sans-serif'] 
+                },
+                colors: {
+                    'main-green': 'var(--main-green)',
+                    'main-yellow': 'var(--main-yellow)',
+                    'black': 'var(--black)',
+                    'white': 'var(--white)'
+                }
+            }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="font-sans antialiased bg-[#f8fafc] overflow-x-clip">
+
+    <div id="header-placeholder"></div>
+
+    <main class="w-full font-sans">
+        
+        <section class="w-full py-16 md:py-24 bg-white relative">
+            <div class="max-w-[1200px] mx-auto px-4 md:px-8">
+                
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-[11px] font-black text-main-green tracking-[0.2em] uppercase mb-3 block">Core Pillars</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-4 font-sans tracking-tight">Values that drive our marketplace</h2>
+                    <p class="text-gray-500 text-sm leading-relaxed">We build a trusted farmland ecosystem through transparency, innovation and seamless connections between buyers and sellers (Developers and Owners).</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <div class="bg-white border border-gray-100 rounded-2xl p-6 relative overflow-hidden group shadow-[0_4px_20px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all">
+                        <div class="absolute top-4 right-4 text-6xl font-black text-gray-50 opacity-50 select-none z-0">01</div>
+                        <div class="relative z-10">
+                            <div class="w-10 h-10 rounded-full bg-[#eaf6f0] flex items-center justify-center text-main-green mb-6">
+                                <i class="ph ph-eye text-xl"></i>
+                            </div>
+                            <h3 class="text-base font-bold text-gray-900 mb-3">Transparency</h3>
+                            <p class="text-xs text-gray-500 leading-relaxed">We provide clear, accurate property information and verified listings. Every interaction is built on trust and confidence.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-gray-100 rounded-2xl p-6 relative overflow-hidden group shadow-[0_4px_20px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all">
+                        <div class="absolute top-4 right-4 text-6xl font-black text-gray-50 opacity-50 select-none z-0">02</div>
+                        <div class="relative z-10">
+                            <div class="w-10 h-10 rounded-full bg-[#eaf6f0] flex items-center justify-center text-main-green mb-6">
+                                <i class="ph ph-lightbulb text-xl"></i>
+                            </div>
+                            <h3 class="text-base font-bold text-gray-900 mb-3">Innovation</h3>
+                            <p class="text-xs text-gray-500 leading-relaxed">We leverage technology to simplify farmland discovery, marketing and buyer engagement. Our platform delivers a seamless digital experience.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-gray-100 rounded-2xl p-6 relative overflow-hidden group shadow-[0_4px_20px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all">
+                        <div class="absolute top-4 right-4 text-6xl font-black text-gray-50 opacity-50 select-none z-0">03</div>
+                        <div class="relative z-10">
+                            <div class="w-10 h-10 rounded-full bg-[#eaf6f0] flex items-center justify-center text-main-green mb-6">
+                                <i class="ph ph-shield-check text-xl"></i>
+                            </div>
+                            <h3 class="text-base font-bold text-gray-900 mb-3">Expertise</h3>
+                            <p class="text-xs text-gray-500 leading-relaxed">Backed by an experienced team with deep industry knowledge, we help buyers and developers make informed decisions at every step.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-gray-100 rounded-2xl p-6 relative overflow-hidden group shadow-[0_4px_20px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all">
+                        <div class="absolute top-4 right-4 text-6xl font-black text-gray-50 opacity-50 select-none z-0">04</div>
+                        <div class="relative z-10">
+                            <div class="w-10 h-10 rounded-full bg-[#eaf6f0] flex items-center justify-center text-main-green mb-6">
+                                <i class="ph ph-link text-xl"></i>
+                            </div>
+                            <h3 class="text-base font-bold text-gray-900 mb-3">Direct Connections</h3>
+                            <p class="text-xs text-gray-500 leading-relaxed">We enable direct communication between buyers and developers, making farmland discovery simpler, faster and more trustworthy.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full px-4 md:px-8 pb-16 md:pb-24 bg-white">
+            <div class="max-w-[1200px] mx-auto bg-gradient-to-br from-[#0da06a] to-[#0b8a5a] rounded-[32px] overflow-hidden relative shadow-[0_20px_50px_rgba(13,160,106,0.3)]">
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
+                
+                <div class="relative z-10 py-16 px-6 md:px-12 text-center flex flex-col items-center">
+                    
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-sm">
+                        <i class="ph ph-leaf text-white text-xs"></i>
+                        <span class="text-[10px] font-bold tracking-wider text-white uppercase">India's #1 Farmland Platform</span>
+                    </div>
+
+                    <h2 class="text-3xl md:text-5xl font-black text-white mb-6 font-sans leading-tight max-w-2xl mx-auto">
+                        Join India's Growing Farmland Marketplace
+                    </h2>
+                    
+                    <p class="text-white text-sm md:text-base max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
+                        Whether you're looking to invest in farmland or market your next project, Farmland Bazaar connects buyers and developers on one trusted platform.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center gap-4">
+                        <a href="project-listing.html" class="bg-white text-[#0b4e34] font-bold text-sm px-8 py-3.5 rounded-full hover:bg-gray-50 transition-colors shadow-lg flex items-center gap-2 w-full sm:w-auto justify-center">
+                            Browse Properties
+                            <i class="ph ph-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full py-16 md:py-24 bg-white border-t border-gray-100">
+            <div class="max-w-[900px] mx-auto px-4 md:px-8 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#0da06a]/20 bg-[#eaf6f0] mb-6">
+                    <i class="ph ph-leaf text-main-green text-xs"></i>
+                    <span class="text-[10px] font-bold tracking-wider text-main-green uppercase">About Farmland Bazaar</span>
+                </div>
+                
+                <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-6 font-sans leading-tight tracking-tight">
+                    India's Largest Marketplace<br>for <span class="text-main-green">Farmland Investments</span>
+                </h2>
+                
+                <p class="text-gray-500 text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-10">
+                    Farmland Bazaar is India's dedicated marketplace for managed farmlands, agricultural land, farmhouses and farm-based investment opportunities, connecting buyers with trusted developers and landowners.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="project-listing.html" class="bg-main-green text-white font-bold text-sm px-8 py-3.5 rounded-full hover:bg-[#0b8a5a] transition-colors shadow-md w-full sm:w-auto">
+                        Browse Properties
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full py-16 md:py-24 bg-[#f8fafc] border-t border-gray-200">
+            <div class="max-w-[1100px] mx-auto px-4 md:px-8">
+                <div class="flex flex-col lg:flex-row gap-16">
+                    
+                    <div class="w-full lg:w-5/12">
+                        <div class="sticky top-32">
+                            <span class="text-[11px] font-black text-main-green tracking-[0.2em] uppercase mb-3 block">Our Story</span>
+                            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6 font-sans leading-tight">
+                                Building Trust in <span class="text-main-green">Farmland Investing</span>
+                            </h2>
+                            
+                            <div class="space-y-5 text-sm text-gray-600 leading-relaxed">
+                                <p>Farmland is emerging as one of India's most sought-after investment opportunities, but finding genuine projects has often been challenging. With fragmented information, limited transparency and no dedicated platform for farmland, buyers struggled to compare options and connect with credible developers.</p>
+                                <p>Farmland Bazaar was founded to bridge this gap — bringing clarity and confidence to every farmland investment decision. Today, we are India's dedicated marketplace for managed farmlands, agricultural land, estates / plantations and farmhouses. By bringing verified listings, trusted developers, detailed project information and seamless buyer-developer connections onto a single platform, we are making farmland discovery simpler, more transparent and more rewarding for investors across the nation.</p>
+                            </div>
+
+                            <div class="flex items-center gap-4 mt-10">
+                                <div class="w-12 h-[2px] bg-main-green"></div>
+                                <span class="text-xs font-bold text-gray-400 tracking-widest uppercase">Est. 2023 - Bengaluru</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full lg:w-7/12 relative">
+                        <div class="absolute left-5 top-4 bottom-4 w-[2px] bg-gray-200 z-0"></div>
+
+                        <div class="space-y-8 relative z-10">
+                            
+                            <div class="flex gap-6 items-start">
+                                <div class="w-10 h-10 rounded-full bg-main-green text-white flex items-center justify-center flex-shrink-0 shadow-md border-4 border-[#f8fafc]">
+                                    <i class="ph ph-rocket-launch text-base"></i>
+                                </div>
+                                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-[0_4px_20px_rgb(0,0,0,0.02)] flex-grow">
+                                    <span class="text-[10px] font-black text-main-green tracking-wider mb-2 block">2023</span>
+                                    <h3 class="text-base font-bold text-gray-900 mb-2">Founding & Platform Launch</h3>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Farmland Bazaar was founded in Bengaluru with a vision to build India's dedicated marketplace for farmland investments.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-6 items-start">
+                                <div class="w-10 h-10 rounded-full bg-main-green text-white flex items-center justify-center flex-shrink-0 shadow-md border-4 border-[#f8fafc]">
+                                    <i class="ph ph-squares-four text-base"></i>
+                                </div>
+                                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-[0_4px_20px_rgb(0,0,0,0.02)] flex-grow">
+                                    <span class="text-[10px] font-black text-main-green tracking-wider mb-2 block">2025</span>
+                                    <h3 class="text-base font-bold text-gray-900 mb-2">1,500+ Farmland Listings</h3>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Expanded into one of India's largest farmland marketplaces, surpassing 1,500+ listings across managed farmlands, farmhouses, agricultural land and estates, while partnering with trusted developers nationwide.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-6 items-start">
+                                <div class="w-10 h-10 rounded-full bg-main-green text-white flex items-center justify-center flex-shrink-0 shadow-md border-4 border-[#f8fafc]">
+                                    <i class="ph ph-users text-base"></i>
+                                </div>
+                                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-[0_4px_20px_rgb(0,0,0,0.02)] flex-grow">
+                                    <span class="text-[10px] font-black text-main-green tracking-wider mb-2 block">2026</span>
+                                    <h3 class="text-base font-bold text-gray-900 mb-2">Buyer Consultation Service</h3>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Launched Farmland Bazaar Buyer Consultation Services to help investors discover the right farmland based on their investment goals, location preferences, budget and lifestyle needs through expert guidance and personalised recommendations.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

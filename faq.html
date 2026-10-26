@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Farmland Bazaar</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+            extend: {
+                fontFamily: { sans: ['Lato', 'sans-serif'] },
+                colors: {
+                'main-green': 'var(--main-green)',
+                'main-yellow': 'var(--main-yellow)',
+                'black': 'var(--black)',
+                'white': 'var(--white)'
+                }
+            }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="font-sans antialiased bg-[#f8fafc] overflow-x-clip">
+
+    <div id="header-placeholder"></div>
+
+    <main class="w-full">
+        
+        <section class="w-full py-20 md:py-28 bg-gradient-to-b from-[#eefcf5] to-[#f8fafc] border-b border-gray-100 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-main-green/5 rounded-bl-full pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-72 h-72 bg-main-green/5 rounded-tr-full pointer-events-none"></div>
+            
+            <div class="max-w-[900px] mx-auto px-4 md:px-8 text-center relative z-10 flex flex-col items-center">
+                
+                <div class="w-14 h-14 rounded-full bg-[#d1fae5] text-[#0da06a] flex items-center justify-center mb-6 shadow-sm border border-[#0da06a]/10">
+                    <i class="ph ph-question text-2xl font-bold"></i>
+                </div>
+
+                <span class="text-[11px] font-black text-[#0da06a] tracking-[0.2em] uppercase mb-4">Got Questions?</span>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 tracking-tight leading-tight">
+                    Frequently Asked <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0da06a] to-[#4ade80]">Questions</span>
+                </h1>
+                
+                <p class="text-gray-500 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+                    Find answers to common questions about buying, selling, and investing in managed farmlands, agriculture land, estates, and farmhouses on Farmland Bazaar.
+                </p>
+            </div>
+        </section>
+
+        <section class="w-full py-16 bg-[#f8fafc]">
+            <div class="max-w-[900px] mx-auto px-4 md:px-8">
+                <div class="space-y-4">
+                    
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-main-green/30 transition-all duration-300 overflow-hidden group">
+                        <button class="faq-btn w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-gray-900 text-sm md:text-base focus:outline-none">
+                            <div class="flex items-center gap-4 pr-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center text-main-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="ph ph-farm text-xl"></i>
+                                </div>
+                                <span class="group-hover:text-main-green transition-colors">1. What is managed farmland?</span>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#eaf6f0] transition-colors">
+                                <i class="ph ph-plus faq-icon text-main-green text-lg transition-transform duration-300"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                            <p class="px-5 md:px-6 pb-5 md:pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4 pl-16">Managed farmland is an agricultural property where professional teams handle day-to-day operations, maintenance, and security on behalf of the owner. The owner holds the legal title, while the management company ensures the land remains productive, secure, and well-maintained.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-main-green/30 transition-all duration-300 overflow-hidden group">
+                        <button class="faq-btn w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-gray-900 text-sm md:text-base focus:outline-none">
+                            <div class="flex items-center gap-4 pr-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center text-main-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="ph ph-tree text-xl"></i>
+                                </div>
+                                <span class="group-hover:text-main-green transition-colors">2. How does managed farmland differ from regular agricultural land?</span>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#eaf6f0] transition-colors">
+                                <i class="ph ph-plus faq-icon text-main-green text-lg transition-transform duration-300"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                            <p class="px-5 md:px-6 pb-5 md:pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4 pl-16">Regular agricultural land requires the owner to actively manage farming activities, labor, and upkeep. Managed farmland comes with a service agreement where a professional team handles these responsibilities, making it ideal for investors or weekend landowners who cannot commit full-time.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-main-green/30 transition-all duration-300 overflow-hidden group">
+                        <button class="faq-btn w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-gray-900 text-sm md:text-base focus:outline-none">
+                            <div class="flex items-center gap-4 pr-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center text-main-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="ph ph-users text-xl"></i>
+                                </div>
+                                <span class="group-hover:text-main-green transition-colors">3. Who maintains the farmland after purchase?</span>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#eaf6f0] transition-colors">
+                                <i class="ph ph-plus faq-icon text-main-green text-lg transition-transform duration-300"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                            <p class="px-5 md:px-6 pb-5 md:pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4 pl-16">A dedicated on-site maintenance team, often provided by the developer or a specialized farm management company, maintains the property. This includes caretakers, horticulturists, and security personnel.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-main-green/30 transition-all duration-300 overflow-hidden group">
+                        <button class="faq-btn w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-gray-900 text-sm md:text-base focus:outline-none">
+                            <div class="flex items-center gap-4 pr-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center text-main-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="ph ph-tools text-xl"></i>
+                                </div>
+                                <span class="group-hover:text-main-green transition-colors">4. What services are typically included in farmland maintenance?</span>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#eaf6f0] transition-colors">
+                                <i class="ph ph-plus faq-icon text-main-green text-lg transition-transform duration-300"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                            <p class="px-5 md:px-6 pb-5 md:pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4 pl-16">Services generally include watering, pruning, soil enrichment, pest control, security (CCTV and guards), road upkeep, and general landscaping. Some premium projects also offer harvesting services and guest cottage upkeep.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-main-green/30 transition-all duration-300 overflow-hidden group">
+                        <button class="faq-btn w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-gray-900 text-sm md:text-base focus:outline-none">
+                            <div class="flex items-center gap-4 pr-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center text-main-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="ph ph-map-pin text-xl"></i>
+                                </div>
+                                <span class="group-hover:text-main-green transition-colors">5. Can I visit my farmland whenever I want?</span>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#eaf6f0] transition-colors">
+                                <i class="ph ph-plus faq-icon text-main-green text-lg transition-transform duration-300"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                            <p class="px-5 md:px-6 pb-5 md:pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4 pl-16">Yes, you have full ownership rights and can visit your plot whenever you wish. Most managed communities require a simple prior intimation for security purposes.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-main-green/30 transition-all duration-300 overflow-hidden group">
+                        <button class="faq-btn w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-gray-900 text-sm md:text-base focus:outline-none">
+                            <div class="flex items-center gap-4 pr-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center text-main-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="ph ph-plant text-xl"></i>
+                                </div>
+                                <span class="group-hover:text-main-green transition-colors">6. Do I have to manage farming activities myself?</span>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#eaf6f0] transition-colors">
+                                <i class="ph ph-plus faq-icon text-main-green text-lg transition-transform duration-300"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                            <p class="px-5 md:px-6 pb-5 md:pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4 pl-16">No. Managed farmland is designed so you don't have to. The on-site team handles all farming and maintenance. However, you are free to participate if you enjoy gardening or farming.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-main-green/30 transition-all duration-300 overflow-hidden group">
+                        <button class="faq-btn w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-gray-900 text-sm md:text-base focus:outline-none">
+                            <div class="flex items-center gap-4 pr-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center text-main-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="ph ph-grains text-xl"></i>
+                                </div>
+                                <span class="group-hover:text-main-green transition-colors">7. What types of crops are usually grown on managed farmlands?</span>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#eaf6f0] transition-colors">
+                                <i class="ph ph-plus faq-icon text-main-green text-lg transition-transform duration-300"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                            <p class="px-5 md:px-6 pb-5 md:pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4 pl-16">Depending on the region and soil, crops can include timber (like Sandalwood or Teak), fruits (Mango, Guava), spices, or local grains. Many projects focus on high-value, low-maintenance plantation crops.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-main-green/30 transition-all duration-300 overflow-hidden group">
+                        <button class="faq-btn w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-gray-900 text-sm md:text-base focus:outline-none">
+                            <div class="flex items-center gap-4 pr-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center text-main-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="ph ph-currency-inr text-xl"></i>
+                                </div>
+                                <span class="group-hover:text-main-green transition-colors">8. How are maintenance costs charged?</span>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#eaf6f0] transition-colors">
+                                <i class="ph ph-plus faq-icon text-main-green text-lg transition-transform duration-300"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                            <p class="px-5 md:px-6 pb-5 md:pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4 pl-16">Maintenance costs are usually charged as an annual fee based on the plot size. This fee is typically outlined in the sale agreement and may have a fixed escalation clause.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-main-green/30 transition-all duration-300 overflow-hidden group">
+                        <button class="faq-btn w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-gray-900 text-sm md:text-base focus:outline-none">
+                            <div class="flex items-center gap-4 pr-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center text-main-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="ph ph-bell text-xl"></i>
+                                </div>
+                                <span class="group-hover:text-main-green transition-colors">9. Will I receive updates about my farmland?</span>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#eaf6f0] transition-colors">
+                                <i class="ph ph-plus faq-icon text-main-green text-lg transition-transform duration-300"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                            <p class="px-5 md:px-6 pb-5 md:pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4 pl-16">Yes, most reputed developers provide regular updates via email or a dedicated app, including photos of plantation growth, harvest reports, and maintenance status.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-main-green/30 transition-all duration-300 overflow-hidden group">
+                        <button class="faq-btn w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-gray-900 text-sm md:text-base focus:outline-none">
+                            <div class="flex items-center gap-4 pr-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center text-main-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="ph ph-user-check text-xl"></i>
+                                </div>
+                                <span class="group-hover:text-main-green transition-colors">10. Is managed farmland suitable for first-time investors?</span>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#eaf6f0] transition-colors">
+                                <i class="ph ph-plus faq-icon text-main-green text-lg transition-transform duration-300"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                            <p class="px-5 md:px-6 pb-5 md:pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4 pl-16">Absolutely. It is an excellent entry point because the management team handles the complexities of land ownership, making it a passive investment or a hassle-free weekend home option.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-main-green/30 transition-all duration-300 overflow-hidden group">
+                        <button class="faq-btn w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-gray-900 text-sm md:text-base focus:outline-none">
+                            <div class="flex items-center gap-4 pr-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center text-main-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="ph ph-chart-line-up text-xl"></i>
+                                </div>
+                                <span class="group-hover:text-main-green transition-colors">11. Can managed farmland generate income?</span>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#eaf6f0] transition-colors">
+                                <i class="ph ph-plus faq-icon text-main-green text-lg transition-transform duration-300"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                            <p class="px-5 md:px-6 pb-5 md:pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4 pl-16">Yes, depending on the crops. Timber and fruit plantations can generate significant returns upon harvest. However, it should be viewed as a long-term asset, as most plantations mature over 5-10 years.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-main-green/30 transition-all duration-300 overflow-hidden group">
+                        <button class="faq-btn w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-gray-900 text-sm md:text-base focus:outline-none">
+                            <div class="flex items-center gap-4 pr-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center text-main-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="ph ph-magnifying-glass text-xl"></i>
+                                </div>
+                                <span class="group-hover:text-main-green transition-colors">12. What should I verify before investing in a managed farmland project?</span>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#eaf6f0] transition-colors">
+                                <i class="ph ph-plus faq-icon text-main-green text-lg transition-transform duration-300"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                            <p class="px-5 md:px-6 pb-5 md:pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4 pl-16">Verify the land title, land use conversion (if applicable), approvals (like DTCP or RERA), the developer's track record, water sources, and the terms of the maintenance agreement.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-main-green/30 transition-all duration-300 overflow-hidden group">
+                        <button class="faq-btn w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-gray-900 text-sm md:text-base focus:outline-none">
+                            <div class="flex items-center gap-4 pr-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center text-main-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="ph ph-shield-check text-xl"></i>
+                                </div>
+                                <span class="group-hover:text-main-green transition-colors">13. What security measures protect the land?</span>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#eaf6f0] transition-colors">
+                                <i class="ph ph-plus faq-icon text-main-green text-lg transition-transform duration-300"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                            <p class="px-5 md:px-6 pb-5 md:pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4 pl-16">Managed projects usually feature perimeter fencing, 24/7 security guards, CCTV surveillance at entry/exit points, and dedicated on-site caretakers living within the community.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-main-green/30 transition-all duration-300 overflow-hidden group">
+                        <button class="faq-btn w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-gray-900 text-sm md:text-base focus:outline-none">
+                            <div class="flex items-center gap-4 pr-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center text-main-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="ph ph-globe text-xl"></i>
+                                </div>
+                                <span class="group-hover:text-main-green transition-colors">14. Can an NRI buy farmland / agricultural land in India?</span>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#eaf6f0] transition-colors">
+                                <i class="ph ph-plus faq-icon text-main-green text-lg transition-transform duration-300"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                            <p class="px-5 md:px-6 pb-5 md:pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4 pl-16">NRIs cannot purchase pure agricultural land directly. However, they can buy farmhouses, and they can inherit agricultural land. They can also invest in projects that have obtained proper land-use conversion or are categorized as farmhouses.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-main-green/30 transition-all duration-300 overflow-hidden group">
+                        <button class="faq-btn w-full flex items-center justify-between p-5 md:p-6 text-left font-bold text-gray-900 text-sm md:text-base focus:outline-none">
+                            <div class="flex items-center gap-4 pr-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center text-main-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="ph ph-house-line text-xl"></i>
+                                </div>
+                                <span class="group-hover:text-main-green transition-colors">15. Can I build a small farmhouse or weekend retreat on my managed plot?</span>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#eaf6f0] transition-colors">
+                                <i class="ph ph-plus faq-icon text-main-green text-lg transition-transform duration-300"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                            <p class="px-5 md:px-6 pb-5 md:pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4 pl-16">This depends on the local zoning laws and the specific project's approvals. Many managed farmland projects provide designated areas or allow small farmhouses/cottages (often up to a certain square footage) within the plot.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full py-16 bg-white border-t border-gray-100 relative overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-main-green/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="max-w-[900px] mx-auto px-4 md:px-8 text-center relative z-10">
+                <div class="w-16 h-16 mx-auto bg-[#eaf6f0] rounded-full flex items-center justify-center text-main-green mb-6 shadow-sm border border-main-green/20">
+                    <i class="ph ph-chats-circle text-3xl"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-4 font-sans">Still have questions?</h2>
+                <p class="text-gray-500 text-sm mb-8 max-w-md mx-auto">Can't find the answer you're looking for? Please chat to our friendly team.</p>
+                <a href="contact.html" class="inline-flex items-center gap-2 bg-main-green text-white font-bold text-sm px-8 py-3.5 rounded-full hover:bg-[#0b8a5a] transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
+                    Contact Us
+                    <i class="ph ph-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const faqItems = document.querySelectorAll(".faq-item");
+
+            faqItems.forEach(item => {
+                const btn = item.querySelector(".faq-btn");
+                const content = item.querySelector(".faq-content");
+                const icon = item.querySelector(".faq-icon");
+
+                btn.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const isOpen = item.classList.contains("is-open");
+
+                    faqItems.forEach(el => {
+                        el.classList.remove("is-open");
+                        el.querySelector(".faq-content").style.maxHeight = "0px";
+                        
+                        const elIcon = el.querySelector(".faq-icon");
+                        elIcon.classList.remove("ph-minus", "rotate-180");
+                        elIcon.classList.add("ph-plus");
+                    });
+
+                    if (!isOpen) {
+                        item.classList.add("is-open");
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        
+                        icon.classList.remove("ph-plus");
+                        icon.classList.add("ph-minus", "rotate-180"); 
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

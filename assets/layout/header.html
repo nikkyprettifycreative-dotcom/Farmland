@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmland</title>
+</head>
+<body>
+    <header class="w-full bg-main-green text-white py-3 px-6 font-sans">
+        <div class="max-w-[1400px] mx-auto flex items-center justify-between gap-4">
+    
+            <!-- Logo -->
+            <div class="flex items-center flex-shrink-0">
+                <a href="index.html">
+                    <img src="https://www.farmhouselands.com/assets/images/logo.svg" alt="Farmland Bazaar Logo" class="h-12 w-auto object-contain">
+                </a>
+            </div>
+    
+            <!-- Search bar with city + main search modals (compact header version) -->
+<div id="homeSearchWrap" class="relative hidden md:block flex-grow max-w-xl mx-4">
+    <div class="w-full pointer-events-auto relative">
+
+        <!-- Search Input Box -->
+        <div id="searchBarTrigger" class="bg-white rounded-full p-1.5 pl-4 pr-2 flex items-center justify-between shadow-md cursor-text border border-transparent hover:border-gray-200 transition-colors">
+
+            <!-- City Selector -->
+            <div id="cityDropdownTrigger" class="flex items-center gap-1.5 text-gray-800 font-bold whitespace-nowrap cursor-pointer hover:text-[#0da06a] transition-colors z-50 relative">
+                <svg class="w-4 h-4 text-[#0da06a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                <span id="selectedCityText" class="text-sm">Select City</span>
+                <svg class="w-3.5 h-3.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </div>
+
+            <div class="h-6 w-[1px] bg-gray-200 mx-3 hidden md:block"></div>
+
+            <!-- Input + Submit -->
+            <form id="heroSearchForm" action="project-listing.html" method="get" class="flex-grow flex items-center">
+                <input
+                    type="text"
+                    id="mainSearchTrigger"
+                    name="q"
+                    autocomplete="off"
+                    placeholder="Search city, project, or keyword..."
+                    class="w-full bg-transparent border-none outline-none text-gray-800 placeholder-gray-400 text-sm truncate"
+                />
+                <button
+                    type="submit"
+                    id="mainSearchIconTrigger"
+                    aria-label="Search"
+                    class="bg-white text-[#0da06a] p-1.5 rounded-full hover:bg-gray-50 transition-colors cursor-pointer"
+                >
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+
+        <!-- 1. CITY DROPDOWN MODAL -->
+        <div id="cityModal" class="absolute top-full left-0 mt-2 w-[320px] !bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border border-gray-100 p-5 opacity-0 invisible translate-y-2 transition-all duration-300 z-50">
+            <!-- Search City Input -->
+            <div class="relative mb-4">
+                <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <input type="text" id="citySearchInput" placeholder="Search city..."
+                    class="w-full bg-gray-50 border border-gray-200 rounded-full pl-9 pr-8 py-2 text-sm focus:outline-none focus:border-[#0da06a] text-gray-700">
+                <button id="clearCitySearch" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 hidden">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Default State -->
+            <div id="popularCitiesList">
+                <h4 class="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-3">Popular Cities</h4>
+                <div class="grid grid-cols-2 gap-y-3 text-sm text-gray-700 font-medium">
+                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Bengaluru">Bengaluru</div>
+                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Pune">Pune</div>
+                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Hyderabad">Hyderabad</div>
+                    <div class="city-item cursor-pointer hover:text-[#0da06a] truncate pr-2" title="Bengaluru Rural" data-city="Bengaluru Rural">Bengaluru Ru...</div>
+                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Krishnagiri">Krishnagiri</div>
+                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Chikkaballapur">Chikkaballapur</div>
+                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Jaipur">Jaipur</div>
+                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Noida">Noida</div>
+                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Rangareddi">Rangareddi</div>
+                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Sangareddi">Sangareddi</div>
+                </div>
+            </div>
+
+            <!-- Searched State -->
+            <div id="searchResultsList" class="hidden">
+                <h4 class="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-3">Search Results</h4>
+                <div id="resultsContainer" class="flex flex-col gap-2 text-sm text-gray-700 font-medium max-h-[200px] overflow-y-auto"></div>
+            </div>
+        </div>
+
+        <!-- 2. MAIN SEARCH MODAL -->
+        <div id="searchModal" class="absolute top-full left-0 w-full min-w-[640px] mt-2 !bg-[#fffbf0] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border border-gray-100 p-6 md:p-8 opacity-0 invisible translate-y-2 transition-all duration-300 z-40">
+            <div class="flex flex-wrap gap-3 mb-8">
+                <a href="project-listing.html?type=Farmhouse" class="px-5 py-2 rounded-full border border-gray-200 bg-white text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors">Farmhouse</a>
+                <a href="project-listing.html?type=Farmland" class="px-5 py-2 rounded-full border border-gray-200 bg-white text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors">Farmland</a>
+                <a href="project-listing.html?type=Estates" class="px-5 py-2 rounded-full border border-gray-200 bg-white text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors">Estates</a>
+                <a href="project-listing.html?type=Agricultural%20Land" class="px-5 py-2 rounded-full border border-gray-200 bg-white text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors">Agriculture Land</a>
+            </div>
+
+            <div class="mb-8">
+                <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Recently Added</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a href="project-listing.html" class="cursor-pointer group block">
+                        <div class="relative h-28 rounded-xl overflow-hidden mb-2">
+                            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Property">
+                            <div class="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold px-2 py-1 rounded">₹19.40 L onwards</div>
+                        </div>
+                        <h5 class="text-sm font-bold text-gray-900">Krushi Bhoomi</h5>
+                        <p class="text-xs text-gray-500">Project Area - 30 acre</p>
+                    </a>
+                    <a href="project-listing.html" class="cursor-pointer group block">
+                        <div class="relative h-28 rounded-xl overflow-hidden mb-2">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Property">
+                            <div class="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold px-2 py-1 rounded">₹87.12 L onwards</div>
+                        </div>
+                        <h5 class="text-sm font-bold text-gray-900">Lawnsview</h5>
+                        <p class="text-xs text-gray-500">Project Area - 22 acre</p>
+                    </a>
+                    <a href="project-listing.html" class="cursor-pointer group block">
+                        <div class="relative h-28 rounded-xl overflow-hidden mb-2">
+                            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Property">
+                            <div class="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold px-2 py-1 rounded">₹55.00 L onwards</div>
+                        </div>
+                        <h5 class="text-sm font-bold text-gray-900">Triguna Country Homes</h5>
+                        <p class="text-xs text-gray-500">Project Area - 100 acre</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <h4 class="text-xs font-bold text-[#0da06a] uppercase tracking-wider mb-3">Project Size</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="project-listing.html?size=under-30" class="hover:text-[#0da06a] transition-colors block">Under 30 acres</a></li>
+                        <li><a href="project-listing.html?size=30-60" class="hover:text-[#0da06a] transition-colors block">30 - 60 acres</a></li>
+                        <li><a href="project-listing.html?size=60-90" class="hover:text-[#0da06a] transition-colors block">60 - 90 acres</a></li>
+                        <li><a href="project-listing.html?size=above-90" class="hover:text-[#0da06a] transition-colors block">Above 90 acres</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-[#0da06a] uppercase tracking-wider mb-3">Amenities</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="project-listing.html?amenity=Electricity" class="hover:text-[#0da06a] transition-colors block">Electricity</a></li>
+                        <li><a href="project-listing.html?amenity=Swimming%20Pool" class="hover:text-[#0da06a] transition-colors block">Swimming Pool</a></li>
+                        <li><a href="project-listing.html?amenity=Garden" class="hover:text-[#0da06a] transition-colors block">Garden</a></li>
+                        <li><a href="project-listing.html?amenity=Club%20House" class="hover:text-[#0da06a] transition-colors block">Club House</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-[#0da06a] uppercase tracking-wider mb-3">Budget</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="project-listing.html?budget=under-50" class="hover:text-[#0da06a] transition-colors block">Under ₹50 Lakhs</a></li>
+                        <li><a href="project-listing.html?budget=50-70" class="hover:text-[#0da06a] transition-colors block">₹50 - 70 Lakhs</a></li>
+                        <li><a href="project-listing.html?budget=70-90" class="hover:text-[#0da06a] transition-colors block">₹70 - 90 Lakhs</a></li>
+                        <li><a href="project-listing.html?budget=1-2-cr" class="hover:text-[#0da06a] transition-colors block">₹1 - 2 Crores</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+    
+            <!-- Nav (centre-right) — only non-home pages -->
+            <nav class="hidden md:flex items-center justify-center gap-8 flex-1">
+                <a href="index.html"
+                   data-page="index.html"
+                   class="nav-link relative py-2 text-white/60 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-main-yellow after:rounded-full after:w-0 hover:after:w-full after:transition-all after:duration-300">
+                    Home
+                </a>
+                <a href="project-listing.html"
+                   data-page="project-listing.html"
+                   class="nav-link relative py-2 text-white/60 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-main-yellow after:rounded-full after:w-0 hover:after:w-full after:transition-all after:duration-300">
+                    Properties
+                </a>
+                <a href="about.html"
+                   data-page="about.html"
+                   class="nav-link relative py-2 text-white/60 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-main-yellow after:rounded-full after:w-0 hover:after:w-full after:transition-all after:duration-300">
+                    About Us
+                </a>
+                <a href="contact.html"
+                   data-page="contact.html"
+                   class="nav-link relative py-2 text-white/60 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-main-yellow after:rounded-full after:w-0 hover:after:w-full after:transition-all after:duration-300">
+                    Contact Us
+                </a>
+            </nav>
+    
+            <!-- Right side buttons -->
+            <div class="flex items-center gap-3 flex-shrink-0">
+                <!-- <a href="contact.html" class="hidden md:inline-block nav-link ..." data-page="contact.html">Contact Us</a> -->
+                <a href="project-listing.html" class="bg-main-yellow text-black font-bold text-sm px-5 py-2.5 rounded-md hover:bg-yellow-500 transition-colors shadow-sm">
+                    Properties
+                </a>
+            </div>
+    
+        </div>
+    </header>
+</body>
+</html>
