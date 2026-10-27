@@ -100,32 +100,94 @@ document.addEventListener("headerLoaded", function () {
     });
   }
 
-  if (document.querySelector(".trendingSwiper")) {
-    const trendingSwiper = new Swiper(".trendingSwiper", {
-      slidesPerView: 1,
-      spaceBetween: 24,
-      speed: 1000,
-      loop: false,
+  if (document.querySelector(".cityTabsSwiper")) {
+    const cityTabsSwiper = new Swiper(".cityTabsSwiper", {
+      slidesPerView: "auto",
+      spaceBetween: 12,
+      freeMode: true,
       navigation: {
-        nextEl: ".trending-next",
-        prevEl: ".trending-prev",
-      },
-      pagination: {
-        el: ".trendingSwiper .swiper-pagination",
-        clickable: true,
-      },
-      breakpoints: {
-        640: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-        1280: { slidesPerView: 3 },
+        nextEl: ".city-tabs-next",
+        prevEl: ".city-tabs-prev",
       },
     });
+  
+    const cityTabs = document.querySelectorAll(".city-tab");
+    const trendCards = document.querySelectorAll(".trend-card");
+  
+    // Destroy the trending Swiper so we can rebuild it filtered
+    let trendingSwiper = document.querySelector(".trendingSwiper").swiper;
+    if (trendingSwiper) trendingSwiper.destroy(true, true);
+  
+    const trendingEl = document.querySelector(".trendingSwiper");
+  
+    function renderTrending(city) {
+      // Remove any previous Swiper instance cleanly
+      if (trendingEl.swiper) trendingEl.swiper.destroy(true, true);
+  
+      // Toggle visibility with a class (NOT inline display on slides)
+      trendCards.forEach(card => {
+        const match = card.getAttribute("data-city") === city;
+        card.classList.toggle("hidden", !match);
+      });
+  
+      // Let the DOM settle, then init a fresh Swiper
+      requestAnimationFrame(() => {
+        new Swiper(".trendingSwiper", {
+          slidesPerView: 1,
+          spaceBetween: 24,
+          speed: 1000,
+          loop: false,
+          watchOverflow: true,
+          observer: true,
+          observeParents: true,
+          navigation: {
+            nextEl: ".trending-next",
+            prevEl: ".trending-prev",
+          },
+          pagination: {
+            el: ".trendingSwiper .swiper-pagination",
+            clickable: true,
+          },
+          breakpoints: {
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+            1280: { slidesPerView: 3 },
+          },
+        });
+      });
+    }
+  
+    cityTabs.forEach(tab => {
+      if (tab.getAttribute("data-filter-city") === "Gurugram") {
+        tab.classList.add("!text-[#0da06a]");
+        tab.querySelector("svg").classList.add("!fill-[#0da06a]");
+      }
+  
+      tab.addEventListener("click", () => {
+        cityTabs.forEach(t => {
+          t.classList.remove("!text-[#0da06a]");
+          t.querySelector("svg").classList.remove("!fill-[#0da06a]");
+        });
+        tab.classList.add("!text-[#0da06a]");
+        tab.querySelector("svg").classList.add("!fill-[#0da06a]");
+  
+        const selectedCity = tab.getAttribute("data-filter-city");
+        const slideIndex = Array.from(cityTabs).indexOf(tab);
+        cityTabsSwiper.slideTo(slideIndex, 500, true);
+  
+        renderTrending(selectedCity);
+      });
+    });
+  
+    // Initial render
+    renderTrending("Gurugram");
   }
 
   if (document.querySelector("[data-fancybox]")) {
     Fancybox.bind("[data-fancybox]", {
       autoStart: false,
       contentClick: "iterateZoom",
+      zIndex: 99999,
       Images: {
         Panzoom: {
           maxScale: 3,

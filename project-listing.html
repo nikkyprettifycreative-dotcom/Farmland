@@ -83,144 +83,185 @@
 
     <div id="header-placeholder"></div>
 
-    <main class="listing-main pt-6 pb-16">
+    <main class="listing-main pt-6 pb-16 bg-[#eefcf5]">
         <div class="listing-wrap max-w-[1400px] mx-auto px-4 md:px-8">
             <div class="listing-grid flex flex-col lg:flex-row gap-8 items-start">
                 
                 <!-- LEFT SIDEBAR (STICKY, FULL VIEWPORT HEIGHT, INTERNAL SCROLL) -->
-                <aside class="listing-filters-aside w-full lg:w-[320px] flex-shrink-0">
-                    <div class="bg-white rounded-xl border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] overflow-hidden lg:h-full lg:flex lg:flex-col">
-                        
-                        <div class="bg-main-green px-5 py-4 flex items-center justify-between flex-shrink-0">
-                            <div class="flex items-center gap-2 text-white font-bold">
-                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
-                                <span>Filters</span>
-                            </div>
-                            <button id="clearFilters" class="text-white text-sm font-semibold hover:underline">Clear all</button>
-                        </div>
+<aside class="listing-filters-aside w-full lg:w-[320px] flex-shrink-0">
+    <div class="bg-white rounded-xl border border-[#0da06a]/20 shadow-[0_4px_20px_rgb(0,0,0,0.03)] overflow-hidden lg:h-full lg:flex lg:flex-col">
 
-                        <div class="listing-scroll p-5 space-y-6 lg:flex-1 lg:overflow-y-auto lg:min-h-0">
-                            
-                            <div class="relative">
-                                <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                                <input type="text" id="searchInput" placeholder="Search title, keywords..." class="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-main-green focus:ring-1 focus:ring-main-green text-gray-700 transition-colors">
-                            </div>
+        <!-- Header — compact -->
+        <div class="bg-main-green px-4 py-2.5 flex items-center justify-between flex-shrink-0">
+            <div class="flex items-center gap-2 text-white font-bold text-[13px]">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                <span>Filters</span>
+            </div>
+            <button id="clearFilters" class="text-white text-[12px] font-semibold hover:underline">Clear all</button>
+        </div>
 
-                            <div class="border-t border-gray-100 pt-4">
-                                <div class="flex items-center justify-between cursor-pointer mb-3">
-                                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
-                                        <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                                        City
-                                    </div>
-                                </div>
-                                <div class="relative">
-                                    <select id="citySelect" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-main-green focus:ring-1 focus:ring-main-green text-gray-700 appearance-none cursor-pointer transition-colors">
-                                        <option value="">All Cities</option>
-                                        <option value="Bengaluru">Bengaluru</option>
-                                        <option value="Pune">Pune</option>
-                                        <option value="Hyderabad">Hyderabad</option>
-                                        <option value="Bengaluru Rural">Bengaluru Rural</option>
-                                        <option value="Krishnagiri">Krishnagiri</option>
-                                        <option value="Chikkaballapur">Chikkaballapur</option>
-                                        <option value="Jaipur">Jaipur</option>
-                                        <option value="Noida">Noida</option>
-                                        <option value="Rangareddi">Rangareddi</option>
-                                        <option value="Sangareddi">Sangareddi</option>
-                                        <option value="Hindupur">Hindupur</option>
-                                        <option value="Chikmagalur">Chikmagalur</option>
-                                        <option value="Kodaikanal">Kodaikanal</option>
-                                        <option value="Coorg">Coorg</option>
-                                        <option value="Goa">Goa</option>
-                                    </select>
-                                    <svg class="w-4 h-4 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-                                </div>
-                            </div>
+        <!-- Scrollable inner area -->
+        <div class="listing-scroll p-5 space-y-6 lg:flex-1 lg:overflow-y-auto lg:min-h-0">
 
-                            <div class="border-t border-gray-100 pt-4">
-                                <div class="flex items-center justify-between cursor-pointer mb-3">
-                                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
-                                        <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                                        Property Type
-                                    </div>
-                                </div>
-                                <div class="grid grid-cols-2 gap-2" id="propertyTypeFilters">
-                                    <label class="flex items-center gap-2 bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
-                                        <input class="w-4 h-4 text-main-green bg-white border-gray-300 rounded focus:ring-main-green focus:ring-2 filter-checkbox cursor-pointer" type="checkbox" value="Farmland">
-                                        <span class="text-sm text-gray-700">Farmland</span>
-                                    </label>
-                                    <label class="flex items-center gap-2 bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
-                                        <input class="w-4 h-4 text-main-green bg-white border-gray-300 rounded focus:ring-main-green focus:ring-2 filter-checkbox cursor-pointer" type="checkbox" value="Farmhouse">
-                                        <span class="text-sm text-gray-700">Farmhouse</span>
-                                    </label>
-                                    <label class="flex items-center gap-2 bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
-                                        <input class="w-4 h-4 text-main-green bg-white border-gray-300 rounded focus:ring-main-green focus:ring-2 filter-checkbox cursor-pointer" type="checkbox" value="Agricultural Land">
-                                        <span class="text-sm text-gray-700">Agri Land</span>
-                                    </label>
-                                    <label class="flex items-center gap-2 bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
-                                        <input class="w-4 h-4 text-main-green bg-white border-gray-300 rounded focus:ring-main-green focus:ring-2 filter-checkbox cursor-pointer" type="checkbox" value="Estates">
-                                        <span class="text-sm text-gray-700">Estates</span>
-                                    </label>
-                                </div>
-                            </div>
+            <!-- Search -->
+            <div class="relative">
+                <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <input type="text" id="searchInput" placeholder="Search title, keywords..." class="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-[#0da06a]/30 rounded-lg text-sm focus:outline-none focus:border-main-green focus:ring-1 focus:ring-main-green text-gray-700 transition-colors">
+            </div>
 
-                            <div class="border-t border-gray-100 pt-4">
-                                <div class="flex items-center justify-between cursor-pointer mb-4">
-                                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
-                                        <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                        Price Range
-                                    </div>
-                                </div>
-                                <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
-                                    <span>₹0</span>
-                                    <span id="priceMaxLabel" class="text-main-green">₹10 Cr</span>
-                                </div>
-                                <input type="range" id="priceRange" class="w-full" min="0" max="1000" value="1000">
-                            </div>
-
-                            <div class="border-t border-gray-100 pt-4">
-                                <div class="flex items-center justify-between cursor-pointer mb-4">
-                                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
-                                        <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
-                                        Area (Acres)
-                                    </div>
-                                </div>
-                                <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
-                                    <span>0 ac</span>
-                                    <span id="areaMaxLabel" class="text-main-green">500 ac</span>
-                                </div>
-                                <input type="range" id="areaRange" class="w-full" min="0" max="500" value="500">
-                            </div>
-
-                            <div class="border-t border-gray-100 pt-4">
-                                <div class="flex items-center justify-between cursor-pointer mb-3">
-                                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
-                                        <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-                                        Amenities
-                                    </div>
-                                </div>
-                                <div class="grid grid-cols-2 gap-y-3 gap-x-2" id="amenitiesFilters">
-                                    <label class="flex items-center gap-2 cursor-pointer">
-                                        <input class="w-4 h-4 text-main-green bg-gray-50 border-gray-300 rounded focus:ring-main-green focus:ring-2 filter-amenity cursor-pointer" type="checkbox" value="Swimming Pool">
-                                        <span class="text-sm text-gray-600">Swimming Pool</span>
-                                    </label>
-                                    <label class="flex items-center gap-2 cursor-pointer">
-                                        <input class="w-4 h-4 text-main-green bg-gray-50 border-gray-300 rounded focus:ring-main-green focus:ring-2 filter-amenity cursor-pointer" type="checkbox" value="Security">
-                                        <span class="text-sm text-gray-600">Security</span>
-                                    </label>
-                                    <label class="flex items-center gap-2 cursor-pointer">
-                                        <input class="w-4 h-4 text-main-green bg-gray-50 border-gray-300 rounded focus:ring-main-green focus:ring-2 filter-amenity cursor-pointer" type="checkbox" value="Solar Power">
-                                        <span class="text-sm text-gray-600">Solar Power</span>
-                                    </label>
-                                    <label class="flex items-center gap-2 cursor-pointer">
-                                        <input class="w-4 h-4 text-main-green bg-gray-50 border-gray-300 rounded focus:ring-main-green focus:ring-2 filter-amenity cursor-pointer" type="checkbox" value="Borewell">
-                                        <span class="text-sm text-gray-600">Borewell</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                        </div>
+            <!-- City (Tailwind multi-level dropdown, green chevron) -->
+            <div class="border-t border-[#0da06a]/10 pt-4">
+                <div class="flex items-center justify-between cursor-pointer mb-3">
+                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
+                        <svg class="w-4 h-4 text-main-green" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+                        City
                     </div>
-                </aside>
+                </div>
+
+                <!-- Hidden native select kept for JS functionality -->
+                <select id="citySelect" class="sr-only" tabindex="-1" aria-hidden="true">
+                    <option value="">All Cities</option>
+                    <option value="Bengaluru">Bengaluru</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Bengaluru Rural">Bengaluru Rural</option>
+                    <option value="Krishnagiri">Krishnagiri</option>
+                    <option value="Chikkaballapur">Chikkaballapur</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Noida">Noida</option>
+                    <option value="Rangareddi">Rangareddi</option>
+                    <option value="Sangareddi">Sangareddi</option>
+                    <option value="Hindupur">Hindupur</option>
+                    <option value="Chikmagalur">Chikmagalur</option>
+                    <option value="Kodaikanal">Kodaikanal</option>
+                    <option value="Coorg">Coorg</option>
+                    <option value="Goa">Goa</option>
+                </select>
+
+                <div class="relative">
+                    <!-- Dropdown trigger -->
+                    <button id="cityDropdownBtn" type="button"
+                            class="w-full flex items-center justify-between px-4 py-2.5 bg-gray-50 border border-[#0da06a]/30 rounded-lg text-sm text-gray-700 hover:border-main-green focus:outline-none focus:border-main-green focus:ring-1 focus:ring-main-green transition-colors">
+                        <span id="cityDropdownLabel">All Cities</span>
+                        <svg class="w-4 h-4 text-main-green pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+
+                    <!-- Dropdown menu -->
+                    <div id="cityDropdownMenu"
+                         class="z-50 hidden absolute left-0 right-0 mt-1 bg-white border border-[#0da06a]/20 rounded-lg shadow-lg max-h-64 overflow-y-auto">
+                        <ul id="cityDropdownList" class="p-1.5 text-sm text-gray-700 font-medium">
+                            <li><button type="button" data-city="" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">All Cities</button></li>
+                            <li><button type="button" data-city="Bengaluru" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Bengaluru</button></li>
+                            <li><button type="button" data-city="Pune" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Pune</button></li>
+                            <li><button type="button" data-city="Hyderabad" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Hyderabad</button></li>
+                            <li><button type="button" data-city="Bengaluru Rural" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Bengaluru Rural</button></li>
+                            <li><button type="button" data-city="Krishnagiri" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Krishnagiri</button></li>
+                            <li><button type="button" data-city="Chikkaballapur" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Chikkaballapur</button></li>
+                            <li><button type="button" data-city="Jaipur" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Jaipur</button></li>
+                            <li><button type="button" data-city="Noida" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Noida</button></li>
+                            <li><button type="button" data-city="Rangareddi" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Rangareddi</button></li>
+                            <li><button type="button" data-city="Sangareddi" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Sangareddi</button></li>
+                            <li><button type="button" data-city="Hindupur" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Hindupur</button></li>
+                            <li><button type="button" data-city="Chikmagalur" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Chikmagalur</button></li>
+                            <li><button type="button" data-city="Kodaikanal" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Kodaikanal</button></li>
+                            <li><button type="button" data-city="Coorg" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Coorg</button></li>
+                            <li><button type="button" data-city="Goa" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Goa</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Property Type -->
+            <div class="border-t border-[#0da06a]/10 pt-4">
+                <div class="flex items-center justify-between cursor-pointer mb-3">
+                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
+                        <svg class="w-4 h-4 text-main-green" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                        Property Type
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2" id="propertyTypeFilters">
+                    <label class="flex items-center gap-2 bg-gray-50 border border-[#0da06a]/30 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                        <input class="w-4 h-4 accent-[#0da06a] bg-white border-gray-300 rounded cursor-pointer filter-checkbox" type="checkbox" value="Farmland">
+                        <span class="text-sm text-gray-700">Farmland</span>
+                    </label>
+                    <label class="flex items-center gap-2 bg-gray-50 border border-[#0da06a]/30 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                        <input class="w-4 h-4 accent-[#0da06a] bg-white border-gray-300 rounded cursor-pointer filter-checkbox" type="checkbox" value="Farmhouse">
+                        <span class="text-sm text-gray-700">Farmhouse</span>
+                    </label>
+                    <label class="flex items-center gap-2 bg-gray-50 border border-[#0da06a]/30 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                        <input class="w-4 h-4 accent-[#0da06a] bg-white border-gray-300 rounded cursor-pointer filter-checkbox" type="checkbox" value="Agricultural Land">
+                        <span class="text-sm text-gray-700">Agri Land</span>
+                    </label>
+                    <label class="flex items-center gap-2 bg-gray-50 border border-[#0da06a]/30 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                        <input class="w-4 h-4 accent-[#0da06a] bg-white border-gray-300 rounded cursor-pointer filter-checkbox" type="checkbox" value="Estates">
+                        <span class="text-sm text-gray-700">Estates</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Price Range -->
+            <div class="border-t border-[#0da06a]/10 pt-4">
+                <div class="flex items-center justify-between cursor-pointer mb-4">
+                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" style="color: var(--main-green); flex-shrink: 0;">
+                            <path fill="currentColor" d="M18 5V3H6v2h4c1.86 0 3.41 1.28 3.86 3H6v2h7.86c-.45 1.72-2 3-3.86 3H7c-.42 0-.79.26-.94.65s-.04.83.28 1.1l8 7l1.32-1.5l-6-5.25H10c2.97 0 5.43-2.17 5.91-5H18V8h-2.09a6 6 0 0 0-1.45-3z" />
+                        </svg>
+                        Price Range
+                    </div>
+                </div>
+                <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
+                    <span>₹0</span>
+                    <span id="priceMaxLabel" class="text-main-green">₹10 Cr</span>
+                </div>
+                <input type="range" id="priceRange" class="w-full" min="0" max="1000" value="1000">
+            </div>
+
+            <!-- Area -->
+            <div class="border-t border-[#0da06a]/10 pt-4">
+                <div class="flex items-center justify-between cursor-pointer mb-4">
+                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
+                        <svg class="w-4 h-4 text-main-green" fill="currentColor" viewBox="0 0 24 24"><path d="M3 3h6v2H5v4H3V3zm18 0v6h-2V5h-4V3h6zM3 21v-6h2v4h4v2H3zm18 0h-6v-2h4v-4h2v6z"/></svg>
+                        Area (Acres)
+                    </div>
+                </div>
+                <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
+                    <span>0 ac</span>
+                    <span id="areaMaxLabel" class="text-main-green">500 ac</span>
+                </div>
+                <input type="range" id="areaRange" class="w-full" min="0" max="500" value="500">
+            </div>
+
+            <!-- Amenities -->
+            <div class="border-t border-[#0da06a]/10 pt-4">
+                <div class="flex items-center justify-between cursor-pointer mb-3">
+                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
+                        <svg class="w-4 h-4 text-main-green" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/></svg>
+                        Amenities
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-y-3 gap-x-2" id="amenitiesFilters">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input class="w-4 h-4 accent-[#0da06a] bg-gray-50 border-gray-300 rounded cursor-pointer filter-amenity" type="checkbox" value="Swimming Pool">
+                        <span class="text-sm text-gray-600">Swimming Pool</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input class="w-4 h-4 accent-[#0da06a] bg-gray-50 border-gray-300 rounded cursor-pointer filter-amenity" type="checkbox" value="Security">
+                        <span class="text-sm text-gray-600">Security</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input class="w-4 h-4 accent-[#0da06a] bg-gray-50 border-gray-300 rounded cursor-pointer filter-amenity" type="checkbox" value="Solar Power">
+                        <span class="text-sm text-gray-600">Solar Power</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input class="w-4 h-4 accent-[#0da06a] bg-gray-50 border-gray-300 rounded cursor-pointer filter-amenity" type="checkbox" value="Borewell">
+                        <span class="text-sm text-gray-600">Borewell</span>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</aside>
 
                 <!-- RIGHT SIDE CONTENT -->
                 <div class="listing-results flex-grow min-w-0">
@@ -266,11 +307,29 @@
                         <div class="flex items-center gap-3 bg-gray-50 border border-gray-100 rounded-xl px-4 py-2">
                             <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"/></svg>
                             <span class="text-sm text-gray-500 font-medium whitespace-nowrap">Sort by:</span>
-                            <select id="sortSelect" class="bg-transparent border-none text-gray-900 text-sm font-bold focus:ring-0 cursor-pointer outline-none p-0 pr-6">
+
+                            <select id="sortSelect" class="sr-only" tabindex="-1" aria-hidden="true">
                                 <option value="recent">Most Recent</option>
                                 <option value="low-high">Price: Low to High</option>
                                 <option value="high-low">Price: High to Low</option>
                             </select>
+
+                            <div class="relative">
+                                <button id="sortDropdownBtn" type="button"
+                                        class="flex items-center justify-between gap-3 bg-transparent text-gray-900 text-sm font-bold hover:text-main-green focus:outline-none transition-colors">
+                                    <span id="sortDropdownLabel">Most Recent</span>
+                                    <svg class="w-4 h-4 text-main-green pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                                </button>
+
+                                <div id="sortDropdownMenu"
+                                    class="z-50 hidden absolute right-0 mt-2 min-w-[200px] bg-white border border-[#0da06a]/20 rounded-lg shadow-lg">
+                                    <ul id="sortDropdownList" class="p-1.5 text-sm text-gray-700 font-medium">
+                                        <li><button type="button" data-sort="recent" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Most Recent</button></li>
+                                        <li><button type="button" data-sort="low-high" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Price: Low to High</button></li>
+                                        <li><button type="button" data-sort="high-low" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Price: High to Low</button></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -728,9 +787,96 @@
                 applyFilters();
             });
     
+            const cityDropdownBtn = document.getElementById('cityDropdownBtn');
+            const cityDropdownMenu = document.getElementById('cityDropdownMenu');
+            const cityDropdownLabel = document.getElementById('cityDropdownLabel');
+            const cityDropdownList = document.getElementById('cityDropdownList');
+    
+            if (cityDropdownBtn && cityDropdownMenu && cityDropdownLabel) {
+                cityDropdownBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    cityDropdownMenu.classList.toggle('hidden');
+                });
+    
+                document.addEventListener('click', (e) => {
+                    if (!cityDropdownMenu.contains(e.target) && !cityDropdownBtn.contains(e.target)) {
+                        cityDropdownMenu.classList.add('hidden');
+                    }
+                });
+    
+                if (cityDropdownList) {
+                    cityDropdownList.querySelectorAll('button[data-city]').forEach((item) => {
+                        item.addEventListener('click', () => {
+                            const city = item.getAttribute('data-city');
+                            const cityLabel = item.textContent.trim();
+    
+                            citySelect.value = city;
+                            citySelect.dispatchEvent(new Event('change', { bubbles: true }));
+    
+                            cityDropdownLabel.textContent = cityLabel;
+                            cityDropdownMenu.classList.add('hidden');
+                        });
+                    });
+                }
+    
+                const syncCityLabel = () => {
+                    const selectedOption = citySelect.options[citySelect.selectedIndex];
+                    cityDropdownLabel.textContent = selectedOption ? selectedOption.textContent : 'All Cities';
+                };
+                citySelect.addEventListener('change', syncCityLabel);
+                syncCityLabel();
+    
+                clearFiltersBtn.addEventListener('click', () => {
+                    setTimeout(syncCityLabel, 0);
+                });
+            }
+    
+            const sortDropdownBtn = document.getElementById('sortDropdownBtn');
+            const sortDropdownMenu = document.getElementById('sortDropdownMenu');
+            const sortDropdownLabel = document.getElementById('sortDropdownLabel');
+            const sortDropdownList = document.getElementById('sortDropdownList');
+    
+            if (sortDropdownBtn && sortDropdownMenu && sortDropdownLabel) {
+                sortDropdownBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    sortDropdownMenu.classList.toggle('hidden');
+                });
+    
+                document.addEventListener('click', (e) => {
+                    if (!sortDropdownMenu.contains(e.target) && !sortDropdownBtn.contains(e.target)) {
+                        sortDropdownMenu.classList.add('hidden');
+                    }
+                });
+    
+                if (sortDropdownList) {
+                    sortDropdownList.querySelectorAll('button[data-sort]').forEach((item) => {
+                        item.addEventListener('click', () => {
+                            const sort = item.getAttribute('data-sort');
+                            const sortLabel = item.textContent.trim();
+    
+                            sortSelect.value = sort;
+                            sortSelect.dispatchEvent(new Event('change', { bubbles: true }));
+    
+                            sortDropdownLabel.textContent = sortLabel;
+                            sortDropdownMenu.classList.add('hidden');
+                        });
+                    });
+                }
+    
+                const syncSortLabel = () => {
+                    const selectedOption = sortSelect.options[sortSelect.selectedIndex];
+                    sortDropdownLabel.textContent = selectedOption ? selectedOption.textContent : 'Most Recent';
+                };
+                sortSelect.addEventListener('change', syncSortLabel);
+                syncSortLabel();
+    
+                clearFiltersBtn.addEventListener('click', () => {
+                    setTimeout(syncSortLabel, 0);
+                });
+            }
+    
             const urlParams = new URLSearchParams(window.location.search);
     
-            // ---- NEW: keyword search from home page (?q=...) ----
             const queryParam = urlParams.get('q');
             if (queryParam) {
                 searchInput.value = queryParam;
