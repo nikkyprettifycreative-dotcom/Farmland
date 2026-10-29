@@ -59,22 +59,24 @@ document.addEventListener("headerLoaded", function () {
 
   if (document.querySelector(".recommendedSwiper")) {
     const recommendedSwiper = new Swiper(".recommendedSwiper", {
-      slidesPerView: 1,
-      spaceBetween: 24,
-      speed: 1000,
-      loop: false,
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      initialSlide: 2, 
+      spaceBetween: 45,
+      speed: 800,
+      loop: false, 
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 100,
+        modifier: 1.5,
+        slideShadows: false,
+      },
       navigation: {
         nextEl: ".recommended-next",
         prevEl: ".recommended-prev",
-      },
-      pagination: {
-        el: ".recommendedSwiper .swiper-pagination",
-        clickable: true,
-      },
-      breakpoints: {
-        640: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-        1280: { slidesPerView: 3 },
       },
     });
   }
@@ -430,41 +432,54 @@ if (document.querySelector(".morePropertiesSwiper")) {
   });
 }
 
-function highlightActiveNav() {
-  const currentPage = window.location.pathname.split("/").pop() || "index.html";
-  const links = document.querySelectorAll(".nav-link");
-
-  links.forEach(link => {
-    const page = link.getAttribute("data-page");
-    if (page === currentPage) {
-      // ACTIVE
-      link.classList.remove("text-white/60", "hover:text-white", "after:w-0", "hover:after:w-full");
-      link.classList.add("text-white", "after:w-full");
-    } else {
-      // INACTIVE
-      link.classList.remove("text-white", "after:w-full");
-      link.classList.add("text-white/60", "hover:text-white", "after:w-0", "hover:after:w-full");
-    }
-  });
-}
-
-
-document.addEventListener("headerLoaded", highlightActiveNav);
-
 document.addEventListener("headerLoaded", function () {
-  const checkHeader = setInterval(() => {
-    if (document.querySelector("#header-placeholder .nav-link")) {
-      highlightActiveNav();
-      clearInterval(checkHeader);
+    console.log("Header loaded. Setting up enquiry modal...");
+
+    const modal = document.getElementById('enquiryModal');
+    const openBtn = document.getElementById('openEnquiryBtn');
+    const closeBtn = document.getElementById('closeEnquiryBtn');
+
+    if (!modal) {
+        console.error("ERROR: #enquiryModal not found even after headerLoaded.");
     }
-  }, 100);
+    if (!openBtn) {
+        console.error("ERROR: #openEnquiryBtn not found even after headerLoaded.");
+    }
 
-  setTimeout(() => clearInterval(checkHeader), 3000);
-});
+    if (!modal || !openBtn) return;
 
-document.addEventListener("headerLoaded", function () {
-  if (document.body.classList.contains("home-page")) {
-    const nav = document.querySelector("#header-placeholder nav");
-    if (nav) nav.style.display = "none";
-  }
+    function toggleEnquiryModal(show) {
+        if (show) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        } else {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    openBtn.addEventListener('click', function () {
+        console.log("Enquire Now clicked.");
+        toggleEnquiryModal(true);
+    });
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+            toggleEnquiryModal(false);
+        });
+    }
+
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) {
+            toggleEnquiryModal(false);
+        }
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            toggleEnquiryModal(false);
+        }
+    });
+
+    console.log("Enquiry modal setup complete.");
 });
