@@ -306,3 +306,111 @@ body:not(.home-page) #homeSearchWrap {
     margin-bottom: 1.5rem;
   }
 }
+
+
+.recommendedSwiper {
+  overflow: hidden !important; 
+  padding: 40px 0 50px 0 !important; 
+}
+
+.recommended-slide {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 1;
+  transform: scale(0.92); 
+}
+
+.recommendedSwiper .swiper-slide-active {
+  opacity: 1;
+  transform: scale(1.15); 
+  z-index: 10;
+}
+
+
+
+
+
+
+
+/* =========================================
+   Testimonials Masonry Section
+   ========================================= */
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .testimonial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonial-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+  }
+}
+
+.testimonial-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-card::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  z-index: 1;
+}
+
+.testimonial-card.arrow-bottom::after {
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 15px 15px 0 15px;
+  border-color: var(--arrow-color) transparent transparent transparent;
+}
+
+.testimonial-card.arrow-left::after {
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 15px 15px 15px 0;
+  border-color: transparent var(--arrow-color) transparent transparent;
+}
+
+.testimonial-card.arrow-right::after {
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 15px 0 15px 15px;
+  border-color: transparent transparent transparent var(--arrow-color);
+}
+
+.avatar-stack {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -24px; 
+  position: relative;
+  z-index: 10;
+}
+
+.avatar-stack img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 3px solid #fdfbf5; 
+  object-fit: cover;
+  margin-left: -12px;
+}
+.avatar-stack img:first-child {
+  margin-left: 0;
+}

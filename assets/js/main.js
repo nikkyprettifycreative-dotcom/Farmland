@@ -59,27 +59,25 @@ document.addEventListener("headerLoaded", function () {
 
   if (document.querySelector(".recommendedSwiper")) {
     const recommendedSwiper = new Swiper(".recommendedSwiper", {
-      effect: 'coverflow',
       grabCursor: true,
       centeredSlides: true,
-      slidesPerView: 'auto',
-      initialSlide: 2, 
-      spaceBetween: 45,
+      slidesPerView: 1,
+      initialSlide: 1,
+      spaceBetween: 20,
       speed: 800,
       loop: false, 
-      coverflowEffect: {
-        rotate: 0,
-        stretch: 0,
-        depth: 100,
-        modifier: 1.5,
-        slideShadows: false,
-      },
       navigation: {
         nextEl: ".recommended-next",
         prevEl: ".recommended-prev",
       },
+      breakpoints: {
+        768: { slidesPerView: 2, spaceBetween: 30 },
+        1024: { slidesPerView: 3, spaceBetween: 30 }
+      }
     });
   }
+
+ 
 
   if (document.querySelector(".testimonialSwiper")) {
     const testimonialSwiper = new Swiper(".testimonialSwiper", {
