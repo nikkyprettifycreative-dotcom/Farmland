@@ -310,21 +310,30 @@ body:not(.home-page) #homeSearchWrap {
 
 .recommendedSwiper {
   overflow: hidden !important; 
-  padding: 40px 0 50px 0 !important; 
+  padding: 20px 0 40px 0 !important; 
 }
 
 .recommended-slide {
   transition: transform 0.4s ease, opacity 0.4s ease;
   opacity: 1;
-  transform: scale(0.92); 
+  /* On mobile, don't shrink the slides */
+  transform: scale(1); 
 }
 
-.recommendedSwiper .swiper-slide-active {
-  opacity: 1;
-  transform: scale(1.15); 
-  z-index: 10;
+/* ONLY apply the zoom effect on tablets and larger screens */
+@media (min-width: 768px) {
+  .recommendedSwiper {
+    padding: 40px 0 50px 0 !important; 
+  }
+  .recommended-slide {
+    transform: scale(0.92); 
+  }
+  .recommendedSwiper .swiper-slide-active {
+    opacity: 1;
+    transform: scale(1.15); 
+    z-index: 10;
+  }
 }
-
 
 
 

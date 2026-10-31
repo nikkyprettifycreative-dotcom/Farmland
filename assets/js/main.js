@@ -60,10 +60,10 @@ document.addEventListener("headerLoaded", function () {
   if (document.querySelector(".recommendedSwiper")) {
     const recommendedSwiper = new Swiper(".recommendedSwiper", {
       grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: 1,
+      centeredSlides: true, 
+      slidesPerView: 1.15, // Shows a peek of the next/prev slide
       initialSlide: 1,
-      spaceBetween: 20,
+      spaceBetween: 16,
       speed: 800,
       loop: false, 
       navigation: {
@@ -72,8 +72,7 @@ document.addEventListener("headerLoaded", function () {
       },
       breakpoints: {
         375: { slidesPerView: 1.4, spaceBetween: 10 },
-        541: { navigation: { enabled: true } },
-        768: { slidesPerView: 2, spaceBetween: 30 },
+        640: { slidesPerView: 2.2, spaceBetween: 20 },
         1024: { slidesPerView: 3, spaceBetween: 30 }
       }
     });
