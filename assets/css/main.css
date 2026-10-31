@@ -310,17 +310,23 @@ body:not(.home-page) #homeSearchWrap {
 
 .recommendedSwiper {
   overflow: hidden !important; 
-  padding: 20px 0 40px 0 !important; 
+  padding: 30px 0 50px 0 !important; 
 }
 
 .recommended-slide {
   transition: transform 0.4s ease, opacity 0.4s ease;
   opacity: 1;
-  /* On mobile, don't shrink the slides */
-  transform: scale(1); 
+  transform: scale(0.9); /* The side cards start a bit smaller */
 }
 
-/* ONLY apply the zoom effect on tablets and larger screens */
+/* The active (center) card gets bigger on ALL screens */
+.recommendedSwiper .swiper-slide-active {
+  opacity: 1;
+  transform: scale(1.05); /* Scaled down slightly from 1.15 so it fits mobile */
+  z-index: 10;
+}
+
+/* On larger screens, we can make the zoom a bit more dramatic like before */
 @media (min-width: 768px) {
   .recommendedSwiper {
     padding: 40px 0 50px 0 !important; 
@@ -329,12 +335,9 @@ body:not(.home-page) #homeSearchWrap {
     transform: scale(0.92); 
   }
   .recommendedSwiper .swiper-slide-active {
-    opacity: 1;
     transform: scale(1.15); 
-    z-index: 10;
   }
 }
-
 
 
 
