@@ -61,7 +61,7 @@ document.addEventListener("headerLoaded", function () {
     const recommendedSwiper = new Swiper(".recommendedSwiper", {
       grabCursor: true,
       centeredSlides: true, 
-      slidesPerView: 1.15, // Shows a peek of the next/prev slide
+      slidesPerView: 1.9, // Shows a peek of the next/prev slide
       initialSlide: 1,
       spaceBetween: 16,
       speed: 800,
@@ -71,7 +71,7 @@ document.addEventListener("headerLoaded", function () {
         prevEl: ".recommended-prev",
       },
       breakpoints: {
-        375: { slidesPerView: 1.4, spaceBetween: 10 },
+        375: { slidesPerView: 1.8, spaceBetween: 10 },
         640: { slidesPerView: 2.2, spaceBetween: 20 },
         1024: { slidesPerView: 3, spaceBetween: 30 }
       }
