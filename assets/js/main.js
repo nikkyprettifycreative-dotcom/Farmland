@@ -105,8 +105,8 @@ document.addEventListener("headerLoaded", function () {
     const cityTabsSwiper = new Swiper(".cityTabsSwiper", {
       slidesPerView: "auto",
       spaceBetween: 12,
-      centeredSlides: true, // Centers the active tab on all screens
-      freeMode: false,      // Disabled freeMode so it snaps nicely to center
+      centeredSlides: true, 
+      freeMode: false,      
       navigation: {
         nextEl: ".city-tabs-next",
         prevEl: ".city-tabs-prev",

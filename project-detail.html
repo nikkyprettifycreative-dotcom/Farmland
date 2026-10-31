@@ -131,34 +131,34 @@
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-3 gap-4 md:gap-8 bg-[#f0efe8] rounded-[18px] px-5 md:px-8 py-4 md:py-5 mt-2">
+                            <div class="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8 bg-[#f0efe8] rounded-[18px] px-3 sm:px-5 md:px-8 py-3 sm:py-4 md:py-5 mt-2">
 
                                 <div class="flex flex-col">
-                                    <div class="flex items-center gap-1.5 text-[11px] font-bold text-[#5a6b5e] uppercase tracking-[0.06em] mb-1">
-                                        <i data-lucide="indian-rupee" class="w-[14px] h-[14px] text-[#5a6b5e]"></i>
+                                    <div class="flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[11px] font-bold text-[#5a6b5e] uppercase tracking-[0.03em] sm:tracking-[0.06em] mb-1">
+                                        <i data-lucide="indian-rupee" class="w-[12px] h-[12px] sm:w-[14px] sm:h-[14px] text-[#5a6b5e]"></i>
                                         Price
                                     </div>
-                                    <div class="text-xl md:text-2xl font-black text-[#1a2e1f] tracking-tight leading-none">
-                                        ₹62.62<span class="text-sm font-bold text-[#5a6b5e] ml-0.5">L</span>
+                                    <div class="text-base sm:text-xl md:text-2xl font-black text-[#1a2e1f] tracking-tight leading-none">
+                                        ₹62.62<span class="text-[10px] sm:text-sm font-bold text-[#5a6b5e] ml-0.5">L</span>
                                     </div>
                                 </div>
 
                                 <div class="flex flex-col">
-                                    <div class="flex items-center gap-1.5 text-[11px] font-bold text-[#5a6b5e] uppercase tracking-[0.06em] mb-1">
-                                        <i data-lucide="maximize" class="w-[14px] h-[14px] text-[#5a6b5e]"></i>
+                                    <div class="flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[11px] font-bold text-[#5a6b5e] uppercase tracking-[0.03em] sm:tracking-[0.06em] mb-1">
+                                        <i data-lucide="maximize" class="w-[12px] h-[12px] sm:w-[14px] sm:h-[14px] text-[#5a6b5e]"></i>
                                         Plot Area
                                     </div>
-                                    <div class="text-lg md:text-xl font-black text-[#1a2e1f] tracking-tight leading-none">
-                                        10,890<span class="text-sm font-bold text-[#5a6b5e] ml-1">Sq.Ft</span>
+                                    <div class="text-[14px] sm:text-lg md:text-xl font-black text-[#1a2e1f] tracking-tight leading-none whitespace-nowrap">
+                                        10,890<span class="text-[10px] sm:text-sm font-bold text-[#5a6b5e] ml-0.5 sm:ml-1">Sq.Ft</span>
                                     </div>
                                 </div>
 
                                 <div class="flex flex-col">
-                                    <div class="flex items-center gap-1.5 text-[11px] font-bold text-[#5a6b5e] uppercase tracking-[0.06em] mb-1">
-                                        <i data-lucide="tag" class="w-[14px] h-[14px] text-[#5a6b5e]"></i>
+                                    <div class="flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[11px] font-bold text-[#5a6b5e] uppercase tracking-[0.03em] sm:tracking-[0.06em] mb-1">
+                                        <i data-lucide="tag" class="w-[12px] h-[12px] sm:w-[14px] sm:h-[14px] text-[#5a6b5e]"></i>
                                         Price/Sq.Ft
                                     </div>
-                                    <div class="text-lg md:text-xl font-black text-[#1a2e1f] tracking-tight leading-none">
+                                    <div class="text-[14px] sm:text-lg md:text-xl font-black text-[#1a2e1f] tracking-tight leading-none whitespace-nowrap">
                                         ₹575
                                     </div>
                                 </div>
@@ -167,20 +167,23 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 mt-5 md:mt-6 w-full max-w-full">
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 mt-5 md:mt-6 w-full max-w-full">
 
+                        <!-- Enquire Now Button -->
                         <button onclick="openModal('enquireModal')"
-                                class="flex-1 min-w-[130px] bg-white border border-[#d4d1c7] text-[#1a2e1f] font-bold text-sm px-5 py-[11px] rounded-full hover:border-[#1a2e1f] transition-colors flex items-center justify-center gap-2 shadow-sm group">
-                            <i data-lucide="message-square-plus" class="w-[18px] h-[18px] text-[#1a2e1f] group-hover:text-[#0da06a] transition-colors"></i>
+                                class="w-[calc(50%-4px)] sm:flex-1 sm:w-auto bg-white border border-[#d4d1c7] text-[#1a2e1f] font-bold text-[13px] sm:text-sm px-2 sm:px-5 py-[11px] rounded-full hover:border-[#1a2e1f] transition-colors flex items-center justify-center gap-1.5 sm:gap-2 shadow-sm group whitespace-nowrap">
+                            <i data-lucide="message-square-plus" class="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#1a2e1f] group-hover:text-[#0da06a] transition-colors flex-shrink-0"></i>
                             Enquire Now
                         </button>
 
+                        <!-- Shortlist Button -->
                         <button id="shortlistBtn"
-                                class="flex-1 min-w-[130px] bg-white border border-[#d4d1c7] text-[#1a2e1f] font-bold text-sm px-5 py-[11px] rounded-full hover:border-red-400 hover:text-red-500 transition-colors flex items-center justify-center gap-2 shadow-sm group">
-                            <i data-lucide="heart" id="shortlistIcon" class="w-[18px] h-[18px] text-[#1a2e1f] group-hover:text-red-500 transition-colors"></i>
+                                class="w-[calc(50%-4px)] sm:flex-1 sm:w-auto bg-white border border-[#d4d1c7] text-[#1a2e1f] font-bold text-[13px] sm:text-sm px-2 sm:px-5 py-[11px] rounded-full hover:border-red-400 hover:text-red-500 transition-colors flex items-center justify-center gap-1.5 sm:gap-2 shadow-sm group whitespace-nowrap">
+                            <i data-lucide="heart" id="shortlistIcon" class="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#1a2e1f] group-hover:text-red-500 transition-colors flex-shrink-0"></i>
                             Shortlist
                         </button>
 
+                        <!-- Share Button -->
                         <button onclick="openModal('shareModal')"
                                 class="w-full sm:w-[46px] h-[46px] flex items-center justify-center bg-white border border-[#d4d1c7] text-[#1a2e1f] rounded-full hover:border-[#1a2e1f] hover:text-[#0da06a] transition-colors shadow-sm flex-shrink-0 mt-1 sm:mt-0 gap-2 sm:gap-0 font-bold sm:font-normal text-sm">
                             <i data-lucide="share-2" class="w-[18px] h-[18px]"></i>
