@@ -40,13 +40,13 @@
     <main>
         <!-- Banner Section -->
         <div class="relative w-full z-[9999]">
-            <div class="swiper bannerSwiper w-full h-[80vh] cursor-pointer overflow-hidden rounded-none">
+            <div class="swiper bannerSwiper w-full h-[55vh] md:h-[80vh] cursor-pointer overflow-hidden rounded-none">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide relative">
                         <div class="absolute inset-0 bg-black/30 z-10"></div>
                         <img src="assets/images/home/banner5.jpg" alt="Banner 4" class="w-full h-full object-cover object-center">
                     </div>
-              
+            
                     <div class="swiper-slide relative">
                         <div class="absolute inset-0 bg-black/30 z-10"></div>
                         <img src="assets/images/home/banner7.jpg" alt="Banner 3" class="w-full h-full object-cover object-center">
@@ -55,166 +55,161 @@
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
-            <!-- Search bar moved from the header into the home banner -->
             <div class="absolute bottom-14 md:bottom-20 left-0 right-0 z-30 px-4 flex justify-center">
-            <!-- Search bar with city + main search modals (compact header version) -->
-<div id="homeSearchWrap" class="relative hidden md:block w-full max-w-2xl">
-    <div class="w-full pointer-events-auto relative">
-        <!-- Search Input Box -->
-        <div id="searchBarTrigger" class="bg-white rounded-full p-1.5 pl-4 pr-2 flex items-center justify-between shadow-md cursor-text border border-transparent hover:border-gray-200 transition-colors">
-            <!-- City Selector -->
-            <div id="cityDropdownTrigger" class="flex items-center gap-1.5 text-gray-800 font-bold whitespace-nowrap cursor-pointer hover:text-[#0da06a] transition-colors z-50 relative font-sans">
-                <svg class="w-4 h-4 text-[#0da06a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-                <span id="selectedCityText" class="text-sm font-sans">Select City</span>
-                <svg class="w-3.5 h-3.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-                </svg>
-            </div>
-            <div class="h-6 w-[1px] bg-gray-200 mx-3 hidden md:block"></div>
-            <!-- Input + Submit -->
-            <form id="heroSearchForm" action="project-listing.html" method="get" class="flex-grow flex items-center">
-                <input
-                    type="text"
-                    id="mainSearchTrigger"
-                    name="q"
-                    autocomplete="off"
-                    placeholder="Search city, project, or keyword..."
-                    class="w-full bg-transparent border-none outline-none text-gray-800 placeholder-gray-400 text-sm truncate font-sans"
-                />
-                <button
-                    type="submit"
-                    id="mainSearchIconTrigger"
-                    aria-label="Search"
-                    class="bg-white text-[#0da06a] p-1.5 rounded-full hover:bg-gray-50 transition-colors cursor-pointer"
-                >
-                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                    </svg>
-                </button>
-            </form>
-        </div>
-        <!-- 1. CITY DROPDOWN MODAL -->
-        <div id="cityModal" class="absolute top-full left-0 mt-2 w-[320px] !bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border border-gray-100 p-5 opacity-0 invisible translate-y-2 transition-all duration-300 z-50">
-            <!-- Search City Input -->
-            <div class="relative mb-4">
-                <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                </svg>
-                <input type="text" id="citySearchInput" placeholder="Search city..."
-                    class="w-full bg-gray-50 border border-gray-200 rounded-full pl-9 pr-8 py-2 text-sm focus:outline-none focus:border-[#0da06a] text-gray-700 font-sans">
-                <button id="clearCitySearch" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 hidden">
-                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </button>
-            </div>
-            <!-- Default State -->
-            <div id="popularCitiesList">
-                <h4 class="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-3 font-sans">Popular Cities</h4>
-                <div class="grid grid-cols-2 gap-y-3 text-sm text-gray-700 font-medium font-sans">
-                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Bengaluru">Bengaluru</div>
-                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Pune">Pune</div>
-                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Hyderabad">Hyderabad</div>
-                    <div class="city-item cursor-pointer hover:text-[#0da06a] truncate pr-2" title="Bengaluru Rural" data-city="Bengaluru Rural">Bengaluru Ru...</div>
-                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Krishnagiri">Krishnagiri</div>
-                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Chikkaballapur">Chikkaballapur</div>
-                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Jaipur">Jaipur</div>
-                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Noida">Noida</div>
-                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Rangareddi">Rangareddi</div>
-                    <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Sangareddi">Sangareddi</div>
-                </div>
-            </div>
-            <!-- Searched State -->
-            <div id="searchResultsList" class="hidden">
-                <h4 class="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-3 font-sans">Search Results</h4>
-                <div id="resultsContainer" class="flex flex-col gap-2 text-sm text-gray-700 font-medium max-h-[200px] overflow-y-auto font-sans"></div>
-            </div>
-        </div>
-        <!-- 2. MAIN SEARCH MODAL -->
-        <div id="searchModal" class="absolute top-full left-0 w-full min-w-[640px] mt-2 !bg-[#fffbf0] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border border-gray-100 p-6 md:p-8 opacity-0 invisible translate-y-2 transition-all duration-300 z-40">
-            <div class="flex flex-wrap gap-3 mb-8">
-                <a href="project-listing.html?type=Farmhouse" class="px-5 py-2 rounded-full border border-gray-200 bg-white text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors font-sans">Farmhouse</a>
-                <a href="project-listing.html?type=Farmland" class="px-5 py-2 rounded-full border border-gray-200 bg-white text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors font-sans">Farmland</a>
-                <a href="project-listing.html?type=Estates" class="px-5 py-2 rounded-full border border-gray-200 bg-white text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors font-sans">Estates</a>
-                <a href="project-listing.html?type=Agricultural%20Land" class="px-5 py-2 rounded-full border border-gray-200 bg-white text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors font-sans">Agriculture Land</a>
-            </div>
-            <div class="mb-8">
-                <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4 font-sans">Recently Added</h4>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <a href="project-listing.html" class="cursor-pointer group block">
-                        <div class="relative h-28 rounded-xl overflow-hidden mb-2">
-                            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Property">
-                            <div class="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold px-2 py-1 rounded font-sans">₹19.40 L onwards</div>
+            <div id="homeSearchWrap" class="relative block w-full max-w-2xl">
+                <div class="w-full pointer-events-auto relative">
+                    <div id="searchBarTrigger" class="bg-white rounded-full p-1.5 pl-4 pr-2 flex items-center justify-between shadow-md cursor-text border border-transparent hover:border-gray-200 transition-colors">
+                        <div id="cityDropdownTrigger" class="flex items-center gap-1.5 text-gray-800 font-bold whitespace-nowrap cursor-pointer hover:text-[#0da06a] transition-colors z-50 relative font-sans">
+                            <svg class="w-4 h-4 text-[#0da06a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span id="selectedCityText" class="text-sm font-sans">Select City</span>
+                            <svg class="w-3.5 h-3.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                            </svg>
                         </div>
-                        <h5 class="text-sm font-bold text-gray-900 font-sans">Krushi Bhoomi</h5>
-                        <p class="text-xs text-gray-500 font-sans">Project Area - 30 acre</p>
-                    </a>
-                    <a href="project-listing.html" class="cursor-pointer group block">
-                        <div class="relative h-28 rounded-xl overflow-hidden mb-2">
-                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Property">
-                            <div class="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold px-2 py-1 rounded font-sans">₹87.12 L onwards</div>
+                        <div class="h-6 w-[1px] bg-gray-200 mx-3 hidden md:block"></div>
+                        <form id="heroSearchForm" action="project-listing.html" method="get" class="flex-grow flex items-center">
+                            <input
+                                type="text"
+                                id="mainSearchTrigger"
+                                name="q"
+                                autocomplete="off"
+                                placeholder="Search city, project, or keyword..."
+                                class="w-full bg-transparent border-none outline-none text-gray-800 placeholder-gray-400 text-sm truncate font-sans"
+                            />
+                            <button
+                                type="submit"
+                                id="mainSearchIconTrigger"
+                                aria-label="Search"
+                                class="bg-white text-[#0da06a] p-1.5 rounded-full hover:bg-gray-50 transition-colors cursor-pointer"
+                            >
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                    <div id="cityModal" class="absolute top-full left-0 mt-2 w-[320px] !bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border border-gray-100 p-5 opacity-0 invisible translate-y-2 transition-all duration-300 z-50">
+                        <div class="relative mb-4">
+                            <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                            <input type="text" id="citySearchInput" placeholder="Search city..."
+                                class="w-full bg-gray-50 border border-gray-200 rounded-full pl-9 pr-8 py-2 text-sm focus:outline-none focus:border-[#0da06a] text-gray-700 font-sans">
+                            <button id="clearCitySearch" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 hidden">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
+                            </button>
                         </div>
-                        <h5 class="text-sm font-bold text-gray-900 font-sans">Lawnsview</h5>
-                        <p class="text-xs text-gray-500 font-sans">Project Area - 22 acre</p>
-                    </a>
-                    <a href="project-listing.html" class="cursor-pointer group block">
-                        <div class="relative h-28 rounded-xl overflow-hidden mb-2">
-                            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Property">
-                            <div class="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold px-2 py-1 rounded font-sans">₹55.00 L onwards</div>
+                        <div id="popularCitiesList">
+                            <h4 class="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-3 font-sans">Popular Cities</h4>
+                            <div class="grid grid-cols-2 gap-y-3 text-sm text-gray-700 font-medium font-sans">
+                                <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Bengaluru">Bengaluru</div>
+                                <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Pune">Pune</div>
+                                <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Hyderabad">Hyderabad</div>
+                                <div class="city-item cursor-pointer hover:text-[#0da06a] truncate pr-2" title="Bengaluru Rural" data-city="Bengaluru Rural">Bengaluru Ru...</div>
+                                <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Krishnagiri">Krishnagiri</div>
+                                <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Chikkaballapur">Chikkaballapur</div>
+                                <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Jaipur">Jaipur</div>
+                                <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Noida">Noida</div>
+                                <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Rangareddi">Rangareddi</div>
+                                <div class="city-item cursor-pointer hover:text-[#0da06a]" data-city="Sangareddi">Sangareddi</div>
+                            </div>
                         </div>
-                        <h5 class="text-sm font-bold text-gray-900 font-sans">Triguna Country Homes</h5>
-                        <p class="text-xs text-gray-500 font-sans">Project Area - 100 acre</p>
-                    </a>
+                        <div id="searchResultsList" class="hidden">
+                            <h4 class="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-3 font-sans">Search Results</h4>
+                            <div id="resultsContainer" class="flex flex-col gap-2 text-sm text-gray-700 font-medium max-h-[200px] overflow-y-auto font-sans"></div>
+                        </div>
+                    </div>
+                    <div id="searchModal" class="absolute top-full left-1/2 -translate-x-1/2 w-[95vw] md:w-full md:min-w-[640px] md:left-0 md:translate-x-0 mt-2 !bg-[#fffbf0] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border border-gray-100 p-4 md:p-8 opacity-0 invisible translate-y-2 transition-all duration-300 z-40">
+                        
+                        <div class="flex flex-wrap gap-2 md:gap-3 mb-6 md:mb-8">
+                            <a href="project-listing.html?type=Farmhouse" class="px-4 md:px-5 py-1.5 md:py-2 rounded-full border border-gray-200 bg-white text-xs md:text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors font-sans">Farmhouse</a>
+                            <a href="project-listing.html?type=Farmland" class="px-4 md:px-5 py-1.5 md:py-2 rounded-full border border-gray-200 bg-white text-xs md:text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors font-sans">Farmland</a>
+                            <a href="project-listing.html?type=Estates" class="px-4 md:px-5 py-1.5 md:py-2 rounded-full border border-gray-200 bg-white text-xs md:text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors font-sans">Estates</a>
+                            <a href="project-listing.html?type=Agricultural%20Land" class="px-4 md:px-5 py-1.5 md:py-2 rounded-full border border-gray-200 bg-white text-xs md:text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors font-sans">Agriculture Land</a>
+                        </div>
+
+                        <div class="hidden md:block mb-6 md:mb-8">
+                            <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4 font-sans">Recently Added</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <a href="project-listing.html" class="cursor-pointer group block">
+                                    <div class="relative h-28 rounded-xl overflow-hidden mb-2">
+                                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Property">
+                                        <div class="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold px-2 py-1 rounded font-sans">₹19.40 L onwards</div>
+                                    </div>
+                                    <h5 class="text-sm font-bold text-gray-900 font-sans">Krushi Bhoomi</h5>
+                                    <p class="text-xs text-gray-500 font-sans">Project Area - 30 acre</p>
+                                </a>
+                                <a href="project-listing.html" class="cursor-pointer group block">
+                                    <div class="relative h-28 rounded-xl overflow-hidden mb-2">
+                                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Property">
+                                        <div class="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold px-2 py-1 rounded font-sans">₹87.12 L onwards</div>
+                                    </div>
+                                    <h5 class="text-sm font-bold text-gray-900 font-sans">Lawnsview</h5>
+                                    <p class="text-xs text-gray-500 font-sans">Project Area - 22 acre</p>
+                                </a>
+                                <a href="project-listing.html" class="cursor-pointer group block">
+                                    <div class="relative h-28 rounded-xl overflow-hidden mb-2">
+                                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Property">
+                                        <div class="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold px-2 py-1 rounded font-sans">₹55.00 L onwards</div>
+                                    </div>
+                                    <h5 class="text-sm font-bold text-gray-900 font-sans">Triguna Country Homes</h5>
+                                    <p class="text-xs text-gray-500 font-sans">Project Area - 100 acre</p>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div>
+                                <h4 class="text-xs font-bold text-[#0da06a] uppercase tracking-wider mb-3 font-sans">Project Size</h4>
+                                <ul class="space-y-2 text-sm text-gray-600 font-sans">
+                                    <li><a href="project-listing.html?size=under-30" class="hover:text-[#0da06a] transition-colors block">Under 30 acres</a></li>
+                                    <li><a href="project-listing.html?size=30-60" class="hover:text-[#0da06a] transition-colors block">30 - 60 acres</a></li>
+                                    <li><a href="project-listing.html?size=60-90" class="hover:text-[#0da06a] transition-colors block">60 - 90 acres</a></li>
+                                    <li><a href="project-listing.html?size=above-90" class="hover:text-[#0da06a] transition-colors block">Above 90 acres</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-[#0da06a] uppercase tracking-wider mb-3 font-sans">Amenities</h4>
+                                <ul class="space-y-2 text-sm text-gray-600 font-sans">
+                                    <li><a href="project-listing.html?amenity=Electricity" class="hover:text-[#0da06a] transition-colors block">Electricity</a></li>
+                                    <li><a href="project-listing.html?amenity=Swimming%20Pool" class="hover:text-[#0da06a] transition-colors block">Swimming Pool</a></li>
+                                    <li><a href="project-listing.html?amenity=Garden" class="hover:text-[#0da06a] transition-colors block">Garden</a></li>
+                                    <li><a href="project-listing.html?amenity=Club%20House" class="hover:text-[#0da06a] transition-colors block">Club House</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-[#0da06a] uppercase tracking-wider mb-3 font-sans">Budget</h4>
+                                <ul class="space-y-2 text-sm text-gray-600 font-sans">
+                                    <li><a href="project-listing.html?budget=under-50" class="hover:text-[#0da06a] transition-colors block">Under ₹50 Lakhs</a></li>
+                                    <li><a href="project-listing.html?budget=50-70" class="hover:text-[#0da06a] transition-colors block">₹50 - 70 Lakhs</a></li>
+                                    <li><a href="project-listing.html?budget=70-90" class="hover:text-[#0da06a] transition-colors block">₹70 - 90 Lakhs</a></li>
+                                    <li><a href="project-listing.html?budget=1-2-cr" class="hover:text-[#0da06a] transition-colors block">₹1 - 2 Crores</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                    <h4 class="text-xs font-bold text-[#0da06a] uppercase tracking-wider mb-3 font-sans">Project Size</h4>
-                    <ul class="space-y-2 text-sm text-gray-600 font-sans">
-                        <li><a href="project-listing.html?size=under-30" class="hover:text-[#0da06a] transition-colors block">Under 30 acres</a></li>
-                        <li><a href="project-listing.html?size=30-60" class="hover:text-[#0da06a] transition-colors block">30 - 60 acres</a></li>
-                        <li><a href="project-listing.html?size=60-90" class="hover:text-[#0da06a] transition-colors block">60 - 90 acres</a></li>
-                        <li><a href="project-listing.html?size=above-90" class="hover:text-[#0da06a] transition-colors block">Above 90 acres</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xs font-bold text-[#0da06a] uppercase tracking-wider mb-3 font-sans">Amenities</h4>
-                    <ul class="space-y-2 text-sm text-gray-600 font-sans">
-                        <li><a href="project-listing.html?amenity=Electricity" class="hover:text-[#0da06a] transition-colors block">Electricity</a></li>
-                        <li><a href="project-listing.html?amenity=Swimming%20Pool" class="hover:text-[#0da06a] transition-colors block">Swimming Pool</a></li>
-                        <li><a href="project-listing.html?amenity=Garden" class="hover:text-[#0da06a] transition-colors block">Garden</a></li>
-                        <li><a href="project-listing.html?amenity=Club%20House" class="hover:text-[#0da06a] transition-colors block">Club House</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xs font-bold text-[#0da06a] uppercase tracking-wider mb-3 font-sans">Budget</h4>
-                    <ul class="space-y-2 text-sm text-gray-600 font-sans">
-                        <li><a href="project-listing.html?budget=under-50" class="hover:text-[#0da06a] transition-colors block">Under ₹50 Lakhs</a></li>
-                        <li><a href="project-listing.html?budget=50-70" class="hover:text-[#0da06a] transition-colors block">₹50 - 70 Lakhs</a></li>
-                        <li><a href="project-listing.html?budget=70-90" class="hover:text-[#0da06a] transition-colors block">₹70 - 90 Lakhs</a></li>
-                        <li><a href="project-listing.html?budget=1-2-cr" class="hover:text-[#0da06a] transition-colors block">₹1 - 2 Crores</a></li>
-                    </ul>
-                </div>
             </div>
-        </div>
-    </div>
-</div>
-            </div>
-            <!-- Navigation Arrows -->
-            <div class="banner-prev absolute top-1/2 left-2 md:left-6 xl:left-10 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-main-green p-2 md:p-3 rounded-full shadow-md cursor-pointer transition-all">
+            <div class="banner-prev absolute top-1/2 left-2 md:left-6 xl:left-10 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-main-green p-2 md:p-3 rounded-full shadow-md cursor-pointer transition-all max-[540px]:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
             </div>
-            <div class="banner-next absolute top-1/2 right-2 md:right-6 xl:right-10 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-main-green p-2 md:p-3 rounded-full shadow-md cursor-pointer transition-all">
+            <div class="banner-next absolute top-1/2 right-2 md:right-6 xl:right-10 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-main-green p-2 md:p-3 rounded-full shadow-md cursor-pointer transition-all max-[540px]:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
             </div>
         </div>
+
+
+
     <section class="w-full py-16 md:py-24 relative overflow-hidden bg-gradient-to-br from-[#eefcf5] to-[#dcf2e5]">
     <div class="max-w-[1300px] mx-auto px-4 md:px-8 relative z-10">
         <div class="text-center w-full mx-auto mb-10 md:mb-16 px-2">
@@ -265,11 +260,9 @@
 </section>
 
 
-<!-- Farmhouse Lands Recommended Section -->
 <section class="w-full py-16 md:py-24 relative overflow-hidden bg-[#fdfbf5]">
-    <div class="max-w-[1300px] mx-auto px-4 md:px-8 relative z-10">
+    <div class="max-w-[1300px] mx-auto px-4 md:px-8 max-[540px]:px-0 relative z-10">
         
-        <!-- Header -->
         <div class="text-center w-full mx-auto mb-10 md:mb-16 px-2">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight font-sans tracking-tight text-[#1a2e1f]">
                 Farmhouse Lands <span class="text-[#b89436]">Recommended</span>
@@ -279,13 +272,11 @@
             </p>
         </div>
 
-        <!-- Slider Wrapper -->
         <div class="relative w-full py-8">
             
             <div class="swiper recommendedSwiper">
                 <div class="swiper-wrapper items-center">
                     
-                    <!-- Card 1 -->
                     <div class="swiper-slide recommended-slide">
                         <a href="project-detail.html" class="group flex flex-col h-full bg-white rounded-[12px] overflow-hidden border-2 border-[#0da06a]/20 shadow-[0_4px_20px_rgb(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.1)] transition-all duration-500">
                             <div class="relative h-[220px] md:h-[250px] w-full overflow-hidden">
@@ -317,7 +308,6 @@
                         </a>
                     </div>
 
-                    <!-- Card 2 -->
                     <div class="swiper-slide recommended-slide">
                         <a href="project-detail.html" class="group flex flex-col h-full bg-white rounded-[12px] overflow-hidden border-2 border-[#0da06a]/20 shadow-[0_4px_20px_rgb(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.1)] transition-all duration-500">
                             <div class="relative h-[220px] md:h-[250px] w-full overflow-hidden">
@@ -349,7 +339,6 @@
                         </a>
                     </div>
 
-                    <!-- Card 3 -->
                     <div class="swiper-slide recommended-slide">
                         <a href="project-detail.html" class="group flex flex-col h-full bg-white rounded-[12px] overflow-hidden border-2 border-[#0da06a]/20 shadow-[0_4px_20px_rgb(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.1)] transition-all duration-500">
                             <div class="relative h-[220px] md:h-[250px] w-full overflow-hidden">
@@ -381,7 +370,6 @@
                         </a>
                     </div>
 
-                    <!-- Card 4 -->
                     <div class="swiper-slide recommended-slide">
                         <a href="project-detail.html" class="group flex flex-col h-full bg-white rounded-[12px] overflow-hidden border-2 border-[#0da06a]/20 shadow-[0_4px_20px_rgb(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.1)] transition-all duration-500">
                             <div class="relative h-[220px] md:h-[250px] w-full overflow-hidden">
@@ -413,7 +401,6 @@
                         </a>
                     </div>
 
-                    <!-- Card 5 -->
                     <div class="swiper-slide recommended-slide">
                         <a href="project-detail.html" class="group flex flex-col h-full bg-white rounded-[12px] overflow-hidden border-2 border-[#0da06a]/20 shadow-[0_4px_20px_rgb(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.1)] transition-all duration-500">
                             <div class="relative h-[220px] md:h-[250px] w-full overflow-hidden">
@@ -448,13 +435,12 @@
                 </div>
             </div>
 
-            <!-- Nav Arrows -->
-            <div class="recommended-prev absolute top-1/2 -left-2 md:-left-6 -translate-y-1/2 z-20 bg-white hover:bg-gray-50 text-gray-700 w-10 h-10 md:w-12 md:h-12 rounded-full shadow-lg flex items-center justify-center cursor-pointer transition-colors border border-gray-100">
+            <div class="recommended-prev absolute top-1/2 -left-2 md:-left-6 -translate-y-1/2 z-20 bg-white hover:bg-gray-50 text-gray-700 w-10 h-10 md:w-12 md:h-12 rounded-full shadow-lg flex items-center justify-center cursor-pointer transition-colors border border-gray-100 max-[540px]:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
             </div>
-            <div class="recommended-next absolute top-1/2 -right-2 md:-right-6 -translate-y-1/2 z-20 bg-white hover:bg-gray-50 text-gray-700 w-10 h-10 md:w-12 md:h-12 rounded-full shadow-lg flex items-center justify-center cursor-pointer transition-colors border border-gray-100">
+            <div class="recommended-next absolute top-1/2 -right-2 md:-right-6 -translate-y-1/2 z-20 bg-white hover:bg-gray-50 text-gray-700 w-10 h-10 md:w-12 md:h-12 rounded-full shadow-lg flex items-center justify-center cursor-pointer transition-colors border border-gray-100 max-[540px]:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
@@ -462,7 +448,6 @@
         </div>
     </div>
 </section>
-
 
 
 
@@ -1344,7 +1329,7 @@
             <div class="max-w-[1400px] mx-auto px-4 md:px-8 relative z-10">
                 <div class="text-center max-w-3xl mx-auto mb-16">
                     <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-[#1a2e1f] mb-4 tracking-tight font-sans">
-                        Trusted by Thousands <span class="text-[#b07d35]">Across India</span>
+                        Trusted by Thousands <span class="text-[#b07d35]">of People</span>
                     </h2>
                     <p class="text-gray-500 text-sm md:text-base leading-relaxed font-sans">
                         Our platform continues to grow, connecting buyers and developers across the nation with verified listings and reliable data.
@@ -1406,6 +1391,11 @@
                 </div>
             </div>
         </section>
+
+
+        
+
+        
 
 
         
@@ -1540,36 +1530,34 @@
     </section>
 
 
-
-
-        <section class="w-full py-16 md:py-24 bg-[#e0ede0] relative overflow-hidden">
-            <!-- Decorative background elements -->
+        <section class="bg-vector-pattern w-full py-16 md:py-24 font-sans">
             <div class="max-w-[1400px] mx-auto px-4 md:px-8 relative z-10">
-                <div class="backdrop-blur-sm rounded-[32px] p-8 md:p-12 lg:p-16 relative overflow-hidden">
-                    <!-- Inner accent border -->
-                    <div class="absolute inset-0 rounded-[32px] pointer-events-none"></div>
+                <div class="rounded-[32px] p-8 md:p-12 lg:p-16 relative overflow-hidden">
                     <div class="text-center max-w-3xl mx-auto relative z-10">
+                        
                         <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-[#1a2e1f] mb-4 font-sans tracking-tight leading-tight">
-                            Trusted by Thousands<br class="hidden sm:block" />
-                            <span class="text-[#b07d35]">Across India</span>
+                            Explore India's Finest<br class="hidden sm:block" />
+                            <span class="text-[#b07d35]">Estates</span>
                         </h2>
+                        
                         <p class="text-sm md:text-base text-gray-500 mb-10 max-w-xl mx-auto font-medium leading-relaxed font-sans">
-                            Share your requirements and our farmland experts will help you discover the right properties that match your investment goals.
+                            Browse our curated collection of verified agricultural lands, premium farmhouses and managed estates. Start your farmland investment journey today.
                         </p>
+                        
                         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <a href="project-listing.html" 
-                            class="relative z-10 group bg-[#0da06a] text-white font-bold text-[15px] px-8 py-4 rounded-full hover:bg-[#0b8a5a] transition-all duration-300  flex items-center justify-center gap-2 w-full sm:w-auto font-sans">
-                                Visit Properties
+                            class="relative z-10 group bg-[#0da06a] text-white font-bold text-[15px] px-8 py-4 rounded-full hover:bg-[#0b8a5a] transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto font-sans">
+                                Browse All Properties
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                 </svg>
                             </a>
                         </div>
-                        <!-- Trust indicators -->
+                        
                         <div class="mt-10 pt-8 border-gray-100 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
                             <div class="flex items-center gap-2 text-xs font-semibold text-gray-500 font-sans">
                                 <svg class="w-4 h-4 text-[#0da06a]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                                Verified Listings
+                                1,600+ Verified Listings
                             </div>
                             <div class="flex items-center gap-2 text-xs font-semibold text-gray-500 font-sans">
                                 <svg class="w-4 h-4 text-[#0da06a]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
@@ -1577,13 +1565,17 @@
                             </div>
                             <div class="flex items-center gap-2 text-xs font-semibold text-gray-500 font-sans">
                                 <svg class="w-4 h-4 text-[#0da06a]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                                Expert Guidance
+                                Direct Developer Connect
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
-        </section>
+</section>
+
+
+        
     </main>
     <div id="footer-placeholder"></div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

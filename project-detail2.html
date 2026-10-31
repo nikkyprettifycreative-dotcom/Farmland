@@ -3,9 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Farmland - Project Details</title>
+        <title>Farmland - Projects</title>
         
-        <link rel="icon" type="image/png" href="assets/images/favicon.png">
+        <link rel="icon" type="image/png" href="assets/images/favicon.png?v=3">
     
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,1184 +35,1212 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
         <link rel="stylesheet" href="assets/css/animate.css">
         <link rel="stylesheet" href="assets/css/main.css">
+        
+        <style>
+            input[type=range] {
+                -webkit-appearance: none;
+                width: 100%;
+                background: transparent;
+            }
+            input[type=range]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                background: var(--main-green);
+                cursor: pointer;
+                margin-top: -8px;
+                box-shadow: 0 0 2px rgba(0,0,0,0.2);
+            }
+            input[type=range]::-webkit-slider-runnable-track {
+                width: 100%;
+                height: 4px;
+                cursor: pointer;
+                background: #e5e7eb;
+                border-radius: 2px;
+            }
+            input[type=range]:focus {
+                outline: none;
+            }
+            input[type=range]::-moz-range-thumb {
+                height: 20px;
+                width: 20px;
+                border: none;
+                border-radius: 50%;
+                background: var(--main-green);
+                cursor: pointer;
+            }
+            input[type=range]::-moz-range-track {
+                width: 100%;
+                height: 4px;
+                cursor: pointer;
+                background: #e5e7eb;
+                border-radius: 2px;
+            }
+        </style>
     </head>
-<body class="font-sans antialiased bg-[#eefcf5] overflow-x-clip">
+<body class="listing-page font-sans antialiased bg-[#f8fafc] overflow-x-clip">
 
     <div id="header-placeholder"></div>
 
-    <section class="w-full bg-[#f8fafc] pt-4 pb-4 z-20 relative">
-        <div class="max-w-[1400px] mx-auto px-4 md:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-3 h-[300px] md:h-[450px] lg:h-[500px] rounded-2xl overflow-hidden">
+    <main class="listing-main pt-6 pb-16 bg-[#eefcf5]">
+        <div class="listing-wrap max-w-[1400px] mx-auto px-4 md:px-8">
+            <div class="listing-grid flex flex-col lg:flex-row gap-8 items-start">
                 
-                <a href="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1920&auto=format&fit=crop" 
-                   data-fancybox="hero-gallery" 
-                   data-caption="Golden Grove - Aerial View"
-                   class="md:col-span-2 relative block overflow-hidden group h-full cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1000&auto=format&fit=crop" 
-                         alt="Hero 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </a>
+                <aside class="listing-filters-aside w-full lg:w-[320px] flex-shrink-0 hidden lg:block">
+                    <div class="bg-white rounded-xl border border-[#0da06a]/20 shadow-[0_4px_20px_rgb(0,0,0,0.03)] overflow-hidden lg:h-full lg:flex lg:flex-col">
 
-                <a href="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1920&auto=format&fit=crop" 
-                   data-fancybox="hero-gallery" 
-                   data-caption="Entrance & Landscaping"
-                   class="relative block overflow-hidden group h-full cursor-pointer hidden md:block">
-                    <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000&auto=format&fit=crop" 
-                         alt="Hero 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </a>
+                        <!-- Header — compact -->
+                        <div class="bg-main-green px-4 py-2.5 flex items-center justify-between flex-shrink-0">
+                            <div class="flex items-center gap-2 text-white font-bold text-[13px]">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                                <span>Filters</span>
+                            </div>
+                            <button id="clearFilters" class="text-white text-[12px] font-semibold hover:underline">Clear all</button>
+                        </div>
 
-                <div class="hidden md:grid grid-rows-2 gap-2 md:gap-3 h-full">
-                    <div class="grid grid-cols-2 gap-2 md:gap-3 h-full">
-                        <a href="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1920&auto=format&fit=crop" 
-                           data-fancybox="hero-gallery" 
-                           data-caption="Clubhouse & Amenities"
-                           class="relative block overflow-hidden group h-full cursor-pointer">
-                            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=600&auto=format&fit=crop" 
-                                 alt="Hero 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </a>
-                        <a href="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1920&auto=format&fit=crop" 
-                           data-fancybox="hero-gallery" 
-                           data-caption="Farm Plots"
-                           class="relative block overflow-hidden group h-full cursor-pointer">
-                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600&auto=format&fit=crop" 
-                                 alt="Hero 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </a>
+                        <!-- Scrollable inner area -->
+                        <div class="listing-scroll p-5 space-y-6 lg:flex-1 lg:overflow-y-auto lg:min-h-0">
+
+                            <!-- Search -->
+                            <div class="relative">
+                                <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                <input type="text" id="searchInput" placeholder="Search title, keywords..." class="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-[#0da06a]/30 rounded-lg text-sm focus:outline-none focus:border-main-green focus:ring-1 focus:ring-main-green text-gray-700 transition-colors">
+                            </div>
+
+                            <!-- City (Tailwind multi-level dropdown, green chevron) -->
+                            <div class="border-t border-[#0da06a]/10 pt-4">
+                                <div class="flex items-center justify-between cursor-pointer mb-3">
+                                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
+                                        <svg class="w-4 h-4 text-main-green" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+                                        City
+                                    </div>
+                                </div>
+
+                                <!-- Hidden native select kept for JS functionality -->
+                                <select id="citySelect" class="sr-only" tabindex="-1" aria-hidden="true">
+                                    <option value="">All Cities</option>
+                                    <option value="Bengaluru">Bengaluru</option>
+                                    <option value="Pune">Pune</option>
+                                    <option value="Hyderabad">Hyderabad</option>
+                                    <option value="Bengaluru Rural">Bengaluru Rural</option>
+                                    <option value="Krishnagiri">Krishnagiri</option>
+                                    <option value="Chikkaballapur">Chikkaballapur</option>
+                                    <option value="Jaipur">Jaipur</option>
+                                    <option value="Noida">Noida</option>
+                                    <option value="Rangareddi">Rangareddi</option>
+                                    <option value="Sangareddi">Sangareddi</option>
+                                    <option value="Hindupur">Hindupur</option>
+                                    <option value="Chikmagalur">Chikmagalur</option>
+                                    <option value="Kodaikanal">Kodaikanal</option>
+                                    <option value="Coorg">Coorg</option>
+                                    <option value="Goa">Goa</option>
+                                </select>
+
+                                <div class="relative">
+                                    <!-- Dropdown trigger -->
+                                    <button id="cityDropdownBtn" type="button"
+                                            class="w-full flex items-center justify-between px-4 py-2.5 bg-gray-50 border border-[#0da06a]/30 rounded-lg text-sm text-gray-700 hover:border-main-green focus:outline-none focus:border-main-green focus:ring-1 focus:ring-main-green transition-colors">
+                                        <span id="cityDropdownLabel">All Cities</span>
+                                        <svg class="w-4 h-4 text-main-green pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                                    </button>
+
+                                    <!-- Dropdown menu -->
+                                    <div id="cityDropdownMenu"
+                                        class="z-50 hidden absolute left-0 right-0 mt-1 bg-white border border-[#0da06a]/20 rounded-lg shadow-lg max-h-64 overflow-y-auto">
+                                        <ul id="cityDropdownList" class="p-1.5 text-sm text-gray-700 font-medium">
+                                            <li><button type="button" data-city="" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">All Cities</button></li>
+                                            <li><button type="button" data-city="Bengaluru" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Bengaluru</button></li>
+                                            <li><button type="button" data-city="Pune" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Pune</button></li>
+                                            <li><button type="button" data-city="Hyderabad" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Hyderabad</button></li>
+                                            <li><button type="button" data-city="Bengaluru Rural" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Bengaluru Rural</button></li>
+                                            <li><button type="button" data-city="Krishnagiri" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Krishnagiri</button></li>
+                                            <li><button type="button" data-city="Chikkaballapur" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Chikkaballapur</button></li>
+                                            <li><button type="button" data-city="Jaipur" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Jaipur</button></li>
+                                            <li><button type="button" data-city="Noida" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Noida</button></li>
+                                            <li><button type="button" data-city="Rangareddi" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Rangareddi</button></li>
+                                            <li><button type="button" data-city="Sangareddi" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Sangareddi</button></li>
+                                            <li><button type="button" data-city="Hindupur" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Hindupur</button></li>
+                                            <li><button type="button" data-city="Chikmagalur" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Chikmagalur</button></li>
+                                            <li><button type="button" data-city="Kodaikanal" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Kodaikanal</button></li>
+                                            <li><button type="button" data-city="Coorg" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Coorg</button></li>
+                                            <li><button type="button" data-city="Goa" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Goa</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Property Type -->
+                            <div class="border-t border-[#0da06a]/10 pt-4">
+                                <div class="flex items-center justify-between cursor-pointer mb-3">
+                                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
+                                        <svg class="w-4 h-4 text-main-green" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                                        Property Type
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-2" id="propertyTypeFilters">
+                                    <label class="flex items-center gap-2 bg-gray-50 border border-[#0da06a]/30 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                                        <input class="w-4 h-4 accent-[#0da06a] bg-white border-gray-300 rounded cursor-pointer filter-checkbox" type="checkbox" value="Farmland">
+                                        <span class="text-sm text-gray-700">Farmland</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 bg-gray-50 border border-[#0da06a]/30 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                                        <input class="w-4 h-4 accent-[#0da06a] bg-white border-gray-300 rounded cursor-pointer filter-checkbox" type="checkbox" value="Farmhouse">
+                                        <span class="text-sm text-gray-700">Farmhouse</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 bg-gray-50 border border-[#0da06a]/30 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                                        <input class="w-4 h-4 accent-[#0da06a] bg-white border-gray-300 rounded cursor-pointer filter-checkbox" type="checkbox" value="Agricultural Land">
+                                        <span class="text-sm text-gray-700">Agri Land</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 bg-gray-50 border border-[#0da06a]/30 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                                        <input class="w-4 h-4 accent-[#0da06a] bg-white border-gray-300 rounded cursor-pointer filter-checkbox" type="checkbox" value="Estates">
+                                        <span class="text-sm text-gray-700">Estates</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Price Range -->
+                            <div class="border-t border-[#0da06a]/10 pt-4">
+                                <div class="flex items-center justify-between cursor-pointer mb-4">
+                                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" style="color: var(--main-green); flex-shrink: 0;">
+                                            <path fill="currentColor" d="M18 5V3H6v2h4c1.86 0 3.41 1.28 3.86 3H6v2h7.86c-.45 1.72-2 3-3.86 3H7c-.42 0-.79.26-.94.65s-.04.83.28 1.1l8 7l1.32-1.5l-6-5.25H10c2.97 0 5.43-2.17 5.91-5H18V8h-2.09a6 6 0 0 0-1.45-3z" />
+                                        </svg>
+                                        Price Range
+                                    </div>
+                                </div>
+                                <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
+                                    <span>₹0</span>
+                                    <span id="priceMaxLabel" class="text-main-green">₹10 Cr</span>
+                                </div>
+                                <input type="range" id="priceRange" class="w-full" min="0" max="1000" value="1000">
+                            </div>
+
+                            <!-- Area -->
+                            <div class="border-t border-[#0da06a]/10 pt-4">
+                                <div class="flex items-center justify-between cursor-pointer mb-4">
+                                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
+                                        <svg class="w-4 h-4 text-main-green" fill="currentColor" viewBox="0 0 24 24"><path d="M3 3h6v2H5v4H3V3zm18 0v6h-2V5h-4V3h6zM3 21v-6h2v4h4v2H3zm18 0h-6v-2h4v-4h2v6z"/></svg>
+                                        Area (Acres)
+                                    </div>
+                                </div>
+                                <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
+                                    <span>0 ac</span>
+                                    <span id="areaMaxLabel" class="text-main-green">500 ac</span>
+                                </div>
+                                <input type="range" id="areaRange" class="w-full" min="0" max="500" value="500">
+                            </div>
+
+                            <!-- Amenities -->
+                            <div class="border-t border-[#0da06a]/10 pt-4">
+                                <div class="flex items-center justify-between cursor-pointer mb-3">
+                                    <div class="flex items-center gap-2 text-gray-900 font-bold text-sm">
+                                        <svg class="w-4 h-4 text-main-green" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/></svg>
+                                        Amenities
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-y-3 gap-x-2" id="amenitiesFilters">
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input class="w-4 h-4 accent-[#0da06a] bg-gray-50 border-gray-300 rounded cursor-pointer filter-amenity" type="checkbox" value="Swimming Pool">
+                                        <span class="text-sm text-gray-600">Swimming Pool</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input class="w-4 h-4 accent-[#0da06a] bg-gray-50 border-gray-300 rounded cursor-pointer filter-amenity" type="checkbox" value="Security">
+                                        <span class="text-sm text-gray-600">Security</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input class="w-4 h-4 accent-[#0da06a] bg-gray-50 border-gray-300 rounded cursor-pointer filter-amenity" type="checkbox" value="Solar Power">
+                                        <span class="text-sm text-gray-600">Solar Power</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input class="w-4 h-4 accent-[#0da06a] bg-gray-50 border-gray-300 rounded cursor-pointer filter-amenity" type="checkbox" value="Borewell">
+                                        <span class="text-sm text-gray-600">Borewell</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Mobile Slide-out Sidebar -->
+                <div id="mobileFilterOverlay"
+                    class="fixed inset-0 bg-black/50 z-[10040] opacity-0 invisible transition-opacity duration-300 lg:hidden"></div>
+
+                <div id="mobileFilterMenu"
+                    class="fixed top-0 left-0 h-full w-[85%] max-w-[320px] bg-white z-[10050] -translate-x-full transition-transform duration-300 lg:hidden flex flex-col shadow-2xl">
+
+                    <!-- Drawer header -->
+                    <div class="bg-main-green px-4 py-2.5 flex items-center justify-between flex-shrink-0">
+                        <div class="flex items-center gap-2 text-white font-bold text-[13px]">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                            </svg>
+                            <span>Filters</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button id="clearFiltersMobile" type="button"
+                                    class="text-white text-[12px] font-semibold hover:underline">Clear all</button>
+                            <button id="closeMobileFilterBtn" type="button"
+                                    class="text-white p-1.5 hover:bg-white/10 rounded-full transition-colors">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Scrollable inner area — same content as the desktop aside -->
+                    <div class="listing-scroll p-5 space-y-6 flex-1 overflow-y-auto min-h-0">
+
+                        <!-- Search -->
+                        <div class="relative">
+                            <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                            <input type="text" id="searchInputMobile" placeholder="Search title, keywords..."
+                                class="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-[#0da06a]/30 rounded-lg text-sm focus:outline-none focus:border-main-green focus:ring-1 focus:ring-main-green text-gray-700 transition-colors">
+                        </div>
+
+                        <!-- City -->
+                        <div class="border-t border-[#0da06a]/10 pt-4">
+                            <div class="flex items-center gap-2 text-gray-900 font-bold text-sm mb-3">
+                                <svg class="w-4 h-4 text-main-green" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/>
+                                </svg>
+                                City
+                            </div>
+
+                            <!-- Mirrors the desktop #citySelect so main.js can sync -->
+                            <select id="citySelectMobile" class="sr-only" tabindex="-1" aria-hidden="true">
+                                <option value="">All Cities</option>
+                                <option value="Bengaluru">Bengaluru</option>
+                                <option value="Pune">Pune</option>
+                                <option value="Hyderabad">Hyderabad</option>
+                                <option value="Bengaluru Rural">Bengaluru Rural</option>
+                                <option value="Krishnagiri">Krishnagiri</option>
+                                <option value="Chikkaballapur">Chikkaballapur</option>
+                                <option value="Jaipur">Jaipur</option>
+                                <option value="Noida">Noida</option>
+                                <option value="Rangareddi">Rangareddi</option>
+                                <option value="Sangareddi">Sangareddi</option>
+                                <option value="Hindupur">Hindupur</option>
+                                <option value="Chikmagalur">Chikmagalur</option>
+                                <option value="Kodaikanal">Kodaikanal</option>
+                                <option value="Coorg">Coorg</option>
+                                <option value="Goa">Goa</option>
+                            </select>
+
+                            <div class="relative">
+                                <button id="cityDropdownBtnMobile" type="button"
+                                        class="w-full flex items-center justify-between px-4 py-2.5 bg-gray-50 border border-[#0da06a]/30 rounded-lg text-sm text-gray-700 hover:border-main-green focus:outline-none focus:border-main-green focus:ring-1 focus:ring-main-green transition-colors">
+                                    <span id="cityDropdownLabelMobile">All Cities</span>
+                                    <svg class="w-4 h-4 text-main-green pointer-events-none" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </button>
+
+                                <div id="cityDropdownMenuMobile"
+                                    class="z-50 hidden absolute left-0 right-0 mt-1 bg-white border border-[#0da06a]/20 rounded-lg shadow-lg max-h-64 overflow-y-auto">
+                                    <ul id="cityDropdownListMobile" class="p-1.5 text-sm text-gray-700 font-medium">
+                                        <li><button type="button" data-city="" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">All Cities</button></li>
+                                        <li><button type="button" data-city="Bengaluru" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Bengaluru</button></li>
+                                        <li><button type="button" data-city="Pune" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Pune</button></li>
+                                        <li><button type="button" data-city="Hyderabad" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Hyderabad</button></li>
+                                        <li><button type="button" data-city="Bengaluru Rural" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Bengaluru Rural</button></li>
+                                        <li><button type="button" data-city="Krishnagiri" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Krishnagiri</button></li>
+                                        <li><button type="button" data-city="Chikkaballapur" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Chikkaballapur</button></li>
+                                        <li><button type="button" data-city="Jaipur" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Jaipur</button></li>
+                                        <li><button type="button" data-city="Noida" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Noida</button></li>
+                                        <li><button type="button" data-city="Rangareddi" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Rangareddi</button></li>
+                                        <li><button type="button" data-city="Sangareddi" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Sangareddi</button></li>
+                                        <li><button type="button" data-city="Hindupur" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Hindupur</button></li>
+                                        <li><button type="button" data-city="Chikmagalur" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Chikmagalur</button></li>
+                                        <li><button type="button" data-city="Kodaikanal" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Kodaikanal</button></li>
+                                        <li><button type="button" data-city="Coorg" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Coorg</button></li>
+                                        <li><button type="button" data-city="Goa" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Goa</button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Property Type -->
+                        <div class="border-t border-[#0da06a]/10 pt-4">
+                            <div class="flex items-center gap-2 text-gray-900 font-bold text-sm mb-3">
+                                <svg class="w-4 h-4 text-main-green" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                                </svg>
+                                Property Type
+                            </div>
+                            <div class="grid grid-cols-2 gap-2" id="propertyTypeFiltersMobile">
+                                <label class="flex items-center gap-2 bg-gray-50 border border-[#0da06a]/30 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                                    <input class="w-4 h-4 accent-[#0da06a] bg-white border-gray-300 rounded cursor-pointer filter-checkbox" type="checkbox" value="Farmland">
+                                    <span class="text-sm text-gray-700">Farmland</span>
+                                </label>
+                                <label class="flex items-center gap-2 bg-gray-50 border border-[#0da06a]/30 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                                    <input class="w-4 h-4 accent-[#0da06a] bg-white border-gray-300 rounded cursor-pointer filter-checkbox" type="checkbox" value="Farmhouse">
+                                    <span class="text-sm text-gray-700">Farmhouse</span>
+                                </label>
+                                <label class="flex items-center gap-2 bg-gray-50 border border-[#0da06a]/30 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                                    <input class="w-4 h-4 accent-[#0da06a] bg-white border-gray-300 rounded cursor-pointer filter-checkbox" type="checkbox" value="Agricultural Land">
+                                    <span class="text-sm text-gray-700">Agri Land</span>
+                                </label>
+                                <label class="flex items-center gap-2 bg-gray-50 border border-[#0da06a]/30 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                                    <input class="w-4 h-4 accent-[#0da06a] bg-white border-gray-300 rounded cursor-pointer filter-checkbox" type="checkbox" value="Estates">
+                                    <span class="text-sm text-gray-700">Estates</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Price Range -->
+                        <div class="border-t border-[#0da06a]/10 pt-4">
+                            <div class="flex items-center gap-2 text-gray-900 font-bold text-sm mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    style="color: var(--main-green); flex-shrink: 0;">
+                                    <path fill="currentColor" d="M18 5V3H6v2h4c1.86 0 3.41 1.28 3.86 3H6v2h7.86c-.45 1.72-2 3-3.86 3H7c-.42 0-.79.26-.94.65s-.04.83.28 1.1l8 7l1.32-1.5l-6-5.25H10c2.97 0 5.43-2.17 5.91-5H18V8h-2.09a6 6 0 0 0-1.45-3z"/>
+                                </svg>
+                                Price Range
+                            </div>
+                            <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
+                                <span>₹0</span>
+                                <span id="priceMaxLabelMobile" class="text-main-green">₹10 Cr</span>
+                            </div>
+                            <input type="range" id="priceRangeMobile" class="w-full" min="0" max="1000" value="1000">
+                        </div>
+
+                        <!-- Area -->
+                        <div class="border-t border-[#0da06a]/10 pt-4">
+                            <div class="flex items-center gap-2 text-gray-900 font-bold text-sm mb-4">
+                                <svg class="w-4 h-4 text-main-green" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M3 3h6v2H5v4H3V3zm18 0v6h-2V5h-4V3h6zM3 21v-6h2v4h4v2H3zm18 0h-6v-2h4v-4h2v6z"/>
+                                </svg>
+                                Area (Acres)
+                            </div>
+                            <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
+                                <span>0 ac</span>
+                                <span id="areaMaxLabelMobile" class="text-main-green">500 ac</span>
+                            </div>
+                            <input type="range" id="areaRangeMobile" class="w-full" min="0" max="500" value="500">
+                        </div>
+
+                        <!-- Amenities -->
+                        <div class="border-t border-[#0da06a]/10 pt-4">
+                            <div class="flex items-center gap-2 text-gray-900 font-bold text-sm mb-3">
+                                <svg class="w-4 h-4 text-main-green" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/>
+                                </svg>
+                                Amenities
+                            </div>
+                            <div class="grid grid-cols-2 gap-y-3 gap-x-2" id="amenitiesFiltersMobile">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input class="w-4 h-4 accent-[#0da06a] bg-gray-50 border-gray-300 rounded cursor-pointer filter-amenity" type="checkbox" value="Swimming Pool">
+                                    <span class="text-sm text-gray-600">Swimming Pool</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input class="w-4 h-4 accent-[#0da06a] bg-gray-50 border-gray-300 rounded cursor-pointer filter-amenity" type="checkbox" value="Security">
+                                    <span class="text-sm text-gray-600">Security</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input class="w-4 h-4 accent-[#0da06a] bg-gray-50 border-gray-300 rounded cursor-pointer filter-amenity" type="checkbox" value="Solar Power">
+                                    <span class="text-sm text-gray-600">Solar Power</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input class="w-4 h-4 accent-[#0da06a] bg-gray-50 border-gray-300 rounded cursor-pointer filter-amenity" type="checkbox" value="Borewell">
+                                    <span class="text-sm text-gray-600">Borewell</span>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="listing-results flex-grow min-w-0">
+                    <div class="lg:hidden mb-4">
+                        <button id="mobileFilterBtn" type="button" class="w-full bg-white border border-[#0da06a]/20 text-gray-800 font-bold text-sm py-3 rounded-xl shadow-sm flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors">
+                            <svg class="w-5 h-5 text-main-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                            </svg>
+                            Filters
+                        </button>
                     </div>
                     
-                    <a href="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1920&auto=format&fit=crop" 
-                       data-fancybox="hero-gallery" 
-                       data-caption="Scenic Lake View"
-                       class="relative block overflow-hidden group h-full cursor-pointer">
-                        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1000&auto=format&fit=crop" 
-                             alt="Hero 5" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <a href="#" class="block w-full mb-6 rounded-2xl overflow-hidden">
+                        <img
+                            src="https://farmlandbazaar.com/assets/images/advertisement_banner.png"
+                            alt="Advertisement"
+                            class="w-full h-auto block"
+                        />
                     </a>
+
+                    <div class="bg-white rounded-2xl border border-gray-100 p-6 mb-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-sm font-black text-gray-900 uppercase tracking-widest flex items-center gap-2">
+                                <svg class="w-4 h-4 text-main-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                                Browse by Category
+                            </h3>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <button id="btn-all-props" class="group relative bg-main-green text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-[0_4px_15px_rgba(13,160,106,0.3)] hover:shadow-[0_6px_20px_rgba(13,160,106,0.4)] hover:-translate-y-0.5 flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                                All Properties
+                            </button>
+                            <button id="btn-recommended" class="group bg-white border-2 border-gray-100 text-gray-600 hover:border-main-green hover:text-main-green hover:bg-[#f2fcf5] px-6 py-2.5 rounded-full text-sm font-bold transition-all flex items-center gap-2">
+                                <svg class="w-4 h-4 text-[#f6a81c] group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                Recommended
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Toolbar Section -->
+                    <div class="bg-white rounded-2xl border border-gray-100 p-4 mb-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
+                        <div class="flex items-center gap-3">
+                            <span id="propertyCount" class="bg-[#eaf6f0] text-main-green font-black text-lg px-4 py-1.5 rounded-xl border border-main-green/20 shadow-inner">8</span>
+                            <div class="flex flex-col">
+                                <span class="text-sm text-gray-900 font-bold leading-tight">Properties Found</span>
+                                <span class="text-xs text-gray-500">Based on your filters</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 bg-gray-50 border border-gray-100 rounded-xl px-4 py-2">
+                            <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"/></svg>
+                            <span class="text-sm text-gray-500 font-medium whitespace-nowrap">Sort by:</span>
+
+                            <select id="sortSelect" class="sr-only" tabindex="-1" aria-hidden="true">
+                                <option value="recent">Most Recent</option>
+                                <option value="low-high">Price: Low to High</option>
+                                <option value="high-low">Price: High to Low</option>
+                            </select>
+
+                            <div class="relative">
+                                <button id="sortDropdownBtn" type="button"
+                                        class="flex items-center justify-between gap-3 bg-transparent text-gray-900 text-sm font-bold hover:text-main-green focus:outline-none transition-colors">
+                                    <span id="sortDropdownLabel">Most Recent</span>
+                                    <svg class="w-4 h-4 text-main-green pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                                </button>
+
+                                <div id="sortDropdownMenu"
+                                    class="z-50 hidden absolute right-0 mt-2 min-w-[200px] bg-white border border-[#0da06a]/20 rounded-lg shadow-lg">
+                                    <ul id="sortDropdownList" class="p-1.5 text-sm text-gray-700 font-medium">
+                                        <li><button type="button" data-sort="recent" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Most Recent</button></li>
+                                        <li><button type="button" data-sort="low-high" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Price: Low to High</button></li>
+                                        <li><button type="button" data-sort="high-low" class="w-full text-left px-3 py-2 rounded-md hover:bg-[#eaf6f0] hover:text-main-green transition-colors">Price: High to Low</button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="propertiesGrid">
+
+                        <!-- Card 1 -->
+                        <a href="project-detail.html"
+                            class="property-card bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col h-full border border-[#e67e22] cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
+                            data-title="Golden Grove by Aranyakaa Farms" data-city="Bengaluru" data-type="Farmland" data-price="6262000" data-area="55" data-amenities="Security,Borewell" data-recommended="false">
+                            <div class="relative h-[240px] overflow-hidden group cursor-pointer">
+                                <div class="absolute top-4 left-4 bg-[#e67e22] text-white text-[11px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 z-20 shadow-sm uppercase tracking-wide">
+                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
+                                    HOT DEAL
+                                </div>
+                                <img src="assets/images/home/farmland/1.jpg" alt="Golden Grove" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="bg-[#3e1f0a] text-center py-2 relative z-10">
+                                <span class="text-[11px] font-bold text-[#f6a81c] tracking-widest uppercase">Farmland</span>
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col">
+                                <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">Golden Grove by Aranyakaa Farms</h3>
+                                <p class="text-sm text-gray-500 mb-4">Mandya, Karnataka</p>
+                                <div class="flex items-center gap-2 mb-4 text-sm text-gray-600">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span class="truncate">Aranyakaa Farms</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex items-end justify-between mb-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-2xl font-black text-gray-900">₹62.62 Lakhs</span>
+                                            <span class="text-[11px] text-gray-500 font-bold uppercase">Onwards</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-xs text-[#0da06a] font-semibold">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Project Area - 55 acre
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Card 2 -->
+                        <a href="project-detail.html"
+                            class="property-card bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col h-full border border-[#0da06a] cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
+                            data-title="Goa To Little Acres" data-city="Goa" data-type="Farmland" data-price="6500000" data-area="204" data-amenities="Swimming Pool,Security,Solar Power" data-recommended="true">
+                            <div class="relative h-[240px] overflow-hidden group cursor-pointer">
+                                <div class="absolute top-4 left-4 bg-[#0da06a] text-white text-[11px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 z-20 shadow-sm uppercase tracking-wide">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    FEATURED
+                                </div>
+                                <img src="assets/images/home/farmland/2.jpg" alt="Goa To Little Acres" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="bg-[#0b4e34] text-center py-2 relative z-10">
+                                <span class="text-[11px] font-bold text-[#4ade80] tracking-widest uppercase">Farmland</span>
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col">
+                                <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">Goa To Little Acres</h3>
+                                <p class="text-sm text-gray-500 mb-4">Goa Velha, Goa</p>
+                                <div class="flex items-center gap-2 mb-4 text-sm text-gray-600">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span class="truncate">Shondik Living</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex items-end justify-between mb-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-2xl font-black text-gray-900">₹65.00 Lakhs</span>
+                                            <span class="text-[11px] text-gray-500 font-bold uppercase">Onwards</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-xs text-[#0da06a] font-semibold">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Project Area - 204 acre
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Card 3 -->
+                        <a href="project-detail.html"
+                            class="property-card bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col h-full border border-[#f6a81c] cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
+                            data-title="Country Homes Harohalli" data-city="Bengaluru" data-type="Farmhouse" data-price="7200000" data-area="65" data-amenities="Clubhouse,Garden / Lawn" data-recommended="false">
+                            <div class="relative h-[240px] overflow-hidden group cursor-pointer">
+                                <div class="absolute top-4 left-4 bg-[#f6a81c] text-black text-[11px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 z-20 shadow-sm uppercase tracking-wide">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    SPONSORED
+                                </div>
+                                <img src="assets/images/home/farmhouse/1.jpg" alt="Country Homes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="bg-[#0f172a] text-center py-2 relative z-10">
+                                <span class="text-[11px] font-bold text-[#f6a81c] tracking-widest uppercase">Farmhouse</span>
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col">
+                                <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">Country Homes Harohalli</h3>
+                                <p class="text-sm text-gray-500 mb-4">Bengaluru, Karnataka</p>
+                                <div class="flex items-center gap-2 mb-4 text-sm text-gray-600">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span class="truncate">Triguna Projects</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex items-end justify-between mb-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-2xl font-black text-gray-900">₹72.00 Lakhs</span>
+                                            <span class="text-[11px] text-gray-500 font-bold uppercase">Onwards</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-xs text-[#0da06a] font-semibold">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Project Area - 65 acre
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Card 4 -->
+                        <a href="project-detail.html"
+                            class="property-card bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col h-full border border-[#e67e22] cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
+                            data-title="Green Valley Estates" data-city="Chikmagalur" data-type="Estates" data-price="4550000" data-area="25" data-amenities="Borewell,Solar Power" data-recommended="true">
+                            <div class="relative h-[240px] overflow-hidden group cursor-pointer">
+                                <div class="absolute top-4 left-4 bg-[#e67e22] text-white text-[11px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 z-20 shadow-sm uppercase tracking-wide">
+                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
+                                    HOT DEAL
+                                </div>
+                                <img src="assets/images/home/estate/1.jpg" alt="Green Valley Estates" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="bg-[#3e1f0a] text-center py-2 relative z-10">
+                                <span class="text-[11px] font-bold text-[#f6a81c] tracking-widest uppercase">Estates</span>
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col">
+                                <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">Green Valley Estates</h3>
+                                <p class="text-sm text-gray-500 mb-4">Chikmagalur, Karnataka</p>
+                                <div class="flex items-center gap-2 mb-4 text-sm text-gray-600">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span class="truncate">Green Valley</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex items-end justify-between mb-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-2xl font-black text-gray-900">₹45.50 Lakhs</span>
+                                            <span class="text-[11px] text-gray-500 font-bold uppercase">Onwards</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-xs text-[#0da06a] font-semibold">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Project Area - 25 acre
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Card 5 -->
+                        <a href="project-detail.html"
+                            class="property-card bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col h-full border border-[#0da06a] cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
+                            data-title="Sunrise Organics" data-city="Kodaikanal" data-type="Farmland" data-price="3500000" data-area="40" data-amenities="Organic Farm,Road Access" data-recommended="true">
+                            <div class="relative h-[240px] overflow-hidden group cursor-pointer">
+                                <div class="absolute top-4 left-4 bg-[#0da06a] text-white text-[11px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 z-20 shadow-sm uppercase tracking-wide">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    FEATURED
+                                </div>
+                                <img src="assets/images/home/farmland/3.jpg" alt="Sunrise Organics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="bg-[#0b4e34] text-center py-2 relative z-10">
+                                <span class="text-[11px] font-bold text-[#4ade80] tracking-widest uppercase">Farmland</span>
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col">
+                                <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">Sunrise Organics</h3>
+                                <p class="text-sm text-gray-500 mb-4">Kodaikanal, Tamil Nadu</p>
+                                <div class="flex items-center gap-2 mb-4 text-sm text-gray-600">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span class="truncate">Sunrise Farms</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex items-end justify-between mb-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-2xl font-black text-gray-900">₹35.00 Lakhs</span>
+                                            <span class="text-[11px] text-gray-500 font-bold uppercase">Onwards</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-xs text-[#0da06a] font-semibold">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Project Area - 40 acre
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Card 6 -->
+                        <a href="project-detail.html"
+                            class="property-card bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col h-full border border-[#f6a81c] cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
+                            data-title="Riverside Retreat" data-city="Coorg" data-type="Farmhouse" data-price="8800000" data-area="80" data-amenities="Swimming Pool,Clubhouse,Security" data-recommended="true">
+                            <div class="relative h-[240px] overflow-hidden group cursor-pointer">
+                                <div class="absolute top-4 left-4 bg-[#f6a81c] text-black text-[11px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 z-20 shadow-sm uppercase tracking-wide">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    SPONSORED
+                                </div>
+                                <img src="assets/images/home/farmhouse/2.jpg" alt="Riverside Retreat" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="bg-[#0f172a] text-center py-2 relative z-10">
+                                <span class="text-[11px] font-bold text-[#f6a81c] tracking-widest uppercase">Farmhouse</span>
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col">
+                                <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">Riverside Retreat</h3>
+                                <p class="text-sm text-gray-500 mb-4">Coorg, Karnataka</p>
+                                <div class="flex items-center gap-2 mb-4 text-sm text-gray-600">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span class="truncate">Riverside Co.</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex items-end justify-between mb-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-2xl font-black text-gray-900">₹88.00 Lakhs</span>
+                                            <span class="text-[11px] text-gray-500 font-bold uppercase">Onwards</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-xs text-[#0da06a] font-semibold">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Project Area - 80 acre
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Card 7 -->
+                        <a href="project-detail.html"
+                            class="property-card bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col h-full border border-[#0da06a] cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
+                            data-title="Neralu Brahmasamudram" data-city="Hindupur" data-type="Farmland" data-price="1800000" data-area="100" data-amenities="Borewell" data-recommended="false">
+                            <div class="relative h-[240px] overflow-hidden group cursor-pointer">
+                                <div class="absolute top-4 left-4 bg-[#0da06a] text-white text-[11px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 z-20 shadow-sm uppercase tracking-wide">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    FEATURED
+                                </div>
+                                <img src="assets/images/home/farmland/4.jpg" alt="Neralu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="bg-[#0b4e34] text-center py-2 relative z-10">
+                                <span class="text-[11px] font-bold text-[#4ade80] tracking-widest uppercase">Farmland</span>
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col">
+                                <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">Neralu Brahmasamudram</h3>
+                                <p class="text-sm text-gray-500 mb-4">Hindupur, Andhra Pradesh</p>
+                                <div class="flex items-center gap-2 mb-4 text-sm text-gray-600">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span class="truncate">Neralu Farms</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex items-end justify-between mb-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-2xl font-black text-gray-900">₹18.00 Lakhs</span>
+                                            <span class="text-[11px] text-gray-500 font-bold uppercase">Onwards</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-xs text-[#0da06a] font-semibold">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Project Area - 100 acre
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Card 8 -->
+                        <a href="project-detail.html"
+                            class="property-card bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col h-full border border-[#f6a81c] cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
+                            data-title="Acarus Nature Touch" data-city="Bengaluru" data-type="Agricultural Land" data-price="3900000" data-area="9.5" data-amenities="Road Access" data-recommended="true">
+                            <div class="relative h-[240px] overflow-hidden group cursor-pointer">
+                                <div class="absolute top-4 left-4 bg-[#f6a81c] text-black text-[11px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 z-20 shadow-sm uppercase tracking-wide">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    SPONSORED
+                                </div>
+                                <img src="assets/images/home/agriculture/1.jpg" alt="Acarus Nature Touch" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="bg-[#0f172a] text-center py-2 relative z-10">
+                                <span class="text-[11px] font-bold text-[#f6a81c] tracking-widest uppercase">Agricultural Land</span>
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col">
+                                <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">Acarus Nature Touch</h3>
+                                <p class="text-sm text-gray-500 mb-4">Bengaluru, Karnataka</p>
+                                <div class="flex items-center gap-2 mb-4 text-sm text-gray-600">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span class="truncate">Acarus Farms</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex items-end justify-between mb-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-2xl font-black text-gray-900">₹39.00 Lakhs</span>
+                                            <span class="text-[11px] text-gray-500 font-bold uppercase">Onwards</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-xs text-[#0da06a] font-semibold">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                        Project Area - 9.5 acre
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <div id="noResults" class="hidden w-full py-12 text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2 font-sans">No properties found</h3>
+                        <p class="text-gray-500">Try adjusting your filters or search keywords.</p>
+                    </div>
+
                 </div>
 
             </div>
-        </div>
-    </section>
-
-    <main class="w-full max-w-[1400px] mx-auto px-4 md:px-8 relative mt-8 mb-16">
-        <div class="flex flex-col lg:flex-row gap-8">
-            
-            <div class="flex-grow min-w-0">
-                
-                <div class="bg-[#f8f7f2] rounded-[28px] shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-[#e8e6df] p-5 md:p-7 mb-8 relative overflow-hidden z-30">
-
-                    <div class="flex flex-col md:flex-row gap-5 md:gap-7">
-
-                        <div class="w-[100px] h-[100px] md:w-[120px] md:h-[120px] flex-shrink-0 rounded-[22px] overflow-hidden border-2 border-white shadow-[0_2px_12px_rgba(0,0,0,0.08)] bg-white">
-                            <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=400&auto=format&fit=crop"
-                                alt="Golden Grove"
-                                class="w-full h-full object-cover">
-                        </div>
-
-                        <div class="flex-grow flex flex-col justify-between">
-
-                            <div class="flex flex-col md:flex-row md:items-start justify-between gap-2 mb-2">
-                                <h1 class="text-[22px] md:text-[28px] lg:text-[34px] font-black text-[#1a2e1f] font-sans leading-[1.15] tracking-tight">
-                                    Golden Grove by Aranyakaa Farms
-                                </h1>
-                            </div>
-
-                            <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] text-gray-600 mb-4">
-                                <div class="flex items-center gap-1.5">
-                                    <i data-lucide="map-pin" class="w-[15px] h-[15px] text-[#1a2e1f]"></i>
-                                    <span class="font-semibold text-[#1a2e1f]">Mandya, Karnataka</span>
-                                </div>
-
-                                <div class="flex items-center gap-1.5">
-                                    <i data-lucide="building-2" class="w-[15px] h-[15px] text-[#1a2e1f]"></i>
-                                    <span class="font-medium text-[#1a2e1f]">Aranyakaa Farms</span>
-                                </div>
-
-                                <div class="flex items-center gap-1.5 bg-[#1a3d2b] text-white px-3 py-[5px] rounded-full border border-[#2d5e44] shadow-sm">
-                                    <i data-lucide="badge-check" class="w-[14px] h-[14px] text-[#7ecba0]"></i>
-                                    <span class="text-[10px] font-bold uppercase tracking-[0.08em]">Verified Property</span>
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-3 gap-4 md:gap-8 bg-[#f0efe8] rounded-[18px] px-5 md:px-8 py-4 md:py-5 mt-2">
-
-                                <div class="flex flex-col">
-                                    <div class="flex items-center gap-1.5 text-[11px] font-bold text-[#5a6b5e] uppercase tracking-[0.06em] mb-1">
-                                        <i data-lucide="indian-rupee" class="w-[14px] h-[14px] text-[#5a6b5e]"></i>
-                                        Price
-                                    </div>
-                                    <div class="text-xl md:text-2xl font-black text-[#1a2e1f] tracking-tight leading-none">
-                                        ₹62.62<span class="text-sm font-bold text-[#5a6b5e] ml-0.5">L</span>
-                                    </div>
-                                </div>
-
-                                <div class="flex flex-col">
-                                    <div class="flex items-center gap-1.5 text-[11px] font-bold text-[#5a6b5e] uppercase tracking-[0.06em] mb-1">
-                                        <i data-lucide="maximize" class="w-[14px] h-[14px] text-[#5a6b5e]"></i>
-                                        Plot Area
-                                    </div>
-                                    <div class="text-lg md:text-xl font-black text-[#1a2e1f] tracking-tight leading-none">
-                                        10,890<span class="text-sm font-bold text-[#5a6b5e] ml-1">Sq.Ft</span>
-                                    </div>
-                                </div>
-
-                                <div class="flex flex-col">
-                                    <div class="flex items-center gap-1.5 text-[11px] font-bold text-[#5a6b5e] uppercase tracking-[0.06em] mb-1">
-                                        <i data-lucide="tag" class="w-[14px] h-[14px] text-[#5a6b5e]"></i>
-                                        Price/Sq.Ft
-                                    </div>
-                                    <div class="text-lg md:text-xl font-black text-[#1a2e1f] tracking-tight leading-none">
-                                        ₹575
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap items-center gap-3 mt-5 md:mt-6">
-
-                        <button onclick="openModal('enquireModal')"
-                                class="flex-1 min-w-[130px] bg-white border border-[#d4d1c7] text-[#1a2e1f] font-bold text-sm px-5 py-[11px] rounded-full hover:border-[#1a2e1f] transition-colors flex items-center justify-center gap-2 shadow-sm group">
-                            <i data-lucide="message-square-plus" class="w-[18px] h-[18px] text-[#1a2e1f] group-hover:text-[#0da06a] transition-colors"></i>
-                            Enquire Now
-                        </button>
-
-                        <button id="shortlistBtn"
-                                class="flex-1 min-w-[130px] bg-white border border-[#d4d1c7] text-[#1a2e1f] font-bold text-sm px-5 py-[11px] rounded-full hover:border-red-400 hover:text-red-500 transition-colors flex items-center justify-center gap-2 shadow-sm group">
-                            <i data-lucide="heart" id="shortlistIcon" class="w-[18px] h-[18px] text-[#1a2e1f] group-hover:text-red-500 transition-colors"></i>
-                            Shortlist
-                        </button>
-
-                        <button onclick="openModal('shareModal')"
-                                class="w-[46px] h-[46px] flex items-center justify-center bg-white border border-[#d4d1c7] text-[#1a2e1f] rounded-full hover:border-[#1a2e1f] hover:text-[#0da06a] transition-colors shadow-sm flex-shrink-0">
-                            <i data-lucide="share-2" class="w-[18px] h-[18px]"></i>
-                        </button>
-
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-[24px] shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-gray-100 p-6 md:p-8 mb-8">
-                    
-                    <div class="flex items-center justify-between mb-6 border-b border-gray-100 pb-5">
-                        <h2 class="text-xl font-black text-gray-900 uppercase tracking-widest">Overview</h2>
-                        <span class="text-[11px] font-bold text-main-green uppercase tracking-widest border border-main-green/30 bg-[#f2fcf5] px-3 py-1 rounded-full">Approved</span>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        
-                        <div class="flex items-center gap-4 bg-[#f8fafc] rounded-2xl p-4 border border-gray-50/50">
-                            <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="layers" class="w-5 h-5 text-main-green"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider mb-0.5">Property Type</span>
-                                <span class="text-sm font-bold text-gray-900">Farmland</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4 bg-[#f8fafc] rounded-2xl p-4 border border-gray-50/50">
-                            <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="maximize" class="w-5 h-5 text-main-green"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider mb-0.5">Total Area</span>
-                                <span class="text-sm font-bold text-gray-900">55 Acres</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4 bg-[#f8fafc] rounded-2xl p-4 border border-gray-50/50">
-                            <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="square-dashed" class="w-5 h-5 text-main-green"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider mb-0.5">Min Area</span>
-                                <span class="text-sm font-bold text-gray-900">10,890 Sq.Ft</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4 bg-[#f8fafc] rounded-2xl p-4 border border-gray-50/50">
-                            <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="square-dashed" class="w-5 h-5 text-main-green"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider mb-0.5">Max Area</span>
-                                <span class="text-sm font-bold text-gray-900">43,560 Sq.Ft</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4 bg-[#f8fafc] rounded-2xl p-4 border border-gray-50/50">
-                            <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="indian-rupee" class="w-5 h-5 text-main-green"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider mb-0.5">Price</span>
-                                <span class="text-sm font-bold text-gray-900">₹62.62 L</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4 bg-[#f8fafc] rounded-2xl p-4 border border-gray-50/50">
-                            <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="badge-dollar-sign" class="w-5 h-5 text-main-green"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider mb-0.5">Price Negotiable</span>
-                                <span class="text-sm font-bold text-gray-900">Yes</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4 bg-[#f8fafc] rounded-2xl p-4 border border-gray-50/50">
-                            <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="arrow-left-right" class="w-5 h-5 text-main-green"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider mb-0.5">Transaction Type</span>
-                                <span class="text-sm font-bold text-gray-900">New</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4 bg-[#f8fafc] rounded-2xl p-4 border border-gray-50/50">
-                            <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="arrow-up-right" class="w-5 h-5 text-main-green"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider mb-0.5">Open Sides</span>
-                                <span class="text-sm font-bold text-gray-900">4</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4 bg-[#f8fafc] rounded-2xl p-4 border border-gray-50/50">
-                            <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="leaf" class="w-5 h-5 text-main-green"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider mb-0.5">Managed Farmland</span>
-                                <span class="text-sm font-bold text-gray-900">Yes</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4 bg-[#f8fafc] rounded-2xl p-4 border border-gray-50/50">
-                            <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="droplet" class="w-5 h-5 text-main-green"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider mb-0.5">Water Resources</span>
-                                <span class="text-sm font-bold text-gray-900">Borewell, Well, Canal</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4 bg-[#f8fafc] rounded-2xl p-4 border border-gray-50/50">
-                            <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="zap" class="w-5 h-5 text-main-green"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider mb-0.5">Power Source</span>
-                                <span class="text-sm font-bold text-gray-900">Electricity</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4 bg-[#f8fafc] rounded-2xl p-4 border border-gray-50/50 lg:col-span-3">
-                            <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="map-pin" class="w-5 h-5 text-main-green"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider mb-0.5">Location</span>
-                                <span class="text-sm font-bold text-gray-900">Malavalli, Mandya, Karnataka</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-gray-100 p-6 md:p-8 mb-8">
-                    <h2 class="text-lg font-black text-gray-900 uppercase tracking-widest mb-6 border-b border-gray-100 pb-4 flex items-center gap-2">
-                        <i data-lucide="book-open" class="w-5 h-5 text-main-green"></i>
-                        About This Property
-                    </h2>
-                    
-                    <h3 class="text-base font-bold text-gray-900 mb-4">An Investment That Lives With You</h3>
-                    
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                        <strong class="text-gray-900">Golden Grove</strong> is a thoughtfully planned <strong class="text-gray-900">55-acre plantation community in Malavalli, near Shivanamudra Falls, Mandya</strong>, designed for those looking to own a peaceful nature retreat while enjoying the benefits of a professionally developed plantation community.
-                    </p>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                        With <strong class="text-gray-900">319 farm plots</strong> surrounded by a fully developed <strong class="text-gray-900">8-10 year old Burma Teak plantation</strong>, Golden Grove brings together nature-inspired living, plantation ownership and lifestyle amenities in one destination.
-                    </p>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                        The community features 20-foot internal roads, individual drip irrigation, 24x7 security and CCTV surveillance, along with a range of lifestyle amenities including a premium clubhouse, swimming pool, luxury guest cottages, multi-sports arena, children's play area, open party lawn and amphitheatre.
-                    </p>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-6">
-                        The property also includes natural and eco-focused features such as a scenic lake, man-made pond, landscaped green spaces and a dedicated Gaushala, creating a peaceful getaway from the city.
-                    </p>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-6">
-                        Located near Shivanasamudra Falls, Golden Grove offers access to popular attractions including Gaganachukki Falls, Barachukki Falls, Mutthathi, Bheemeshwari and Somanathapura Temple.
-                    </p>
-
-                    <div class="bg-[#fffbeb] border border-[#f6a81c]/30 p-4 rounded-lg text-sm text-[#b45309] font-medium leading-relaxed">
-                        *Pre-launch offer price. Approximate 0.25-acre plot value calculated at ₹575/sq. ft. (10,890 sq. ft.). Terms and conditions apply.
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-gray-100 p-6 md:p-8 mb-8">
-                    <h2 class="text-lg font-black text-gray-900 uppercase tracking-widest mb-6 border-b border-gray-100 pb-4 flex items-center gap-2">
-                        <i data-lucide="sparkles" class="w-5 h-5 text-main-green"></i>
-                        Amenities
-                    </h2>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        <div class="flex items-center gap-3 bg-[#eaf6f0] px-4 py-3 rounded-xl border border-main-green/20">
-                            <i data-lucide="droplets" class="w-5 h-5 text-main-green"></i>
-                            <span class="text-sm font-semibold text-gray-800">Water Supply</span>
-                        </div>
-                        
-                        <div class="flex items-center gap-3 bg-[#eaf6f0] px-4 py-3 rounded-xl border border-main-green/20">
-                            <i data-lucide="zap" class="w-5 h-5 text-main-green"></i>
-                            <span class="text-sm font-semibold text-gray-800">Electricity</span>
-                        </div>
-                        
-                        <div class="flex items-center gap-3 bg-[#eaf6f0] px-4 py-3 rounded-xl border border-main-green/20">
-                            <i data-lucide="shield-check" class="w-5 h-5 text-main-green"></i>
-                            <span class="text-sm font-semibold text-gray-800">24x7 Security</span>
-                        </div>
-                        
-                        <div class="flex items-center gap-3 bg-[#eaf6f0] px-4 py-3 rounded-xl border border-main-green/20">
-                            <i data-lucide="waves" class="w-5 h-5 text-main-green"></i>
-                            <span class="text-sm font-semibold text-gray-800">Swimming Pool</span>
-                        </div>
-                        
-                        <div class="flex items-center gap-3 bg-[#eaf6f0] px-4 py-3 rounded-xl border border-main-green/20">
-                            <i data-lucide="baby" class="w-5 h-5 text-main-green"></i>
-                            <span class="text-sm font-semibold text-gray-800">Kids Play Area</span>
-                        </div>
-                        
-                        <div class="flex items-center gap-3 bg-[#eaf6f0] px-4 py-3 rounded-xl border border-main-green/20">
-                            <i data-lucide="trees" class="w-5 h-5 text-main-green"></i>
-                            <span class="text-sm font-semibold text-gray-800">Landscaped Garden</span>
-                        </div>
-
-                        <div class="flex items-center gap-3 bg-[#eaf6f0] px-4 py-3 rounded-xl border border-main-green/20">
-                            <i data-lucide="building-2" class="w-5 h-5 text-main-green"></i>
-                            <span class="text-sm font-semibold text-gray-800">Premium Clubhouse</span>
-                        </div>
-
-                        <div class="flex items-center gap-3 bg-[#eaf6f0] px-4 py-3 rounded-xl border border-main-green/20">
-                            <i data-lucide="trophy" class="w-5 h-5 text-main-green"></i>
-                            <span class="text-sm font-semibold text-gray-800">Multi-Sports Arena</span>
-                        </div>
-
-                        <div class="flex items-center gap-3 bg-[#eaf6f0] px-4 py-3 rounded-xl border border-main-green/20">
-                            <i data-lucide="video" class="w-5 h-5 text-main-green"></i>
-                            <span class="text-sm font-semibold text-gray-800">CCTV Surveillance</span>
-                        </div>
-
-                        <div class="flex items-center gap-3 bg-[#eaf6f0] px-4 py-3 rounded-xl border border-main-green/20">
-                            <i data-lucide="home" class="w-5 h-5 text-main-green"></i>
-                            <span class="text-sm font-semibold text-gray-800">Guest Cottages</span>
-                        </div>
-
-                        <div class="flex items-center gap-3 bg-[#eaf6f0] px-4 py-3 rounded-xl border border-main-green/20">
-                            <i data-lucide="users" class="w-5 h-5 text-main-green"></i>
-                            <span class="text-sm font-semibold text-gray-800">Party Lawn & Amphitheatre</span>
-                        </div>
-
-                        <div class="flex items-center gap-3 bg-[#eaf6f0] px-4 py-3 rounded-xl border border-main-green/20">
-                            <i data-lucide="leaf" class="w-5 h-5 text-main-green"></i>
-                            <span class="text-sm font-semibold text-gray-800">Gaushala & Eco Zones</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-[24px] shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-gray-100 p-6 md:p-8 mb-8">
-                    
-                    <div class="flex items-center justify-between mb-6">
-                        <h2 class="text-lg font-black text-gray-900 uppercase tracking-widest flex items-center gap-2">
-                            <i data-lucide="image" class="w-5 h-5 text-main-green"></i>
-                            Gallery
-                        </h2>
-                        <span class="text-[11px] font-bold text-gray-500 uppercase tracking-widest">5 Photos</span>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        
-                        <a href="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1600&auto=format&fit=crop" 
-                        data-fancybox="gallery" 
-                        data-caption="Golden Grove - Aerial View" 
-                        class="md:col-span-2 md:row-span-2 relative block rounded-2xl overflow-hidden group h-[300px] md:h-[450px]">
-                            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop" 
-                                alt="Golden Grove" 
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                <span class="text-white font-bold text-lg">Aerial View</span>
-                            </div>
-                        </a>
-
-                        <a href="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1600&auto=format&fit=crop" 
-                        data-fancybox="gallery" 
-                        data-caption="Entrance & Landscaping" 
-                        class="relative block rounded-2xl overflow-hidden group h-[140px] md:h-[215px]">
-                            <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=600&auto=format&fit=crop" 
-                                alt="Entrance" 
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </a>
-
-                        <a href="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1600&auto=format&fit=crop" 
-                        data-fancybox="gallery" 
-                        data-caption="Clubhouse & Amenities" 
-                        class="relative block rounded-2xl overflow-hidden group h-[140px] md:h-[215px]">
-                            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=600&auto=format&fit=crop" 
-                                alt="Clubhouse" 
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </a>
-
-                        <a href="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1600&auto=format&fit=crop" 
-                        data-fancybox="gallery" 
-                        data-caption="Farm Plots" 
-                        class="relative block rounded-2xl overflow-hidden group h-[140px] md:h-[215px]">
-                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600&auto=format&fit=crop" 
-                                alt="Farm Plots" 
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </a>
-
-                        <a href="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop" 
-                        data-fancybox="gallery" 
-                        data-caption="Teak Plantation" 
-                        class="relative block rounded-2xl overflow-hidden group h-[140px] md:h-[215px]">
-                            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=600&auto=format&fit=crop" 
-                                alt="Teak Plantation" 
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </a>
-
-                        <a href="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1600&auto=format&fit=crop" 
-                        data-fancybox="gallery" 
-                        data-caption="Scenic Lake View" 
-                        class="relative block rounded-2xl overflow-hidden group h-[140px] md:h-[215px]">
-                        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=600&auto=format&fit=crop" 
-                            alt="Scenic Lake View" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </a>
-
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-gray-100 p-6 md:p-8 mb-8">
-                    <div class="flex items-center justify-between mb-6 border-b border-gray-100 pb-4">
-                        <h2 class="text-lg font-black text-gray-900 uppercase tracking-widest flex items-center gap-2">
-                            <i data-lucide="map-pinned" class="w-5 h-5 text-main-green"></i>
-                            Location Map
-                        </h2>
-                        <a href="https://www.google.com/maps/place/Prettify+Creative/@28.4134766,77.0696561,17z/data=!3m2!4b1!5s0x3bd01a108704ede5:0x1f3c66a23ccdd961!4m6!3m5!1s0x390d23fa3cf17213:0xf4533d0aee13b674!8m2!3d28.4134719!4d77.072231!16s%2Fg%2F11j0qxmy4w!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="text-main-green border border-main-green/30 hover:bg-main-green hover:text-white px-4 py-2 rounded-lg text-xs font-bold transition-colors flex items-center gap-2">
-                            <i data-lucide="navigation" class="w-4 h-4"></i>
-                            Get Directions
-                        </a>
-                    </div>
-                    
-                    <div class="w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden border border-gray-200 relative">
-                        <iframe src="https://maps.google.com/maps?q=28.4134719,77.072231&z=16&output=embed" class="w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-md max-w-[250px] pointer-events-none">
-                            <h4 class="text-sm font-bold text-gray-900 mb-1">Prettify Creative</h4>
-                            <p class="text-xs text-gray-500">Gurugram, Haryana</p>
-                        </div>
-                    </div>
-                </div>
-
-                                <!-- More Properties Section -->
-                <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-gray-100 p-6 md:p-8 mb-8">
-                    <div class="flex items-center justify-between mb-6 border-b border-gray-100 pb-4">
-                        <h2 class="text-lg font-black text-gray-900 uppercase tracking-widest flex items-center gap-2">
-                            <i data-lucide="building" class="w-5 h-5 text-main-green"></i>
-                            More Properties
-                        </h2>
-                        <a href="/project-listing" class="text-main-green border border-main-green/30 hover:bg-main-green hover:text-white px-4 py-2 rounded-lg text-xs font-bold transition-colors flex items-center gap-2">
-                            View All
-                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </a>
-                    </div>
-
-                    <div class="relative w-full">
-                        <div class="swiper morePropertiesSwiper !pb-10 cursor-pointer">
-                            <div class="swiper-wrapper">
-
-                                <!-- Card 1 -->
-                                <div class="swiper-slide h-auto">
-                                    <a href="/project-detail" class="block bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 overflow-hidden flex flex-col h-full border border-[#e67e22]/30">
-                                        <div class="relative h-[200px] overflow-hidden group">
-                                            <div class="absolute top-3 left-3 bg-[#e67e22] text-white text-[10px] font-bold px-2.5 py-1 rounded flex items-center gap-1 z-20 shadow-sm uppercase tracking-wide">
-                                                <i data-lucide="flame" class="w-3 h-3"></i>
-                                                HOT DEAL
-                                            </div>
-                                            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1000&auto=format&fit=crop" alt="Property" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                            <div class="absolute bottom-0 left-0 w-full bg-[#3e1f0a] text-center py-1.5 z-10">
-                                                <span class="text-[10px] font-bold text-[#f6a81c] tracking-widest uppercase">Farmland</span>
-                                            </div>
-                                        </div>
-                                        <div class="p-4 flex-grow flex flex-col">
-                                            <h3 class="text-base font-bold text-gray-900 mb-1 leading-tight">Forest Breeze by Aranyakaa</h3>
-                                            <p class="text-xs text-gray-500 mb-3">Denkanikottai, Tamil Nadu</p>
-                                            <div class="flex items-center gap-1.5 mb-3 text-xs text-gray-600">
-                                                <i data-lucide="building-2" class="w-3.5 h-3.5 text-gray-400"></i>
-                                                <span class="truncate">Aranyakaa Farms</span>
-                                            </div>
-                                            <div class="mt-auto">
-                                                <div class="flex items-end justify-between mb-1.5">
-                                                    <div class="flex items-baseline gap-1">
-                                                        <span class="text-xl font-black text-gray-900">₹59.78 L</span>
-                                                        <span class="text-[10px] text-gray-500 font-bold uppercase">Onwards</span>
-                                                    </div>
-                                                    <button type="button" onclick="event.preventDefault(); event.stopPropagation(); this.classList.toggle('text-red-500');" class="text-gray-400 hover:text-red-500 transition-colors">
-                                                        <i data-lucide="heart" class="w-4 h-4"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="flex items-center gap-1.5 text-[11px] text-[#0da06a] font-semibold">
-                                                    <i data-lucide="maximize" class="w-3.5 h-3.5"></i>
-                                                    Project Area - 31 acre
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <!-- Card 2 -->
-                                <div class="swiper-slide h-auto">
-                                    <a href="/project-detail" class="block bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 overflow-hidden flex flex-col h-full border border-[#0da06a]/40">
-                                        <div class="relative h-[200px] overflow-hidden group">
-                                            <div class="absolute top-3 left-3 bg-[#0da06a] text-white text-[10px] font-bold px-2.5 py-1 rounded flex items-center gap-1 z-20 shadow-sm uppercase tracking-wide">
-                                                <i data-lucide="star" class="w-3 h-3"></i>
-                                                FEATURED
-                                            </div>
-                                            <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000&auto=format&fit=crop" alt="Property" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                            <div class="absolute bottom-0 left-0 w-full bg-[#0b4e34] text-center py-1.5 z-10">
-                                                <span class="text-[10px] font-bold text-[#4ade80] tracking-widest uppercase">Farmland</span>
-                                            </div>
-                                        </div>
-                                        <div class="p-4 flex-grow flex flex-col">
-                                            <h3 class="text-base font-bold text-gray-900 mb-1 leading-tight">Neralu Brahmasamudram</h3>
-                                            <p class="text-xs text-gray-500 mb-3">Hindupur, Andhra Pradesh</p>
-                                            <div class="flex items-center gap-1.5 mb-3 text-xs text-gray-600">
-                                                <i data-lucide="building-2" class="w-3.5 h-3.5 text-gray-400"></i>
-                                                <span class="truncate">Neralu Farms</span>
-                                            </div>
-                                            <div class="mt-auto">
-                                                <div class="flex items-end justify-between mb-1.5">
-                                                    <div class="flex items-baseline gap-1">
-                                                        <span class="text-xl font-black text-gray-900">₹18.00 L</span>
-                                                        <span class="text-[10px] text-gray-500 font-bold uppercase">Onwards</span>
-                                                    </div>
-                                                    <button type="button" onclick="event.preventDefault(); event.stopPropagation(); this.classList.toggle('text-red-500');" class="text-gray-400 hover:text-red-500 transition-colors">
-                                                        <i data-lucide="heart" class="w-4 h-4"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="flex items-center gap-1.5 text-[11px] text-[#0da06a] font-semibold">
-                                                    <i data-lucide="maximize" class="w-3.5 h-3.5"></i>
-                                                    Project Area - 100 acre
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <!-- Card 3 -->
-                                <div class="swiper-slide h-auto">
-                                    <a href="/project-detail" class="block bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 overflow-hidden flex flex-col h-full border border-[#f6a81c]/40">
-                                        <div class="relative h-[200px] overflow-hidden group">
-                                            <div class="absolute top-3 left-3 bg-[#f6a81c] text-black text-[10px] font-bold px-2.5 py-1 rounded flex items-center gap-1 z-20 shadow-sm uppercase tracking-wide">
-                                                <i data-lucide="megaphone" class="w-3 h-3"></i>
-                                                SPONSORED
-                                            </div>
-                                            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1000&auto=format&fit=crop" alt="Property" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                            <div class="absolute bottom-0 left-0 w-full bg-[#0f172a] text-center py-1.5 z-10">
-                                                <span class="text-[10px] font-bold text-[#f6a81c] tracking-widest uppercase">Farmland</span>
-                                            </div>
-                                        </div>
-                                        <div class="p-4 flex-grow flex flex-col">
-                                            <h3 class="text-base font-bold text-gray-900 mb-1 leading-tight">Country Homes Harohalli</h3>
-                                            <p class="text-xs text-gray-500 mb-3">Bengaluru, Karnataka</p>
-                                            <div class="flex items-center gap-1.5 mb-3 text-xs text-gray-600">
-                                                <i data-lucide="building-2" class="w-3.5 h-3.5 text-gray-400"></i>
-                                                <span class="truncate">Triguna Projects</span>
-                                            </div>
-                                            <div class="mt-auto">
-                                                <div class="flex items-end justify-between mb-1.5">
-                                                    <div class="flex items-baseline gap-1">
-                                                        <span class="text-xl font-black text-gray-900">₹72.00 L</span>
-                                                        <span class="text-[10px] text-gray-500 font-bold uppercase">Onwards</span>
-                                                    </div>
-                                                    <button type="button" onclick="event.preventDefault(); event.stopPropagation(); this.classList.toggle('text-red-500');" class="text-gray-400 hover:text-red-500 transition-colors">
-                                                        <i data-lucide="heart" class="w-4 h-4"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="flex items-center gap-1.5 text-[11px] text-[#0da06a] font-semibold">
-                                                    <i data-lucide="maximize" class="w-3.5 h-3.5"></i>
-                                                    Project Area - 65 acre
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <!-- Card 4 -->
-                                <div class="swiper-slide h-auto">
-                                    <a href="/project-detail" class="block bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 overflow-hidden flex flex-col h-full border border-[#e67e22]/30">
-                                        <div class="relative h-[200px] overflow-hidden group">
-                                            <div class="absolute top-3 left-3 bg-[#e67e22] text-white text-[10px] font-bold px-2.5 py-1 rounded flex items-center gap-1 z-20 shadow-sm uppercase tracking-wide">
-                                                <i data-lucide="flame" class="w-3 h-3"></i>
-                                                HOT DEAL
-                                            </div>
-                                            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1000&auto=format&fit=crop" alt="Property" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                            <div class="absolute bottom-0 left-0 w-full bg-[#3e1f0a] text-center py-1.5 z-10">
-                                                <span class="text-[10px] font-bold text-[#f6a81c] tracking-widest uppercase">Farmland</span>
-                                            </div>
-                                        </div>
-                                        <div class="p-4 flex-grow flex flex-col">
-                                            <h3 class="text-base font-bold text-gray-900 mb-1 leading-tight">Green Valley Estates</h3>
-                                            <p class="text-xs text-gray-500 mb-3">Chikmagalur, Karnataka</p>
-                                            <div class="flex items-center gap-1.5 mb-3 text-xs text-gray-600">
-                                                <i data-lucide="building-2" class="w-3.5 h-3.5 text-gray-400"></i>
-                                                <span class="truncate">Green Valley</span>
-                                            </div>
-                                            <div class="mt-auto">
-                                                <div class="flex items-end justify-between mb-1.5">
-                                                    <div class="flex items-baseline gap-1">
-                                                        <span class="text-xl font-black text-gray-900">₹45.50 L</span>
-                                                        <span class="text-[10px] text-gray-500 font-bold uppercase">Onwards</span>
-                                                    </div>
-                                                    <button type="button" onclick="event.preventDefault(); event.stopPropagation(); this.classList.toggle('text-red-500');" class="text-gray-400 hover:text-red-500 transition-colors">
-                                                        <i data-lucide="heart" class="w-4 h-4"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="flex items-center gap-1.5 text-[11px] text-[#0da06a] font-semibold">
-                                                    <i data-lucide="maximize" class="w-3.5 h-3.5"></i>
-                                                    Project Area - 25 acre
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <!-- Card 5 -->
-                                <div class="swiper-slide h-auto">
-                                    <a href="/project-detail" class="block bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 overflow-hidden flex flex-col h-full border border-[#0da06a]/40">
-                                        <div class="relative h-[200px] overflow-hidden group">
-                                            <div class="absolute top-3 left-3 bg-[#0da06a] text-white text-[10px] font-bold px-2.5 py-1 rounded flex items-center gap-1 z-20 shadow-sm uppercase tracking-wide">
-                                                <i data-lucide="star" class="w-3 h-3"></i>
-                                                FEATURED
-                                            </div>
-                                            <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000&auto=format&fit=crop" alt="Property" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                            <div class="absolute bottom-0 left-0 w-full bg-[#0b4e34] text-center py-1.5 z-10">
-                                                <span class="text-[10px] font-bold text-[#4ade80] tracking-widest uppercase">Farmland</span>
-                                            </div>
-                                        </div>
-                                        <div class="p-4 flex-grow flex flex-col">
-                                            <h3 class="text-base font-bold text-gray-900 mb-1 leading-tight">Sunrise Organics</h3>
-                                            <p class="text-xs text-gray-500 mb-3">Kodaikanal, Tamil Nadu</p>
-                                            <div class="flex items-center gap-1.5 mb-3 text-xs text-gray-600">
-                                                <i data-lucide="building-2" class="w-3.5 h-3.5 text-gray-400"></i>
-                                                <span class="truncate">Sunrise Farms</span>
-                                            </div>
-                                            <div class="mt-auto">
-                                                <div class="flex items-end justify-between mb-1.5">
-                                                    <div class="flex items-baseline gap-1">
-                                                        <span class="text-xl font-black text-gray-900">₹35.00 L</span>
-                                                        <span class="text-[10px] text-gray-500 font-bold uppercase">Onwards</span>
-                                                    </div>
-                                                    <button type="button" onclick="event.preventDefault(); event.stopPropagation(); this.classList.toggle('text-red-500');" class="text-gray-400 hover:text-red-500 transition-colors">
-                                                        <i data-lucide="heart" class="w-4 h-4"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="flex items-center gap-1.5 text-[11px] text-[#0da06a] font-semibold">
-                                                    <i data-lucide="maximize" class="w-3.5 h-3.5"></i>
-                                                    Project Area - 40 acre
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-
-                            </div>
-                            <div class="swiper-pagination mt-4"></div>
-                        </div>
-
-                        <div class="more-properties-prev absolute top-1/2 -left-4 md:-left-6 -translate-y-1/2 z-20 bg-white text-gray-700 hover:text-main-green w-9 h-9 md:w-10 md:h-10 rounded-full shadow-[0_4px_15px_rgb(0,0,0,0.1)] flex items-center justify-center cursor-pointer transition-colors hidden md:flex">
-                            <i data-lucide="chevron-left" class="w-5 h-5"></i>
-                        </div>
-                        <div class="more-properties-next absolute top-1/2 -right-4 md:-right-6 -translate-y-1/2 z-20 bg-white text-gray-700 hover:text-main-green w-9 h-9 md:w-10 md:h-10 rounded-full shadow-[0_4px_15px_rgb(0,0,0,0.1)] flex items-center justify-center cursor-pointer transition-colors hidden md:flex">
-                            <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQs Section -->
-                <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-gray-100 p-6 md:p-8 mb-8">
-                    <div class="flex items-center justify-between mb-6 border-b border-gray-100 pb-4">
-                        <h2 class="text-lg font-black text-gray-900 uppercase tracking-widest flex items-center gap-2">
-                            <i data-lucide="help-circle" class="w-5 h-5 text-main-green"></i>
-                            Frequently Asked Questions
-                        </h2>
-                    </div>
-
-                    <div class="space-y-3">
-                        <div class="faq-item bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-                            <button class="faq-btn w-full flex items-center justify-between p-4 text-left font-bold text-gray-900 text-sm">
-                                <span>What documents are required to buy farmland?</span>
-                                <i data-lucide="plus" class="faq-icon w-4 h-4 text-main-green transition-transform duration-300"></i>
-                            </button>
-                            <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
-                                <p class="px-4 pb-4 text-sm text-gray-600 leading-relaxed">
-                                    You will need a valid ID proof, address proof, PAN card, and the sale deed. For agricultural land, additional state-specific documents may apply.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="faq-item bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-                            <button class="faq-btn w-full flex items-center justify-between p-4 text-left font-bold text-gray-900 text-sm">
-                                <span>Can NRIs buy farmland in India?</span>
-                                <i data-lucide="plus" class="faq-icon w-4 h-4 text-main-green transition-transform duration-300"></i>
-                            </button>
-                            <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
-                                <p class="px-4 pb-4 text-sm text-gray-600 leading-relaxed">
-                                    NRIs cannot purchase agricultural land directly, but they can buy farmhouses and can inherit farmland. They may also take agricultural land on lease.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="faq-item bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-                            <button class="faq-btn w-full flex items-center justify-between p-4 text-left font-bold text-gray-900 text-sm">
-                                <span>Is the land legally verified?</span>
-                                <i data-lucide="plus" class="faq-icon w-4 h-4 text-main-green transition-transform duration-300"></i>
-                            </button>
-                            <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
-                                <p class="px-4 pb-4 text-sm text-gray-600 leading-relaxed">
-                                    Yes. All listed properties undergo a title check and document verification before being marked as verified on our platform.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="faq-item bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-                            <button class="faq-btn w-full flex items-center justify-between p-4 text-left font-bold text-gray-900 text-sm">
-                                <span>Can I get a home loan for farmland?</span>
-                                <i data-lucide="plus" class="faq-icon w-4 h-4 text-main-green transition-transform duration-300"></i>
-                            </button>
-                            <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
-                                <p class="px-4 pb-4 text-sm text-gray-600 leading-relaxed">
-                                    Most banks do not offer loans for agricultural land. However, loans may be available for farmhouses and developed plots under specific schemes.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <aside class="w-full lg:w-[360px] flex-shrink-0 lg:sticky lg:top-[88px] lg:self-start lg:z-20">
-                <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] border border-gray-100 p-6 mb-6">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="text-sm font-black text-gray-900 uppercase tracking-widest flex items-center gap-2">
-                            <i data-lucide="phone-call" class="w-4 h-4 text-main-green"></i>
-                            Get Free Callback
-                        </h3>
-                        <span class="bg-[#eaf6f0] text-main-green text-[9px] font-bold uppercase px-2 py-0.5 rounded border border-main-green/20">Free</span>
-                    </div>
-                    <p class="text-xs text-gray-500 mb-5 pb-5 border-b border-gray-100">Expert advisor will call you within 24 hours.</p>
-
-                    <form class="space-y-4">
-                        <div class="relative">
-                            <i data-lucide="user" class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
-                            <input type="text" placeholder="Your full name" class="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-main-green focus:ring-1 focus:ring-main-green transition-colors">
-                        </div>
-                        <div class="relative">
-                            <i data-lucide="phone" class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
-                            <input type="tel" placeholder="Phone number" class="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-main-green focus:ring-1 focus:ring-main-green transition-colors">
-                        </div>
-                        <div class="relative">
-                            <i data-lucide="mail" class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
-                            <input type="email" placeholder="Email address" class="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-main-green focus:ring-1 focus:ring-main-green transition-colors">
-                        </div>
-                        <div class="relative">
-                            <i data-lucide="message-square" class="w-4 h-4 text-gray-400 absolute left-3 top-4 pointer-events-none"></i>
-                            <textarea rows="3" class="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-main-green focus:ring-1 focus:ring-main-green transition-colors">Hi, I'm interested in Golden Grove by Aranyakaa Farms. Please share more details.</textarea>
-                        </div>
-
-                        <button type="submit" class="w-full bg-main-green text-white font-bold text-sm py-3.5 rounded-lg hover:bg-[#0b8a5a] transition-colors flex items-center justify-center gap-2 shadow-md">
-                            <i data-lucide="send" class="w-4 h-4"></i>
-                            Send Enquiry
-                        </button>
-                    </form>
-                    
-                    <div class="flex items-center justify-center gap-1.5 text-[10px] text-gray-400 mt-4">
-                        <i data-lucide="lock" class="w-3 h-3"></i>
-                        <span>Your information is 100% secure & private.</span>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] border border-gray-100 p-5 flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-[#eaf6f0] flex items-center justify-center text-main-green flex-shrink-0">
-                        <i data-lucide="badge-check" class="w-5 h-5"></i>
-                    </div>
-                    <span class="text-sm font-bold text-gray-900">Verified Property</span>
-                </div>
-
-            </aside>
         </div>
     </main>
 
     <div id="footer-placeholder"></div>
 
-    <div id="enquireModal" class="fixed inset-0 z-[99999] hidden items-center justify-center bg-black/90 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-[520px] overflow-hidden transform scale-95 transition-transform duration-300 max-h-[92vh] flex flex-col">
-            <div class="relative bg-gradient-to-br from-[#083a26] via-[#0b4e34] to-[#0da06a] px-6 pt-6 pb-8 text-white overflow-hidden">
-                <div class="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-white/10"></div>
-                <div class="absolute right-12 bottom-0 w-24 h-24 rounded-full bg-white/5"></div>
-                <div class="relative flex items-start justify-between gap-4">
-                    <div>
-                        <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-white/70 mb-2">Enquire Now</p>
-                        <h3 class="text-2xl font-black leading-tight">Golden Grove</h3>
-                        <p class="text-sm text-white/80 mt-1 flex items-center gap-1.5">
-                            <i data-lucide="map-pin" class="w-4 h-4"></i>
-                            Mandya, Karnataka
-                        </p>
-                    </div>
-                    <button type="button" onclick="closeModal('enquireModal')" class="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center transition-colors">
-                        <i data-lucide="x" class="w-5 h-5"></i>
-                    </button>
-                </div>
-                <div class="relative mt-5 flex items-center gap-4 text-xs font-semibold">
-                    <span class="bg-white/15 px-3 py-1.5 rounded-full">₹62.62L</span>
-                    <span class="bg-white/15 px-3 py-1.5 rounded-full">10,890 Sq.Ft</span>
-                    <span class="bg-white/15 px-3 py-1.5 rounded-full">Verified</span>
-                </div>
-            </div>
-
-            <div class="overflow-y-auto px-6 py-6">
-                <form class="space-y-4" onsubmit="event.preventDefault(); closeModal('enquireModal');">
-                    <div>
-                        <label class="block text-xs font-bold text-gray-600 mb-1.5">Full Name</label>
-                        <div class="relative">
-                            <i data-lucide="user" class="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
-                            <input type="text" required placeholder="Enter your name" class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-main-green focus:ring-2 focus:ring-main-green/20 transition-all">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-600 mb-1.5">Email</label>
-                        <div class="relative">
-                            <i data-lucide="mail" class="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
-                            <input type="email" required placeholder="you@example.com" class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-main-green focus:ring-2 focus:ring-main-green/20 transition-all">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-600 mb-1.5">Phone</label>
-                        <div class="relative">
-                            <i data-lucide="phone" class="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
-                            <input type="tel" required placeholder="+91 98765 43210" class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-main-green focus:ring-2 focus:ring-main-green/20 transition-all">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-600 mb-1.5">Message</label>
-                        <div class="relative">
-                            <i data-lucide="message-square" class="w-4 h-4 text-gray-400 absolute left-3.5 top-4 pointer-events-none"></i>
-                            <textarea rows="3" placeholder="Tell us what you're looking for..." class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-main-green focus:ring-2 focus:ring-main-green/20 transition-all">Hi, I'm interested in Golden Grove by Aranyakaa Farms. Please share more details.</textarea>
-                        </div>
-                    </div>
-                    <button type="submit" class="w-full bg-main-green text-white font-bold text-sm py-3.5 rounded-xl hover:bg-[#0b8a5a] transition-colors flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(13,160,106,0.25)]">
-                        <i data-lucide="send" class="w-4 h-4"></i>
-                        Submit Enquiry
-                    </button>
-                </form>
-
-                <div class="mt-6 pt-5 border-t border-dashed border-gray-200">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div class="w-10 h-10 rounded-xl bg-[#eaf6f0] text-main-green flex items-center justify-center">
-                            <i data-lucide="calendar-check" class="w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <p class="text-sm font-bold text-gray-900">Prefer a site visit?</p>
-                            <p class="text-xs text-gray-500">Pick a date and time that works for you.</p>
-                        </div>
-                    </div>
-                    <button type="button" onclick="openScheduleFromEnquire()" class="w-full bg-white border-2 border-main-green text-main-green font-bold text-sm py-3 rounded-xl hover:bg-[#eaf6f0] transition-colors flex items-center justify-center gap-2">
-                        <i data-lucide="calendar-days" class="w-4 h-4"></i>
-                        Schedule a Visit
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="scheduleModal" class="fixed inset-0 z-[99999] hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden transform scale-95 transition-transform duration-300">
-            <div class="bg-main-green px-6 py-4 flex justify-between items-center">
-                <h3 class="text-white font-bold text-lg flex items-center gap-2">
-                    <i data-lucide="calendar-days" class="w-5 h-5"></i>
-                    Schedule a Visit
-                </h3>
-                <button onclick="closeModal('scheduleModal')" class="text-white/80 hover:text-white">
-                    <i data-lucide="x" class="w-6 h-6"></i>
-                </button>
-            </div>
-            <div class="p-6">
-                <p class="text-sm text-gray-500 mb-4">Select a date and time for your site visit.</p>
-                
-                <div class="border border-gray-200 rounded-xl p-4 mb-4">
-                    <div class="flex justify-between items-center mb-4">
-                        <button onclick="prevMonth()" class="p-1 hover:bg-gray-100 rounded transition-colors"><i data-lucide="chevron-left" class="w-5 h-5 text-gray-600"></i></button>
-                        <span id="calendarMonthYear" class="font-bold text-gray-800">October 2026</span>
-                        <button onclick="nextMonth()" class="p-1 hover:bg-gray-100 rounded transition-colors"><i data-lucide="chevron-right" class="w-5 h-5 text-gray-600"></i></button>
-                    </div>
-                    <div class="grid grid-cols-7 gap-1 text-center text-xs font-semibold text-gray-400 mb-2">
-                        <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
-                    </div>
-                    <div id="calendarDays" class="grid grid-cols-7 gap-1 text-center text-sm">
-                    </div>
-                </div>
-
-                <div class="flex gap-2 mb-6">
-                    <button class="flex-1 border border-gray-200 rounded-lg py-2 text-sm font-semibold hover:border-main-green hover:text-main-green transition-colors">10:00 AM</button>
-                    <button class="flex-1 border border-gray-200 rounded-lg py-2 text-sm font-semibold hover:border-main-green hover:text-main-green transition-colors">12:00 PM</button>
-                    <button class="flex-1 border border-gray-200 rounded-lg py-2 text-sm font-semibold hover:border-main-green hover:text-main-green transition-colors">03:00 PM</button>
-                </div>
-                
-                <button onclick="closeModal('scheduleModal')" class="w-full bg-main-green text-white font-bold py-3 rounded-xl hover:bg-[#0b8a5a] transition-colors">Confirm Visit</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="shareModal" class="fixed inset-0 z-[99999] hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 transition-transform duration-300">
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-xs font-black text-gray-500 uppercase tracking-widest">Share This Property</h3>
-                    <button onclick="closeModal('shareModal')" class="text-gray-400 hover:text-gray-600">
-                        <i data-lucide="x" class="w-5 h-5"></i>
-                    </button>
-                </div>
-
-                <div class="flex justify-between items-center mb-8 px-2">
-                    <a href="#" class="flex flex-col items-center gap-2 group">
-                        <div class="w-12 h-12 rounded-full bg-[#25D366] text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-md">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                        </div>
-                        <span class="text-[11px] font-bold text-gray-700">WhatsApp</span>
-                    </a>
-                    <a href="#" class="flex flex-col items-center gap-2 group">
-                        <div class="w-12 h-12 rounded-full bg-[#1877F2] text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-md">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                        </div>
-                        <span class="text-[11px] font-bold text-gray-700">Facebook</span>
-                    </a>
-                    <a href="#" class="flex flex-col items-center gap-2 group">
-                        <div class="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-md">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                        </div>
-                        <span class="text-[11px] font-bold text-gray-700">Twitter</span>
-                    </a>
-                    <a href="#" class="flex flex-col items-center gap-2 group">
-                        <div class="w-12 h-12 rounded-full bg-[#0A66C2] text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-md">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                        </div>
-                        <span class="text-[11px] font-bold text-gray-700">LinkedIn</span>
-                    </a>
-                </div>
-
-                <div class="border-t border-gray-100 pt-5">
-                    <div class="flex items-center bg-gray-50 border border-gray-200 rounded-xl p-1.5">
-                        <input type="text" id="shareLinkInput" value="" readonly class="bg-transparent border-none text-gray-500 text-xs font-semibold w-full focus:ring-0 outline-none px-2 truncate">
-                        <button onclick="copyLink(this)" class="bg-main-green text-white text-xs font-bold px-4 py-2.5 rounded-lg flex items-center gap-2 hover:bg-[#0b8a5a] transition-colors whitespace-nowrap shadow-sm">
-                            <i data-lucide="copy" class="w-4 h-4"></i>
-                            Copy
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <!-- Global Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="assets/js/components.js"></script>
     <script src="assets/js/main.js"></script>
 
     <script>
-        function refreshIcons() {
-            if (window.lucide) lucide.createIcons();
-        }
+        document.addEventListener("DOMContentLoaded", function() {
+            const propertiesGrid = document.getElementById('propertiesGrid');
+            const propertyCards = Array.from(document.querySelectorAll('.property-card'));
+            const propertyCount = document.getElementById('propertyCount');
+            const noResults = document.getElementById('noResults');
     
-        function setFaqIcon(icon, name) {
-            icon.innerHTML = '';
-            icon.setAttribute('data-lucide', name);
-            refreshIcons();
-        }
+            const searchInput = document.getElementById('searchInput');
+            const searchInputMobile = document.getElementById('searchInputMobile');
+            const citySelect = document.getElementById('citySelect');
+            const citySelectMobile = document.getElementById('citySelectMobile');
+            const propertyTypeCheckboxes = document.querySelectorAll('.filter-checkbox');
+            const amenityCheckboxes = document.querySelectorAll('.filter-amenity');
+            const priceRange = document.getElementById('priceRange');
+            const priceRangeMobile = document.getElementById('priceRangeMobile');
+            const areaRange = document.getElementById('areaRange');
+            const areaRangeMobile = document.getElementById('areaRangeMobile');
+            const priceMaxLabel = document.getElementById('priceMaxLabel');
+            const priceMaxLabelMobile = document.getElementById('priceMaxLabelMobile');
+            const areaMaxLabel = document.getElementById('areaMaxLabel');
+            const areaMaxLabelMobile = document.getElementById('areaMaxLabelMobile');
+            const clearFiltersBtn = document.getElementById('clearFilters');
+            const clearFiltersMobileBtn = document.getElementById('clearFiltersMobile');
+            const sortSelect = document.getElementById('sortSelect');
     
-        function syncHeaderOffset() {
-            const headerEl = document.querySelector('#header-placeholder header') || document.getElementById('header-placeholder');
-            if (!headerEl) return;
-            const height = headerEl.offsetHeight || 72;
-            document.body.style.paddingTop = height + 'px';
-            const sidebar = document.querySelector('aside.lg\\:sticky');
-            if (sidebar) sidebar.style.top = (height + 16) + 'px';
-        }
+            const btnAllProps = document.getElementById('btn-all-props');
+            const btnRecommended = document.getElementById('btn-recommended');
     
-        function openModal(id) {
-            const modal = document.getElementById(id);
-            const inner = modal.querySelector('div > div');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+            let currentCategory = 'all';
+            let minArea = 0;
+            let maxAreaOverride = 500;
     
-            if (id === 'shareModal') {
-                document.getElementById('shareLinkInput').value = window.location.href;
-            }
+            function applyFilters() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const selectedCity = citySelect.value;
+                const selectedTypes = Array.from(propertyTypeCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+                const selectedAmenities = Array.from(amenityCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
     
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                modal.classList.add('opacity-100');
-                inner.classList.remove('scale-95');
-                inner.classList.add('scale-100');
-                refreshIcons();
-            }, 10);
-        }
+                const maxPrice = parseInt(priceRange.value) * 100000;
     
-        function closeModal(id) {
-            const modal = document.getElementById(id);
-            const inner = modal.querySelector('div > div');
-    
-            modal.classList.remove('opacity-100');
-            modal.classList.add('opacity-0');
-            inner.classList.remove('scale-100');
-            inner.classList.add('scale-95');
-    
-            setTimeout(() => {
-                modal.classList.remove('flex');
-                modal.classList.add('hidden');
-            }, 300);
-        }
-    
-        function openScheduleFromEnquire() {
-            closeModal('enquireModal');
-            setTimeout(() => openModal('scheduleModal'), 280);
-        }
-    
-        document.getElementById('shortlistBtn').addEventListener('click', function() {
-            const icon = document.getElementById('shortlistIcon');
-            if (icon.classList.contains('fill-red-500')) {
-                icon.classList.remove('fill-red-500', 'text-red-500');
-                icon.setAttribute('fill', 'none');
-            } else {
-                icon.classList.add('fill-red-500', 'text-red-500');
-                icon.setAttribute('fill', 'currentColor');
-            }
-        });
-    
-        function copyLink(btn) {
-            const input = btn.previousElementSibling;
-            input.select();
-            document.execCommand("copy");
-    
-            const originalHTML = btn.innerHTML;
-            btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> Copied!';
-            refreshIcons();
-            btn.classList.replace('bg-main-green', 'bg-gray-800');
-    
-            setTimeout(() => {
-                btn.innerHTML = originalHTML;
-                btn.classList.replace('bg-gray-800', 'bg-main-green');
-                refreshIcons();
-            }, 2000);
-        }
-    
-        let currentDate = new Date(2026, 9, 1);
-    
-        function renderCalendar() {
-            const monthYearLabel = document.getElementById('calendarMonthYear');
-            const daysContainer = document.getElementById('calendarDays');
-    
-            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-            monthYearLabel.textContent = `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
-    
-            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
-            const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
-    
-            daysContainer.innerHTML = '';
-    
-            for (let i = 0; i < firstDay; i++) {
-                daysContainer.innerHTML += '<div class="text-gray-300 py-2"></div>';
-            }
-    
-            for (let i = 1; i <= daysInMonth; i++) {
-                let classes = "py-2 hover:bg-gray-100 rounded-full cursor-pointer transition-colors";
-                if (currentDate.getFullYear() === 2026 && currentDate.getMonth() === 9 && i === 23) {
-                    classes = "py-2 bg-main-green text-white rounded-full cursor-pointer shadow-md";
+                let maxArea = parseInt(areaRange.value);
+                if (maxAreaOverride !== 500) {
+                    maxArea = maxAreaOverride;
                 }
-                daysContainer.innerHTML += `<div class="${classes}">${i}</div>`;
-            }
-        }
     
-        function prevMonth() {
-            currentDate.setMonth(currentDate.getMonth() - 1);
-            renderCalendar();
-        }
-    
-        function nextMonth() {
-            currentDate.setMonth(currentDate.getMonth() + 1);
-            renderCalendar();
-        }
-    
-        document.addEventListener('DOMContentLoaded', () => {
-            renderCalendar();
-            refreshIcons();
-            syncHeaderOffset();
-    
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                const btn = item.querySelector('.faq-btn');
-                const content = item.querySelector('.faq-content');
+                priceMaxLabel.innerText = maxPrice === 100000000 ? '₹10 Cr' : `₹${(maxPrice / 100000).toFixed(0)} Lakhs`;
+                priceMaxLabelMobile.innerText = priceMaxLabel.innerText;
 
-                content.style.maxHeight = '0px';
-                item.classList.remove('is-open');
-
-                btn.addEventListener('click', () => {
-                    const isOpen = item.classList.contains('is-open');
-                    const icon = btn.querySelector('.faq-icon');
-
-                    if (isOpen) {
-                        content.style.maxHeight = '0px';
-                        item.classList.remove('is-open');
-                        icon.outerHTML = '<i data-lucide="plus" class="faq-icon w-4 h-4 text-main-green transition-transform duration-300"></i>';
-                    } else {
-                        content.style.maxHeight = content.scrollHeight + 'px';
-                        item.classList.add('is-open');
-                        icon.outerHTML = '<i data-lucide="minus" class="faq-icon w-4 h-4 text-main-green transition-transform duration-300"></i>';
+                if (maxAreaOverride !== 500) {
+                    areaMaxLabel.innerText = `${maxArea} ac`;
+                } else {
+                    areaMaxLabel.innerText = `${maxArea} ac`;
+                }
+                areaMaxLabelMobile.innerText = areaMaxLabel.innerText;
+    
+                let visibleCount = 0;
+    
+                propertyCards.forEach(card => {
+                    const title = card.getAttribute('data-title').toLowerCase();
+                    const city = card.getAttribute('data-city');
+                    const type = card.getAttribute('data-type');
+                    const price = parseInt(card.getAttribute('data-price'));
+                    const area = parseFloat(card.getAttribute('data-area'));
+                    const amenities = card.getAttribute('data-amenities').split(',');
+                    const isRecommended = card.getAttribute('data-recommended') === 'true';
+    
+                    let isVisible = true;
+    
+                    if (currentCategory === 'recommended' && !isRecommended) isVisible = false;
+                    if (searchTerm && !title.includes(searchTerm)) isVisible = false;
+                    if (selectedCity && city !== selectedCity) isVisible = false;
+                    if (selectedTypes.length > 0 && !selectedTypes.includes(type)) isVisible = false;
+                    if (maxPrice < 100000000 && price > maxPrice) isVisible = false;
+                    if (area > maxArea || area < minArea) isVisible = false;
+    
+                    if (selectedAmenities.length > 0) {
+                        const hasAllAmenities = selectedAmenities.every(am => amenities.includes(am));
+                        if (!hasAllAmenities) isVisible = false;
                     }
+    
+                    if (isVisible) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+    
+                const sortValue = sortSelect.value;
+                if (sortValue === 'low-high') {
+                    propertyCards.sort((a, b) => parseInt(a.dataset.price) - parseInt(b.dataset.price));
+                } else if (sortValue === 'high-low') {
+                    propertyCards.sort((a, b) => parseInt(b.dataset.price) - parseInt(a.dataset.price));
+                }
+    
+                propertyCards.forEach(card => propertiesGrid.appendChild(card));
+    
+                propertyCount.innerText = visibleCount;
+    
+                if (visibleCount === 0) {
+                    noResults.classList.remove('hidden');
+                } else {
+                    noResults.classList.add('hidden');
+                }
+            }
+    
+            searchInput.addEventListener('input', applyFilters);
+            searchInput.addEventListener('input', () => {
+                searchInputMobile.value = searchInput.value;
+            });
+            searchInputMobile.addEventListener('input', () => {
+                searchInput.value = searchInputMobile.value;
+                applyFilters();
+            });
+            citySelect.addEventListener('change', applyFilters);
+            citySelect.addEventListener('change', () => {
+                citySelectMobile.value = citySelect.value;
+                document.getElementById('cityDropdownLabelMobile').textContent =
+                    citySelectMobile.options[citySelectMobile.selectedIndex].textContent;
+            });
+            citySelectMobile.addEventListener('change', () => {
+                citySelect.value = citySelectMobile.value;
+                citySelect.dispatchEvent(new Event('change', { bubbles: true }));
+            });
+            propertyTypeCheckboxes.forEach(cb => cb.addEventListener('change', () => {
+                const counterpart = Array.from(propertyTypeCheckboxes).find(other =>
+                    other !== cb && other.value === cb.value && other.closest('#propertyTypeFilters, #propertyTypeFiltersMobile') !== cb.closest('#propertyTypeFilters, #propertyTypeFiltersMobile')
+                );
+                if (counterpart) counterpart.checked = cb.checked;
+                applyFilters();
+            }));
+            amenityCheckboxes.forEach(cb => cb.addEventListener('change', () => {
+                const counterpart = Array.from(amenityCheckboxes).find(other =>
+                    other !== cb && other.value === cb.value && other.closest('#amenitiesFilters, #amenitiesFiltersMobile') !== cb.closest('#amenitiesFilters, #amenitiesFiltersMobile')
+                );
+                if (counterpart) counterpart.checked = cb.checked;
+                applyFilters();
+            }));
+            priceRange.addEventListener('input', () => {
+                maxAreaOverride = 500;
+                priceRangeMobile.value = priceRange.value;
+                applyFilters();
+            });
+            priceRangeMobile.addEventListener('input', () => {
+                priceRange.value = priceRangeMobile.value;
+                maxAreaOverride = 500;
+                applyFilters();
+            });
+            areaRange.addEventListener('input', () => {
+                minArea = 0;
+                maxAreaOverride = 500;
+                areaRangeMobile.value = areaRange.value;
+                applyFilters();
+            });
+            areaRangeMobile.addEventListener('input', () => {
+                areaRange.value = areaRangeMobile.value;
+                minArea = 0;
+                maxAreaOverride = 500;
+                applyFilters();
+            });
+            sortSelect.addEventListener('change', applyFilters);
 
-                    refreshIcons();
+            const cityDropdownBtnMobile = document.getElementById('cityDropdownBtnMobile');
+            const cityDropdownMenuMobile = document.getElementById('cityDropdownMenuMobile');
+            const cityDropdownLabelMobile = document.getElementById('cityDropdownLabelMobile');
+            const cityDropdownListMobile = document.getElementById('cityDropdownListMobile');
+
+            cityDropdownBtnMobile.addEventListener('click', (event) => {
+                event.stopPropagation();
+                cityDropdownMenuMobile.classList.toggle('hidden');
+            });
+            cityDropdownListMobile.querySelectorAll('button[data-city]').forEach(item => {
+                item.addEventListener('click', () => {
+                    citySelect.value = item.getAttribute('data-city');
+                    citySelect.dispatchEvent(new Event('change', { bubbles: true }));
+                    cityDropdownLabelMobile.textContent = item.textContent.trim();
+                    cityDropdownMenuMobile.classList.add('hidden');
                 });
             });
+            document.addEventListener('click', event => {
+                if (!cityDropdownMenuMobile.contains(event.target) && !cityDropdownBtnMobile.contains(event.target)) {
+                    cityDropdownMenuMobile.classList.add('hidden');
+                }
+            });
     
-            const headerPlaceholder = document.getElementById('header-placeholder');
-            if (headerPlaceholder) {
-                const observer = new MutationObserver(() => {
-                    syncHeaderOffset();
-                    refreshIcons();
-                });
-                observer.observe(headerPlaceholder, { childList: true, subtree: true });
-            }
-        });
+            btnAllProps.addEventListener('click', () => {
+                currentCategory = 'all';
+                btnAllProps.className = "group relative bg-main-green text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-[0_4px_15px_rgba(13,160,106,0.3)] hover:shadow-[0_6px_20px_rgba(13,160,106,0.4)] hover:-translate-y-0.5 flex items-center gap-2";
+                btnRecommended.className = "group bg-white border-2 border-gray-100 text-gray-600 hover:border-main-green hover:text-main-green hover:bg-[#f2fcf5] px-6 py-2.5 rounded-full text-sm font-bold transition-all flex items-center gap-2";
+                applyFilters();
+            });
     
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof Fancybox !== 'undefined') {
-                Fancybox.bind('[data-fancybox]', {
-                    zIndex: 99999,
-                    Toolbar: {
-                        display: {
-                            left: ["infobar"],
-                            middle: [],
-                            right: ["slideshow", "thumbs", "close"],
-                        },
-                    },
-                    Thumbs: {
-                        autoStart: true,
-                    },
-                    Images: {
-                        Panzoom: {
-                            maxScale: 3,
-                        },
-                    },
+            btnRecommended.addEventListener('click', () => {
+                currentCategory = 'recommended';
+                btnRecommended.className = "group relative bg-main-green text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-[0_4px_15px_rgba(13,160,106,0.3)] hover:shadow-[0_6px_20px_rgba(13,160,106,0.4)] hover:-translate-y-0.5 flex items-center gap-2";
+                btnAllProps.className = "group bg-white border-2 border-gray-100 text-gray-600 hover:border-main-green hover:text-main-green hover:bg-[#f2fcf5] px-6 py-2.5 rounded-full text-sm font-bold transition-all flex items-center gap-2";
+                applyFilters();
+            });
+    
+            clearFiltersBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                citySelect.value = '';
+                propertyTypeCheckboxes.forEach(cb => cb.checked = false);
+                amenityCheckboxes.forEach(cb => cb.checked = false);
+                priceRange.value = 1000;
+                areaRange.value = 500;
+                sortSelect.value = 'recent';
+                currentCategory = 'all';
+                minArea = 0;
+                maxAreaOverride = 500;
+                btnAllProps.className = "group relative bg-main-green text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-[0_4px_15px_rgba(13,160,106,0.3)] hover:shadow-[0_6px_20px_rgba(13,160,106,0.4)] hover:-translate-y-0.5 flex items-center gap-2";
+                btnRecommended.className = "group bg-white border-2 border-gray-100 text-gray-600 hover:border-main-green hover:text-main-green hover:bg-[#f2fcf5] px-6 py-2.5 rounded-full text-sm font-bold transition-all flex items-center gap-2";
+                applyFilters();
+            });
+            clearFiltersMobileBtn.addEventListener('click', () => {
+                clearFiltersBtn.click();
+                searchInputMobile.value = '';
+                citySelectMobile.value = '';
+                cityDropdownLabelMobile.textContent = 'All Cities';
+                priceRangeMobile.value = priceRange.value;
+                areaRangeMobile.value = areaRange.value;
+            });
+    
+            const cityDropdownBtn = document.getElementById('cityDropdownBtn');
+            const cityDropdownMenu = document.getElementById('cityDropdownMenu');
+            const cityDropdownLabel = document.getElementById('cityDropdownLabel');
+            const cityDropdownList = document.getElementById('cityDropdownList');
+    
+            if (cityDropdownBtn && cityDropdownMenu && cityDropdownLabel) {
+                cityDropdownBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    cityDropdownMenu.classList.toggle('hidden');
+                });
+    
+                document.addEventListener('click', (e) => {
+                    if (!cityDropdownMenu.contains(e.target) && !cityDropdownBtn.contains(e.target)) {
+                        cityDropdownMenu.classList.add('hidden');
+                    }
+                });
+    
+                if (cityDropdownList) {
+                    cityDropdownList.querySelectorAll('button[data-city]').forEach((item) => {
+                        item.addEventListener('click', () => {
+                            const city = item.getAttribute('data-city');
+                            const cityLabel = item.textContent.trim();
+    
+                            citySelect.value = city;
+                            citySelect.dispatchEvent(new Event('change', { bubbles: true }));
+    
+                            cityDropdownLabel.textContent = cityLabel;
+                            cityDropdownMenu.classList.add('hidden');
+                        });
+                    });
+                }
+    
+                const syncCityLabel = () => {
+                    const selectedOption = citySelect.options[citySelect.selectedIndex];
+                    cityDropdownLabel.textContent = selectedOption ? selectedOption.textContent : 'All Cities';
+                };
+                citySelect.addEventListener('change', syncCityLabel);
+                syncCityLabel();
+    
+                clearFiltersBtn.addEventListener('click', () => {
+                    setTimeout(syncCityLabel, 0);
                 });
             }
+    
+            const sortDropdownBtn = document.getElementById('sortDropdownBtn');
+            const sortDropdownMenu = document.getElementById('sortDropdownMenu');
+            const sortDropdownLabel = document.getElementById('sortDropdownLabel');
+            const sortDropdownList = document.getElementById('sortDropdownList');
+    
+            if (sortDropdownBtn && sortDropdownMenu && sortDropdownLabel) {
+                sortDropdownBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    sortDropdownMenu.classList.toggle('hidden');
+                });
+    
+                document.addEventListener('click', (e) => {
+                    if (!sortDropdownMenu.contains(e.target) && !sortDropdownBtn.contains(e.target)) {
+                        sortDropdownMenu.classList.add('hidden');
+                    }
+                });
+    
+                if (sortDropdownList) {
+                    sortDropdownList.querySelectorAll('button[data-sort]').forEach((item) => {
+                        item.addEventListener('click', () => {
+                            const sort = item.getAttribute('data-sort');
+                            const sortLabel = item.textContent.trim();
+    
+                            sortSelect.value = sort;
+                            sortSelect.dispatchEvent(new Event('change', { bubbles: true }));
+    
+                            sortDropdownLabel.textContent = sortLabel;
+                            sortDropdownMenu.classList.add('hidden');
+                        });
+                    });
+                }
+    
+                const syncSortLabel = () => {
+                    const selectedOption = sortSelect.options[sortSelect.selectedIndex];
+                    sortDropdownLabel.textContent = selectedOption ? selectedOption.textContent : 'Most Recent';
+                };
+                sortSelect.addEventListener('change', syncSortLabel);
+                syncSortLabel();
+    
+                clearFiltersBtn.addEventListener('click', () => {
+                    setTimeout(syncSortLabel, 0);
+                });
+            }
+    
+            const urlParams = new URLSearchParams(window.location.search);
+    
+            const queryParam = urlParams.get('q');
+            if (queryParam) {
+                searchInput.value = queryParam;
+            }
+    
+            const cityParam = urlParams.get('city');
+            if (cityParam) {
+                const optionExists = Array.from(citySelect.options).some(option => option.value === cityParam);
+                if (optionExists) {
+                    citySelect.value = cityParam;
+                }
+            }
+    
+            const typeParam = urlParams.get('type');
+            if (typeParam) {
+                propertyTypeCheckboxes.forEach(cb => {
+                    if (cb.value.toLowerCase() === typeParam.toLowerCase()) {
+                        cb.checked = true;
+                    }
+                });
+            }
+    
+            const sizeParam = urlParams.get('size');
+            if (sizeParam) {
+                if (sizeParam === 'under-30') {
+                    areaRange.value = 30;
+                    maxAreaOverride = 30;
+                    minArea = 0;
+                }
+                else if (sizeParam === '30-60') {
+                    areaRange.value = 60;
+                    maxAreaOverride = 60;
+                    minArea = 30;
+                }
+                else if (sizeParam === '60-90') {
+                    areaRange.value = 90;
+                    maxAreaOverride = 90;
+                    minArea = 60;
+                }
+                else if (sizeParam === 'above-90') {
+                    areaRange.value = 500;
+                    maxAreaOverride = 500;
+                    minArea = 90;
+                }
+            }
+    
+            const amenityParam = urlParams.get('amenity');
+            if (amenityParam) {
+                amenityCheckboxes.forEach(cb => {
+                    if (cb.value.toLowerCase() === amenityParam.toLowerCase()) {
+                        cb.checked = true;
+                    }
+                });
+            }
+    
+            const budgetParam = urlParams.get('budget');
+            if (budgetParam) {
+                if (budgetParam === 'under-50') priceRange.value = 500;
+                else if (budgetParam === '50-70') priceRange.value = 700;
+                else if (budgetParam === '70-90') priceRange.value = 900;
+                else if (budgetParam === '1-2-cr') priceRange.value = 1000;
+            }
+    
+            searchInputMobile.value = searchInput.value;
+            citySelectMobile.value = citySelect.value;
+            cityDropdownLabelMobile.textContent =
+                citySelectMobile.options[citySelectMobile.selectedIndex].textContent;
+            propertyTypeCheckboxes.forEach(cb => {
+                if (cb.closest('#propertyTypeFiltersMobile')) {
+                    const desktopCheckbox = Array.from(propertyTypeCheckboxes).find(other =>
+                        other.closest('#propertyTypeFilters') && other.value === cb.value
+                    );
+                    cb.checked = desktopCheckbox ? desktopCheckbox.checked : cb.checked;
+                }
+            });
+            amenityCheckboxes.forEach(cb => {
+                if (cb.closest('#amenitiesFiltersMobile')) {
+                    const desktopCheckbox = Array.from(amenityCheckboxes).find(other =>
+                        other.closest('#amenitiesFilters') && other.value === cb.value
+                    );
+                    cb.checked = desktopCheckbox ? desktopCheckbox.checked : cb.checked;
+                }
+            });
+            priceRangeMobile.value = priceRange.value;
+            areaRangeMobile.value = areaRange.value;
+            applyFilters();
         });
     </script>
 </body>

@@ -162,7 +162,7 @@ body:not(.home-page) {
 
 @media (max-width: 767px) {
   body:not(.home-page) {
-    padding-top: var(--mobile-header-height);
+    padding-top: 70px
   }
 
   .site-header-inner {
@@ -413,4 +413,47 @@ body:not(.home-page) #homeSearchWrap {
 }
 .avatar-stack img:first-child {
   margin-left: 0;
+}
+
+
+.bg-vector-pattern {
+  position: relative;
+  overflow: hidden;
+  background-color: #ebe6d3; 
+}
+
+.bg-vector-pattern::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('../../assets/images/home/vector.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+
+#mobileMenuOverlay {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(4px);                    
+  -webkit-backdrop-filter: blur(4px);
+}
+#mobileMenu,
+#mobileMenu * {
+  font-family: 'Lato', sans-serif !important;
+}
+
+#mobileMenu ul {
+  font-size: 1.125rem !important; 
+}
+
+#mobileMenu ul a {
+  padding-top: 0.875rem !important;
+  padding-bottom: 0.875rem !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
 }
