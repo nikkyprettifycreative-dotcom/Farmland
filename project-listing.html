@@ -77,6 +77,25 @@
                 background: #e5e7eb;
                 border-radius: 2px;
             }
+            @media (max-width: 405px) {
+                .listing-page .listing-grid > .listing-results {
+                    align-self: stretch;
+                }
+                .listing-page #btn-all-props,
+                .listing-page #btn-recommended {
+                    gap: 0.25rem;
+                    padding: 0.5rem 0.625rem;
+                    font-size: 0.6875rem;
+                }
+                .listing-page #btn-recommended {
+                    border-width: 1px;
+                }
+                .listing-page #btn-all-props svg,
+                .listing-page #btn-recommended svg {
+                    width: 0.75rem;
+                    height: 0.75rem;
+                }
+            }
         </style>
     </head>
 <body class="listing-page font-sans antialiased bg-[#f8fafc] overflow-x-clip">
