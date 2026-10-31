@@ -101,11 +101,12 @@ document.addEventListener("headerLoaded", function () {
     });
   }
 
-  if (document.querySelector(".cityTabsSwiper")) {
+    if (document.querySelector(".cityTabsSwiper")) {
     const cityTabsSwiper = new Swiper(".cityTabsSwiper", {
       slidesPerView: "auto",
       spaceBetween: 12,
-      freeMode: true,
+      centeredSlides: true, // Centers the active tab on all screens
+      freeMode: false,      // Disabled freeMode so it snaps nicely to center
       navigation: {
         nextEl: ".city-tabs-next",
         prevEl: ".city-tabs-prev",
@@ -115,23 +116,19 @@ document.addEventListener("headerLoaded", function () {
     const cityTabs = document.querySelectorAll(".city-tab");
     const trendCards = document.querySelectorAll(".trend-card");
   
-    // Destroy the trending Swiper so we can rebuild it filtered
     let trendingSwiper = document.querySelector(".trendingSwiper").swiper;
     if (trendingSwiper) trendingSwiper.destroy(true, true);
   
     const trendingEl = document.querySelector(".trendingSwiper");
   
     function renderTrending(city) {
-      // Remove any previous Swiper instance cleanly
       if (trendingEl.swiper) trendingEl.swiper.destroy(true, true);
   
-      // Toggle visibility with a class (NOT inline display on slides)
       trendCards.forEach(card => {
         const match = card.getAttribute("data-city") === city;
         card.classList.toggle("hidden", !match);
       });
   
-      // Let the DOM settle, then init a fresh Swiper
       requestAnimationFrame(() => {
         new Swiper(".trendingSwiper", {
           slidesPerView: 1,
@@ -174,7 +171,9 @@ document.addEventListener("headerLoaded", function () {
   
         const selectedCity = tab.getAttribute("data-filter-city");
         const slideIndex = Array.from(cityTabs).indexOf(tab);
-        cityTabsSwiper.slideTo(slideIndex, 500, true);
+        
+        // This slides the clicked tab to the center
+        cityTabsSwiper.slideTo(slideIndex, 500, true); 
   
         renderTrending(selectedCity);
       });
