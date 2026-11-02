@@ -147,7 +147,8 @@ document.addEventListener("headerLoaded", function () {
             clickable: true,
           },
           breakpoints: {
-            640: { slidesPerView: 2 },
+            320: { slidesPerView: 1.15,     spaceBetween: 10,},
+            640: { slidesPerView: 2, spaceBetween: 16 },
             1024: { slidesPerView: 3 },
             1280: { slidesPerView: 3 },
           },
@@ -212,12 +213,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const cityTabsSwiper = new Swiper(".cityTabsSwiper", {
       slidesPerView: "auto",
       spaceBetween: 12,
-      freeMode: true,
+      centeredSlides: true, 
+      freeMode: false,      
       navigation: {
         nextEl: ".city-tabs-next",
         prevEl: ".city-tabs-prev",
       },
-    });
+      on: {
+        resize: function () {
+          this.update();
+        }
+      }
+    })
 
     const cityTabs = document.querySelectorAll(".city-tab");
     const trendCards = document.querySelectorAll(".trend-card");
