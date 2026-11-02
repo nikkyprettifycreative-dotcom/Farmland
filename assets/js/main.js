@@ -584,3 +584,58 @@ document.addEventListener("DOMContentLoaded", function () {
         if (e.key === "Escape") closeMobileFilter();
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const wrapper = document.getElementById('exploreCardsWrapper');
+    if (!wrapper) return;
+
+    const cards = wrapper.querySelectorAll('.explore-card');
+    if (cards.length !== 3) return;
+
+    const buildColumns = () => {
+        if (window.innerWidth < 768) {
+            if (wrapper.dataset.wrapped === "true") {
+                const allCards = wrapper.querySelectorAll('.explore-card');
+                wrapper.innerHTML = '';
+                allCards.forEach(c => {
+                    c.classList.remove("flex-1");
+                    wrapper.appendChild(c);
+                });
+                wrapper.dataset.wrapped = "false";
+            }
+            return;
+        }
+
+        if (wrapper.dataset.wrapped === "true") return;
+
+        const currentCards = wrapper.querySelectorAll('.explore-card');
+        if (currentCards.length !== 3) return;
+
+        const leftCol = document.createElement('div');
+        leftCol.className = "md:w-[41.666667%] w-full flex flex-col gap-3 md:gap-4";
+
+        const rightCol = document.createElement('div');
+        rightCol.className = "md:w-[58.333333%] w-full flex";
+
+        currentCards[0].classList.add("flex-1");
+        currentCards[1].classList.add("flex-1");
+
+        leftCol.appendChild(currentCards[0]);
+        leftCol.appendChild(currentCards[1]);
+        rightCol.appendChild(currentCards[2]);
+
+        wrapper.innerHTML = '';
+        wrapper.appendChild(leftCol);
+        wrapper.appendChild(rightCol);
+        wrapper.dataset.wrapped = "true";
+    };
+
+    buildColumns();
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(buildColumns, 150);
+    });
+});

@@ -99,6 +99,12 @@
         </style>
     </head>
 <body class="listing-page font-sans antialiased bg-[#f8fafc] overflow-x-clip">
+    <div id="filterToast" class="fixed top-24 left-1/2 -translate-x-1/2 z-[100000] bg-[#0da06a] text-white px-6 py-3 rounded-full shadow-2xl font-bold font-sans text-sm flex items-center gap-2 transition-all duration-300 opacity-0 invisible translate-y-[-10px]">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+        Filter Applied
+    </div>
 
     <div id="header-placeholder"></div>
 
@@ -288,41 +294,37 @@
                 <div id="mobileFilterMenu"
                     class="fixed top-0 left-0 h-full w-[85%] max-w-[320px] bg-white z-[10050] -translate-x-full transition-transform duration-300 lg:hidden flex flex-col shadow-2xl">
 
-                    <!-- Drawer header -->
-                    <div class="bg-main-green px-4 py-2.5 flex items-center justify-between flex-shrink-0">
+                    <div class="bg-main-green px-4 py-3 flex items-center justify-between flex-shrink-0">
                         <div class="flex items-center gap-2 text-white font-bold text-[13px]">
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
                             </svg>
                             <span>Filters</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <button id="clearFiltersMobile" type="button"
-                                    class="text-white text-[12px] font-semibold hover:underline">Clear all</button>
-                            <button id="closeMobileFilterBtn" type="button"
-                                    class="text-white p-1.5 hover:bg-white/10 rounded-full transition-colors">
-                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                                </svg>
-                            </button>
-                        </div>
+                        <button id="closeMobileFilterBtn" type="button"
+                                class="text-white hover:bg-white/10 rounded-full transition-colors">
+                            <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
                     </div>
 
-                    <!-- Scrollable inner area — same content as the desktop aside -->
                     <div class="listing-scroll p-5 space-y-6 flex-1 overflow-y-auto min-h-0">
 
-                        <!-- Search -->
-                        <div class="relative">
-                            <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                            </svg>
-                            <input type="text" id="searchInputMobile" placeholder="Search title, keywords..."
-                                class="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-[#0da06a]/30 rounded-lg text-sm focus:outline-none focus:border-main-green focus:ring-1 focus:ring-main-green text-gray-700 transition-colors">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex justify-end">
+                                <button id="clearFiltersMobile" type="button" class="text-gray-500 text-sm font-semibold hover:text-main-green hover:underline transition-colors">Clear all</button>
+                            </div>
+
+                            <div class="relative">
+                                <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                </svg>
+                                <input type="text" id="searchInputMobile" placeholder="Search title, keywords..."
+                                    class="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-[#0da06a]/30 rounded-lg text-sm focus:outline-none focus:border-main-green focus:ring-1 focus:ring-main-green text-gray-700 transition-colors">
+                            </div>
                         </div>
 
-                        <!-- City -->
                         <div class="border-t border-[#0da06a]/10 pt-4">
                             <div class="flex items-center gap-2 text-gray-900 font-bold text-sm mb-3">
                                 <svg class="w-4 h-4 text-main-green" fill="currentColor" viewBox="0 0 24 24">
@@ -331,7 +333,6 @@
                                 City
                             </div>
 
-                            <!-- Mirrors the desktop #citySelect so main.js can sync -->
                             <select id="citySelectMobile" class="sr-only" tabindex="-1" aria-hidden="true">
                                 <option value="">All Cities</option>
                                 <option value="Bengaluru">Bengaluru</option>
@@ -385,7 +386,6 @@
                             </div>
                         </div>
 
-                        <!-- Property Type -->
                         <div class="border-t border-[#0da06a]/10 pt-4">
                             <div class="flex items-center gap-2 text-gray-900 font-bold text-sm mb-3">
                                 <svg class="w-4 h-4 text-main-green" fill="currentColor" viewBox="0 0 24 24">
@@ -413,7 +413,6 @@
                             </div>
                         </div>
 
-                        <!-- Price Range -->
                         <div class="border-t border-[#0da06a]/10 pt-4">
                             <div class="flex items-center gap-2 text-gray-900 font-bold text-sm mb-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
@@ -429,7 +428,6 @@
                             <input type="range" id="priceRangeMobile" class="w-full" min="0" max="1000" value="1000">
                         </div>
 
-                        <!-- Area -->
                         <div class="border-t border-[#0da06a]/10 pt-4">
                             <div class="flex items-center gap-2 text-gray-900 font-bold text-sm mb-4">
                                 <svg class="w-4 h-4 text-main-green" fill="currentColor" viewBox="0 0 24 24">
@@ -444,7 +442,6 @@
                             <input type="range" id="areaRangeMobile" class="w-full" min="0" max="500" value="500">
                         </div>
 
-                        <!-- Amenities -->
                         <div class="border-t border-[#0da06a]/10 pt-4">
                             <div class="flex items-center gap-2 text-gray-900 font-bold text-sm mb-3">
                                 <svg class="w-4 h-4 text-main-green" fill="currentColor" viewBox="0 0 24 24">
@@ -898,6 +895,7 @@
             let currentCategory = 'all';
             let minArea = 0;
             let maxAreaOverride = 500;
+            let isInitialLoad = true;
     
             function applyFilters() {
                 const searchTerm = searchInput.value.toLowerCase();
@@ -971,16 +969,57 @@
                 } else {
                     noResults.classList.add('hidden');
                 }
+
+                if (isInitialLoad) {
+                    isInitialLoad = false;
+                } else {
+                    showToast();
+                    }
+                }
+
+                let toastTimeout;
+                const filterToast = document.getElementById('filterToast');
+                
+                function showToast() {
+                    if (!filterToast) return;
+                    
+                    filterToast.classList.remove('opacity-0', 'invisible', 'translate-y-[-10px]');
+                    filterToast.classList.add('opacity-100', 'visible', 'translate-y-0');
+                    
+                    clearTimeout(toastTimeout);
+                    toastTimeout = setTimeout(() => {
+                        filterToast.classList.remove('opacity-100', 'visible', 'translate-y-0');
+                        filterToast.classList.add('opacity-0', 'invisible', 'translate-y-[-10px]');
+                    }, 800);
             }
     
-            searchInput.addEventListener('input', applyFilters);
-            searchInput.addEventListener('input', () => {
-                searchInputMobile.value = searchInput.value;
-            });
-            searchInputMobile.addEventListener('input', () => {
-                searchInput.value = searchInputMobile.value;
-                applyFilters();
-            });
+                searchInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault(); 
+                        applyFilters();
+                    }
+                });
+                searchInput.addEventListener('input', () => {
+                    searchInputMobile.value = searchInput.value;
+                });
+                
+                searchInputMobile.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        searchInput.value = searchInputMobile.value;
+                        const closeBtn = document.getElementById('closeMobileFilterBtn');
+                        if (closeBtn) closeBtn.click();
+
+                        requestAnimationFrame(() => {
+                            applyFilters();
+                        });
+                    }
+                });
+
+                searchInputMobile.addEventListener('input', () => {
+                    searchInput.value = searchInputMobile.value;
+                });
+
             citySelect.addEventListener('change', applyFilters);
             citySelect.addEventListener('change', () => {
                 citySelectMobile.value = citySelect.value;
